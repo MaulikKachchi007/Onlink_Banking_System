@@ -36,7 +36,7 @@
                     <a href="#" class="nav-link has-treeview">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Manage Accounts
+                            Accounts
                         </p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
@@ -44,7 +44,7 @@
                         <li class="nav-item">
                             <a href="view_account.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Account Category</p>
+                                <p>Payment</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,7 +66,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                          <p>
-                            News Management
+                            Cards
                         </p>
                     </a>
                 </li>
@@ -74,7 +74,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-credit-card"></i>
                         <p>
-                            Card Management
+                            Loans
                         </p>
                     </a>
                 </li>
@@ -111,7 +111,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-th"></i>
                         <p>
-                            Manage Transactions
+                            Message
                         </p>
                     </a>
                 </li>
@@ -119,7 +119,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-tools"></i>
                         <p>
-                            Manage Settings
+                            FAQ
                         </p>
                     </a>
                 </li>

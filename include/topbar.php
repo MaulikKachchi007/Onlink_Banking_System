@@ -1,3 +1,4 @@
+
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -118,7 +119,7 @@
 						<span class="user-icon">
 							<img src="image/photo5.jpg" class="direct-chat-img" alt="">
 						</span>
-                    <span class="text-muted text-center" style="vertical-align: middle;"> Ross C. Lopez</span>
+                    <span class="text-muted text-center" style="vertical-align: middle;"> <?= $_SESSION['uname'] ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list m-2">
                     <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
