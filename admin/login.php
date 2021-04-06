@@ -7,7 +7,6 @@ require_once ('include/function.php');
 if(isset($_SESSION["id"])){
     Redirect("index.php");
 }
-
 if (isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['pwd'];

@@ -5,14 +5,14 @@
     global $con;
 
     $get_id = $_GET['id'];
-    $sql = "SELECT * FROM account_master WHERE id='$get_id'";
+    $sql = "SELECT * FROM accounts WHERE id='$get_id'";
     $stmt = $con->query($sql);
     $stmt->execute();
     while ($row = $stmt->fetch()){
         $change_Status = $row['status'];
     }
     if ($change_Status == 'deactive'){
-        $sql = "Update account_master SET status='active' WHERE id='$get_id'";
+        $sql = "Update accounts SET status='active' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
         if ($result) {
@@ -23,7 +23,7 @@
             redirect('view_account.php');
         }
     }elseif ($change_Status == 'active') {
-        $sql = "Update account_master SET status='deactive' WHERE id='$get_id'";
+        $sql = "Update accounts SET status='deactive' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
         if ($result) {

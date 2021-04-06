@@ -11,7 +11,7 @@ if (isset($_POST['finish'])){
     $phone = $_POST['phonenumber'];
     $houseno = $_POST['houseno'];
     $locality = $_POST['locality'];
-    $area = $_POST['area'];
+    $ifsccode = $_POST['ifsccode'];
     $pincode = $_POST['pincode'];
     $city = $_POST['city'];
     $gender = $_POST['gender'];
@@ -30,7 +30,7 @@ if (isset($_POST['finish'])){
         redirect('register.php');
     }else{
         global $con;
-        $sql = "INSERT INTO customers_master(f_name,l_name,email,phone,photo,h_no,locality,area,pincode,city,adharnumber,gender,birthdate,marital,occuption,account_type,password,pin,accountstatus) VALUES(:f_Name,:l_name,:email,:phone,:photo,:h_no,:locality,:area,:pincode,:city,:adharnumber,:gender,:birthdate,:marital,:occupation,:account_type,:password,:pin,:accountstatus)";
+        $sql = "INSERT INTO customers_master(f_name,l_name,email,phone,photo,h_no,locality,ifsccode,pincode,city,adharnumber,gender,birthdate,marital,occuption,account_type,password,pin,accountstatus) VALUES(:f_Name,:l_name,:email,:phone,:photo,:h_no,:locality,:ifsccode,:pincode,:city,:adharnumber,:gender,:birthdate,:marital,:occupation,:account_type,:password,:pin,:accountstatus)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue('f_Name',$firstname);
         $stmt->bindValue('l_name',$lastname);
@@ -39,7 +39,7 @@ if (isset($_POST['finish'])){
         $stmt->bindValue('photo',$photo);
         $stmt->bindValue('h_no',$houseno);
         $stmt->bindValue('locality',$locality);
-        $stmt->bindValue('area',$area);
+        $stmt->bindValue('ifsccode',$ifsccode);
         $stmt->bindValue('pincode',$pincode);
         $stmt->bindValue('city',$city);
         $stmt->bindValue('adharnumber',$adharnumber);
@@ -52,29 +52,8 @@ if (isset($_POST['finish'])){
         $stmt->bindValue('pin',$pin);
         $stmt->bindValue('accountstatus',$accountstatus);
         $result = $stmt->execute();
-//        Add Customer Record
-        $query="SELECT * FROM customers_master WHERE email='$email'";
-        $stmt = $con->prepare($query);
-
-        $stmt->execute();
-        $row = $stmt->fetch();
-        $c_id = $row['c_id'];
-        $c_email = $row['email'];
-        $account_type = $row['account_type'];
-        $account_open_date = date("Y-m-d");
-        $account_no = "OB073101000".$c_id;
-        $accountstatus="Inactive";
-        $query = "INSERT INTO accounts(account_no,c_id,account_type,account_balance,account_open_date,account_status) VALUES(:account_no,:c_id,:account_type,:account_balance,:account_open_date,:account_status)";
-        $stmt = $con->prepare($query);
-        $stmt->bindValue('c_id', $c_id);
-        $stmt->bindValue('account_no', $account_no);
-        $stmt->bindValue('account_type', $account_type);
-        $stmt->bindValue('account_balance', 0);
-        $stmt->bindValue('account_open_date', $account_open_date);
-        $stmt->bindValue('account_status', $accountstatus);
-        $result = $stmt->execute();
         if ($result){
-            emailSend($c_id,$email);
+//            emailSend($c_id,$email);
             $_SESSION['success_message'] = "Your Account was created successfully You have received Notifications Send to Mail";
         }else{
             $_SESSION['error_message'] = "Something went wrong! Try again.";
@@ -204,8 +183,23 @@ if (isset($_POST['finish'])){
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Area</label>
-                                                <input type="text" class="form-control" name="area" placeholder="Area">
+                                                <label>Branch Name</label>
+                                                <select class="form-control" name="ifsccode">
+                                                    <option value="None">None</option>
+                                                <?php
+                                                    global $con;
+                                                    $sql = "SELECT * from branch";
+                                                    $stmt = $con->query($sql);
+                                                    $stmt->execute();
+                                                    while($row = $stmt->fetch()) {
+                                                        $bname  = $row['bname'];
+                                                        $ifsccode = $row['ifsccode'];
+                                                        ?>
+                                                    <option value='<?php echo $ifsccode; ?>'><?php echo $ifsccode; ?> (<?php echo $bname; ?>)</option>
+                                                    <?php
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">

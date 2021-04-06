@@ -80,12 +80,12 @@ include_once 'include/sidebar.php';
                                                             <li>
                                                                 <?php if ($status == "active") {
                                                                     ?>
-                                                                <a href="change_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account Deactived?')" class="dropdown-item">Deactive</a>
+                                                                <a href="change_account_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account Deactived?')" class="dropdown-item">Deactive</a>
                                                                 <?php
                                                                 }
                                                                 else{
                                                                 ?>
-                                                                    <a href="change_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account activated?')" class="dropdown-item">Active</a>
+                                                                    <a href="change_account_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account activated?')" class="dropdown-item">Active</a>
                                                                 <?php
                                                                 }
                                                                 ?>

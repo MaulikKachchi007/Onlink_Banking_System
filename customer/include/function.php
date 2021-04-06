@@ -33,22 +33,7 @@ function login_attempt($email,$password){
         return $found_account=$stmt->fetch();
     }else{
         return null;
-    }
-}
-#verify accountss
-function verify_account($pin)
-{
-    global $con;
-    $sql = "SELECT * from customers_master WHERE  email  =' :email '";
-    $stmt = $con->prepare($sql);
-    $stmt->bindValue(':email ',$email );
-    $stmt->execute();
-    $result = $stmt->rowcount();
-    if ($result==1){
-        return $found_account=$stmt->fetch();
-    }else{
-        return null;
-    }
+    }   
 }
 #confirm Login
 function confirm_login() {
@@ -56,7 +41,7 @@ function confirm_login() {
         return true;
     }
     else {
-        $_SESSION['error_message'] = "Login Required !";
+        $_SESSION['error_message'] = "Login Required!";
         redirect('login.php');
     }
 }

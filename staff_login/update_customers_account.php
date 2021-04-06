@@ -9,11 +9,10 @@
         $fname = $_POST['f_name'];
         $lname = $_POST['l_name'];
         $emailid = $_POST['email'];
-        $image = $_FILES['photo']['name'];
+             $image = $_FILES['photo']['name'];
         $mno = $_POST['phonenumber'];
         $hno = $_POST['h_no'];
         $c_locality = $_POST['locality'];
-        $c_area = $_POST['area'];
         $c_pincode = $_POST['pincode'];
         $c_city = $_POST['city'];
         $c_gender = $_POST['gender'];
@@ -30,23 +29,21 @@
 
             if (!empty($_FILES["photo"]["name"])) {
             $q = "Update customers_master SET f_name='$fname',l_name='$lname',email='$emailid',phone='$mno',photo='$image',
-                  h_no='hno',locality='$c_locality',area='$c_area',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
+                  h_no='$hno',locality='$c_locality',pincode='$c_pincode',city='$c_city',adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
                  ,marital='$c_marital',occuption='$c_occuption',account_type='$c_account_type' WHERE id='$get_id'";
             }else{
                 $q = "Update customers_master SET f_name='$fname',l_name='$lname',email='$emailid',phone='$mno',
-                  h_no='$hno',locality='$c_locality',area='$c_area',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
+                  h_no='$hno',locality='$c_locality',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
                  ,marital='$c_marital',occuption='$c_occuption',account_type='$c_account_type' WHERE c_id='$get_id'";
              }
             $stmt = $con->prepare($q);
             $result = $stmt->execute();
-            var_dump($result);
             if ($result) {
                 $_SESSION['success_message'] = "Customer Details Update Successfully";
-                redirect('customers_detail.php');
+                redirect('view_customers.php');
             }else{
                 $_SESSION['error_message'] = "Something went wrong. Try again!";
-                print_r($con->errorInfo());
-//                redirect('customers_detail.php');
+                redirect('view_customers.php');
             }
         }
     }
@@ -63,7 +60,7 @@
         $phone = $row['phone'];
         $houseno = $row['h_no'];
         $locality = $row['locality'];
-        $area = $row['area'];
+        $branch_name = $row['ifsccode'];
         $pincode = $row['pincode'];
         $city = $row['city'];
         $gender = $row['gender'];
@@ -76,7 +73,7 @@
 ?>
 <?php
 include 'include/header.php';
-//include 'include/sidebar.php';
+include 'include/sidebar.php';
 include 'include/topbar.php';
 ?>
 <div class="content-wrapper">
@@ -99,7 +96,7 @@ include 'include/topbar.php';
                                     </div><!-- /.col -->
                                 </div><!-- /.row -->
                             </div>
-                            <a href="view_account.php" class="btn btn-info float-right text-white">View Record</a>
+                            <a href="view_customers.php" class="btn btn-info float-right text-white">View Record</a>
                         </div>
                         <div class="container p-1">
                         <?php
@@ -144,8 +141,8 @@ include 'include/topbar.php';
                                     <input type="text" name="locality" class="form-control" value="<?php echo $locality; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="area">Area</label>
-                                    <input type="text" name="area" class="form-control" value="<?php echo $area; ?>">
+                                    <label for="area">Branch</label>
+                                    <input type="text" name="branch_name" disabled class="form-control" style="color:red;" value="<?php echo $branch_name; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="pincode">Pincode</label>

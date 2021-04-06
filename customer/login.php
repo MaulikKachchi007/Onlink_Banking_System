@@ -2,48 +2,46 @@
 include_once "include/DB.php";
 include_once "include/session.php";
 include_once "include/function.php";
-
-if (isset($_POST['login'])) {
-
-    if (isset($_SESSION["c_id"])) {
-        Redirect("index.php");
-    }
-
-    if (isset($_POST['login'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        if (empty($email) || empty($password)) {
-            $_SESSION['error_message'] = "All Fill Must Be Required.";
-            redirect('login.php');
-        } else {
-            // Checking Username and Passsword from database
-            $found_account = login_attempt($email, $password);
-            if ($found_account) {
-                $_SESSION['id'] = $found_account['c_id'];
-                $_SESSION['email'] = $found_account['email'];
-                $_SESSION['f_name'] = $found_account['f_name'];
-        
-                if (isset($_SESSION['TrackingURL'])) {
-                    redirect($_SESSION['TrackingURL']);
-                } else {
-                    global $con;
-                    $sql = "SELECT * FROM customers_master WHERE email='$email'";
-                    $stmt = $con->prepare($sql);
-                    $stmt->execute();
-                    $row = $stmt->fetch();
+if (isset($_SESSION["c_id"])) {
+    Redirect("index.php");
+}
+if (isset($_POST['login'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if (empty($email) || empty($password)){
+        $_SESSION['error_message'] = "All Fill Must Be Required.";
+        redirect('login.php');
+    }else{
+        // Checking Username and Passsword from database
+        $found_account = login_attempt($email,$password);
+        if ($found_account){
+            $_SESSION['c_id'] = $found_account['c_id'];
+            $_SESSION['email'] = $found_account['email'];
+            $_SESSION['f_name'] = $found_account['f_name'];
+            $_SESSION['success_message'] = "Welcome to ".$_SESSION["f_name"]."!";
+            if (isset($_SESSION['TrackingURL'])) {
+                redirect($_SESSION['TrackingURL']);
+            }else{
+                global $con;
+                $get_id= $_SESSION['c_id'];
+                $sql = "SELECT * FROM customers_master WHERE c_id='$get_id'";
+                $stmt = $con->query($sql);
+                $stmt->execute();
+                while($row = $stmt->fetch()){
                     $account_status = $row['accountstatus'];
-                    if ($account_status == "Inactive")
-                    {  
-                        echo "'<script ='text/javascript'>alert('Sorry Your Account Not Active. Plese Contacts Bank Administration.')</script>";
-                    }else {
-                        $_SESSION['success_message'] = "Welcome to " . $_SESSION["f_name"] . "!";
-                        redirect('index.php');
-                    }
                 }
-            } else {
-                $_SESSION['error_message'] = "Incorrect Username or Password.";
-                redirect('login.php');
-            }
+                if ($account_status == "Inactive")
+                {  
+                    echo "'<script ='text/javascript'>alert('Sorry Your Account Not Active. Plese Contacts Bank Administration.')</script>";
+                }else {
+                        redirect('index.php');
+                }
+            
+            }   
+        }
+        else{
+            $_SESSION['error_message'] = "Incorrect Username or Password.";
+            redirect('login.php');
         }
     }
 }
@@ -66,7 +64,7 @@ if (isset($_POST['login'])) {
 <body class="login-page" style="min-height: 512.391px;">
     <div class="login-box">
         <div class="login-logo">
-            <b>Log In</b> Here
+            <b>Customer In</b> Here
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -75,7 +73,7 @@ if (isset($_POST['login'])) {
                     echo ErrorMessage();
                     echo SuccessMessage();
                 ?>
-                <form role="form" action="login.php" method="post" id="quickForm">
+                <form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="quickForm">
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                         </div>
@@ -100,14 +98,13 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- jquery-validation -->
     <script src="assets/plugins/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
+    <!-- <script src="../../plugins/jquery-validation/additional-methods.min.js"></script> -->
     <!-- AdminLTE App -->
     <script src="assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->

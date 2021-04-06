@@ -2,6 +2,15 @@
 include_once 'include/DB.php';
 include_once 'include/function.php';
 include_once 'include/session.php';
+$get_id = $_SESSION['id'];
+global $con;
+$q = "SELECT * FROM employees_master WHERE id ='$get_id'";
+$stmt = $con->query($q);
+$stmt->execute();
+$row = $stmt->fetch();
+
+    $ifsc_code = $row['ifsccode'];
+
 ?>
 <?php
 include_once 'include/header.php';
@@ -55,7 +64,7 @@ include_once 'include/sidebar.php';
                                         <tbody>
                                         <?php
                                         global $con;
-                                        $sql = "SELECT * from employees_master";
+                                        $sql = "SELECT * from employees_master WHERE ifsccode='$ifsc_code'";
                                         $stmt = $con->query($sql);
                                         $result = $stmt->rowcount();
                                         if ($result > 0)

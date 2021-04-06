@@ -8,8 +8,7 @@
     //Delete Record in Database
     global $con;
     $get_id = $_GET['id'];
-//    echo $get_id;
-    $sql = "DELETE FROM account_master WHERE id = '$get_id'";
+    $sql = "DELETE FROM accounts WHERE id = '$get_id'";
     $stmt = $con->query($sql);
     $result = $stmt->execute();
     if ($result){

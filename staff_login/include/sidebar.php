@@ -11,6 +11,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
+
                 <img src=" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
@@ -24,42 +25,12 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="index.php" class="nav-link active">
+                    <a href="index.php" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link has-treeview">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Manage Accounts
-                        </p>
-                        <i class="fas fa-angle-left right"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="view_account.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Account Category</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="customers_detail.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Customers Details</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="view_deposite.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Fixed Deposite</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link has-treeview">
@@ -71,25 +42,24 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="view_customers_accounts.php" class="nav-link">
+                            <a href="view_customers.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>View Accounts</p>
+                                <p>Manage Customers</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="customers_detail.php" class="nav-link">
+                            <a href="view_bank_account.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Customers Details</p>
+                                <p>Manage Bank Accounts</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="view_deposite.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Fixed Deposite</p>
+                            <a href="pages/charts/inline.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Inline</p>
                             </a>
                         </li>
                     </ul>
-                </li>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -153,7 +123,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-envelope"></i>
                         <p>
                             Message

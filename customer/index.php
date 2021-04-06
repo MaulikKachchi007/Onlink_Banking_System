@@ -2,8 +2,8 @@
     include('include/DB.php');
     include('include/session.php');
     include('include/function.php');
-//    $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
-//    confirm_login();
+   $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+   confirm_login();
 ?>
 <?php
 include('include/header.php');

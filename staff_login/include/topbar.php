@@ -122,11 +122,9 @@
                     <span class="text-muted text-center" style="vertical-align: middle;"> <?= $_SESSION['ename'] ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list m-2">
-                    <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a class="dropdown-item" href="employee_profile.php"><i class="fas fa-user"></i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="profile.html"><i class="fas fa-cog"></i> Setting</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="faq.html"><i class="far fa-question-circle"></i> Help</a>
+                    <a class="dropdown-item" href="change_password.php"><i class="fas fa-cog"></i> Setting</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i>Log Out</a>
                     <div class="dropdown-divider"></div>

@@ -20,10 +20,10 @@ if (isset($_POST['verify_account'])) {
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Verify.!";
-            redirect('customers_detail.php');
+            redirect('view_bank_account.php');
         } else {
             $_SESSION['error_message'] = "Something went wrong.Try again!";
-            redirect('customers_detail.php');
+            redirect('view_bank_account.php');
         }
     }
     elseif ($change_status == 'active') {
@@ -32,10 +32,10 @@ if (isset($_POST['verify_account'])) {
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Un-Verify.!";
-            redirect('customers_detail.php');
+            redirect('view_bank_account.php');
         } else {
             $_SESSION['error_message'] = "Something went wrong.Try again!";
-            redirect('customers_detail.php');
+            redirect('view_bank_account.php');
         }
     }
 }
@@ -53,7 +53,7 @@ while ($row = $stmt->fetch()) {
     $l_name = $row['l_name'];
     $email = $row['email'];
     $phone = $row['phone'];
-    $area = $row['area'];
+    $branch = $row['ifsccode'];
     $pincode = $row['pincode'];
     $city = $row['city'];
     $adharnumber = $row['adharnumber'];
@@ -130,8 +130,8 @@ include('include/sidebar.php');
                                     <td><?php echo $account_no; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Area</th>
-                                    <td><?php echo $area; ?></td>
+                                    <th>Branch</th>
+                                    <td><?php echo $branch; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Pincode</th>

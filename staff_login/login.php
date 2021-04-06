@@ -25,8 +25,6 @@ if (isset($_POST['login'])){
             if (isset($_SESSION['TrackingURL'])) {
                 redirect($_SESSION['TrackingURL']);
             }else{
-
-//               $q = "SELECT * FROM employees_master WHERE ifsc_code";
                 redirect('index.php');
             }
         }else{

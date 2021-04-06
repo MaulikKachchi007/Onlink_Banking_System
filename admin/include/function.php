@@ -45,6 +45,3 @@ function confirm_login() {
         redirect('login.php');
     }
 }
-function getsid($id){
-    return $id;
-}
