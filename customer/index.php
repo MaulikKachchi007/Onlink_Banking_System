@@ -4,6 +4,17 @@
     include('include/function.php');
    $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
    confirm_login();
+    $get_id = $_SESSION['c_id'];
+    global $con;
+    $sql = "SELECT * FROM accounts WHERE c_id = '$get_id'";
+    $stmt = $con->query($sql);
+    while ($row = $stmt->fetch()) {
+        $account_no = $row['account_no'];
+        $account_type = $row['account_type'];
+        $balance = $row['account_balance'];
+        $account_open_date = $row['account_open_date'];
+        $interest = $row['interest'];
+    }
 ?>
 <?php
 include('include/header.php');
@@ -101,6 +112,59 @@ include('include/sidebar.php');
                     </div>
                 </div>
                 <!-- ./col -->
+                            <!-- TABLE: LATEST ORDERS -->
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title">Bank Accounts</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <tbody>
+                        <tr>
+                            <th>Account Open Date</th>
+                        
+                             <td><?php echo $account_open_date; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Account No.</th>
+                            <td><?php echo str_pad(substr($account_no,-2),13,'X',STR_PAD_LEFT);; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Account Type.</th>
+                            <td><?php echo $account_type; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Interest</th>
+                            <td><?php echo $interest; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Balance</th>
+                            <td>&#8377; <?php echo $balance; ?></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a href="view_bank_accounts.php" class="btn btn-sm btn-primary float-right">View All</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
             </div>
             <!-- /.row -->
 

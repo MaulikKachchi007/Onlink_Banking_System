@@ -42,9 +42,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="view_account.php" class="nav-link">
+                            <a href="view_bank_accounts.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Payment</p>
+                                <p>Manage Accounts</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -124,7 +124,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="view_message.php" class="nav-link">
                         <i class="nav-icon  fas fa-envelope"></i>
                         <p>
                             Message
