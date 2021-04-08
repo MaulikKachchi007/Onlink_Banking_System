@@ -5,12 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f8a713c-6278-4825-b90d-eb20a8245fcb" name="Default Changelist" comment="3-25-2021">
-      <change afterPath="$PROJECT_DIR$/customer/send_message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
-    </list>
+    <list default="true" id="1f8a713c-6278-4825-b90d-eb20a8245fcb" name="Default Changelist" comment="3-25-2021" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +147,7 @@
       <workItem from="1617631710030" duration="5962000" />
       <workItem from="1617679925212" duration="4875000" />
       <workItem from="1617798734436" duration="2308000" />
-      <workItem from="1617882837486" duration="3152000" />
+      <workItem from="1617882837486" duration="3870000" />
     </task>
     <servers />
   </component>
