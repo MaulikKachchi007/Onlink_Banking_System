@@ -4,30 +4,33 @@ include 'include/function.php';
 include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
-$get_id = $_SESSION['c_id'];
+$get_id = $_GET['id'];
+$g_id = $_SESSION['id'];
 if (isset($_POST["send_Message"])) {
     $account_number = $_POST['account_number'];
     $subject = $_POST['subject'];
     $message = $_POST['message'];
-    $status = "Waiting for Response";
-    if (empty($account_number) || empty($subject) || empty($message) || empty($status)) {
+    $status = "Adminstrator Replied";
+    if (empty($account_number) || empty($subject) || empty($status)) {
         $_SESSION["error_message"] = "All must fill required.";
     }else {
         global $con;
-        $sql = "INSERT INTO mail(subject,message,account_no,status,sender_id) VALUES (:subject,:message,:account_no,:status,:sender_id)";
+        $sql = "INSERT INTO mail(subject,admin_response,account_no,status,sender_id,reciverid) VALUES (:subject,:admin_response,:account_no,:status,:sender_id,:receiver_id)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':subject',$subject);
-        $stmt->bindValue(':message',$message);
+        $stmt->bindValue(':admin_response',$message);
         $stmt->bindValue(':account_no',$account_number);
         $stmt->bindValue(':status',$status);
         $stmt->bindValue(':sender_id',$get_id);
+        $stmt->bindValue(':receiver_id',$g_id);
         $result = $stmt->execute();
+        var_dump($result);
         if ($result) {
             $_SESSION['success_message'] = "Mail Send Successfully";
-            redirect('view_send_message.php');
+            redirect('view_message.php');
         }else{
             $_SESSION['error_message'] = "Something went wrong. Try again!";
-            redirect('view_send_message.php');
+            redirect('view_message.php');
         }
     }
 }
@@ -67,19 +70,21 @@ include 'include/topbar.php';
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                            <form role="form" action="reply_mail.php?id=<?php echo $get_id; ?>" method="post">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="account_number">Account Number</label>
                                         <?php
-                                            $sql = "SELECT * FROM accounts WHERE c_id ='$get_id'";
-                                            $stmt = $con->query($sql);
-                                            while ($row = $stmt->fetch())
-                                            {
-                                                $account_no = $row['account_no'];
-                                            }
+                                        $sql = "SELECT * FROM accounts  INNER JOIN  customers_master ON accounts.c_id = customers_master.c_id";
+                                        $stmt = $con->query($sql);
+                                        while ($row = $stmt->fetch())
+                                        {
+                                            $f_name = $row['f_name'];
+                                            $l_name = $row['l_name'];
+                                            $account_no = $row['account_no'];
+                                        }
                                         ?>
-                                            <input class="form-control" name="account_number" value="<?php echo $account_no; ?>" type="text" readonly placeholder="Account Number">
+                                        <input class="form-control" name="account_number" value="<?php echo $account_no; ?> (<?php  echo $f_name; ?> <?php echo  $l_name;?>)" type="text" readonly placeholder="Account Number">
                                     </div>
                                     <div class="form-group">
                                         <label for="Subject">Subject</label>

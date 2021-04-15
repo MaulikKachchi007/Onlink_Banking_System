@@ -4,30 +4,35 @@ include 'include/function.php';
 include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
-$get_id = $_SESSION['c_id'];
+global $con;
+$get_id = $_SESSION['id'];
 if (isset($_POST["send_Message"])) {
-    $account_number = $_POST['account_number'];
+    $account_number = $_POST['c_name'];
     $subject = $_POST['subject'];
-    $message = $_POST['message'];
-    $status = "Waiting for Response";
-    if (empty($account_number) || empty($subject) || empty($message) || empty($status)) {
-        $_SESSION["error_message"] = "All must fill required.";
-    }else {
+    $admin_response = $_POST['message'];
+    $account_no = substr($account_number,0,13);
+    $sender_id = substr($account_number,13,14);
+    $status = "Adminstrator Replied";
+    if (empty($account_number) || empty($subject) || empty($status)) {
+        $_SESSION["error_messagqe"] = "All must fill required.";
+    } else {
         global $con;
-        $sql = "INSERT INTO mail(subject,message,account_no,status,sender_id) VALUES (:subject,:message,:account_no,:status,:sender_id)";
+        $sql = "INSERT INTO mail(subject,account_no,status,sender_id,reciverid,admin_response)
+                VALUES (:subject,:account_no,:status,:sender_id,:reciverid,:admin_response)";
         $stmt = $con->prepare($sql);
-        $stmt->bindValue(':subject',$subject);
-        $stmt->bindValue(':message',$message);
-        $stmt->bindValue(':account_no',$account_number);
-        $stmt->bindValue(':status',$status);
-        $stmt->bindValue(':sender_id',$get_id);
+        $stmt->bindValue(':subject', $subject);
+        $stmt->bindValue(':account_no', $account_no);
+        $stmt->bindValue(':status', $status);
+        $stmt->bindValue(':sender_id', $sender_id);
+        $stmt->bindValue(':reciverid', $get_id);
+        $stmt->bindValue(':admin_response', $admin_response);
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Mail Send Successfully";
             redirect('view_send_message.php');
-        }else{
+        } else {
             $_SESSION['error_message'] = "Something went wrong. Try again!";
-            redirect('view_send_message.php');
+            redirect('view_send_message.php');;
         }
     }
 }
@@ -70,16 +75,26 @@ include 'include/topbar.php';
                             <form role="form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="account_number">Account Number</label>
-                                        <?php
-                                            $sql = "SELECT * FROM accounts WHERE c_id ='$get_id'";
+                                        <label for="c_name">Customer Name</label>
+                                        <select class="form-control" name="c_name">
+                                            <option value="Select">Select</option>
+                                            <?php
+                                            global $con;
+                                            $sql = "SELECT * FROM customers_master INNER JOIN accounts ON customers_master.c_id = accounts.c_id";
                                             $stmt = $con->query($sql);
                                             while ($row = $stmt->fetch())
                                             {
-                                                $account_no = $row['account_no'];
+                                                $g_id = $row['c_id'];
+                                                $account_no = $row['account_no']; 
+                                                $f_name = $row['f_name'];
+                                                $l_name = $row['l_name'];
+                                            ?>
+                                                <option value="<?php echo $row['account_no']; echo $g_id;?>"><?php echo $row['account_no'];?> <?php echo $f_name;?> <?php echo $l_name;?></option>
+                                            <?php
                                             }
-                                        ?>
-                                            <input class="form-control" name="account_number" value="<?php echo $account_no; ?>" type="text" readonly placeholder="Account Number">
+                                            ?>
+                                        </select>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="Subject">Subject</label>
@@ -110,8 +125,8 @@ include 'include/topbar.php';
         $(function () {
             //Add text editor
             $('#compose-textarea').summernote()
-        })
-    </script>
+        })</script>
 <?php
 include 'include/footer.php';
 ?>
+

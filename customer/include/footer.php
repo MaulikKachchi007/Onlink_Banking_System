@@ -8,13 +8,10 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="assets/assets/plugins/chart.js/Chart.min.js"></script>
+
 <!-- Sparkline -->
 <script src="assets/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+
 <!-- jQuery Knob Chart -->
 <script src="assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->

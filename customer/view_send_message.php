@@ -20,11 +20,11 @@ include_once 'include/sidebar.php';
                     <div class="card card-default mt-2">
                         <div class="card-header">
                             <div class="card-title"><h1 class="text-dark">Message Send Admin</h1>
-                                <p class="text-muted">Views Reply Messages Records</p>
+                                <p class="text-muted">Views Send Messages Records</p>
                             </div>
                             <div class="pull-right" style="text-align: right;">
                                 <a href="send_message.php" class="btn btn-info"><i class="fas fa-plus"></i> Compose</a>
-                                <a href="view_send_message.php" class="btn btn-info"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                <a href="view_message.php" class="btn btn-info"><i class="fas fa-reply"></i> Reply Mail</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -51,7 +51,7 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT * FROM mail WHERE sender_id='$get_id' and status='Adminstrator Replied'";
+                                    $sql = "SELECT * FROM mail WHERE status='Waiting for Response' and  sender_id='$get_id'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
@@ -63,7 +63,7 @@ include_once 'include/sidebar.php';
                                             $datetime = $row['datetime'];
                                             $account_no = $row['account_no'];
                                             $status = $row['status'];
-                                            ?>
+                                    ?>
                                             <tr>
                                                 <td><?php  echo str_pad(substr($account_no,-2),13,'X',STR_PAD_LEFT); ?></td>
                                                 <td><?php echo $datetime; ?></td>
@@ -97,10 +97,10 @@ include_once 'include/sidebar.php';
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <table id="example1" class="table table-bordered table-striped">
-                                                                        <tr>
-                                                                            <th>Date</th>
-                                                                            <th><?php echo  $row['datetime']; ?></th>
-                                                                        </tr>
+                                                                       <tr>
+                                                                           <th>Date</th>
+                                                                           <th><?php echo  $row['datetime']; ?></th>
+                                                                       </tr>
                                                                         <tr>
                                                                             <th>Account Number</th>
                                                                             <td><?php echo  $row['account_no']; ?></td>
@@ -112,7 +112,9 @@ include_once 'include/sidebar.php';
                                                                         <tr>
                                                                             <th>Message</th>
                                                                             <td>
-                                                                                <textarea class="form-control" rows="5" cols="30" readonly><?php echo  $row['admin_response']; ?></textarea>
+                                                                                <textarea rows="5" cols="30" class="form-control" readonly>
+                                                                                    <?php echo  $row['message']; ?>
+                                                                                </textarea>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

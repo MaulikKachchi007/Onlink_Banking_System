@@ -42,6 +42,20 @@ if (isset($_POST["add_account"])) {
         $stmt->bindValue(':interest',$interest);
         $stmt->bindValue(':account_status',$status);
         $result = $stmt->execute();
+//        Add Clear Balance
+        date_default_timezone_set('asia/Calcutta');
+        $approve_date_time = date('Y-m-d h:m:s');
+        $iq = "INSERT INTO transaction(to_account_no,amount,comission, particulars,transaction_type, approve_date_time, payment_status) 
+        VALUES(:to_account_no,:amount,:comission, :particulars,:transaction_type, :approve_date_time, :payment_status)";
+        $stmt = $con->prepare($iq);
+        $stmt->bindValue(':to_account_no',$ac_no);
+        $stmt->bindValue(':amount',$balance);
+        $stmt->bindValue(':comission',0);
+        $stmt->bindValue(':particulars','Account opening balance');
+        $stmt->bindValue(':transaction_type','Credit');
+        $stmt->bindValue(':approve_date_time',$approve_date_time);
+        $stmt->bindValue(':payment_status','Approved');
+        $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Added Successfully";
             redirect('view_customers.php');

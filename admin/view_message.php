@@ -4,7 +4,6 @@ include_once 'include/function.php';
 include_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
-$get_id = $_SESSION['c_id'];
 ?>
 <?php
 include_once 'include/header.php';
@@ -19,12 +18,12 @@ include_once 'include/sidebar.php';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card card-default mt-2">
                         <div class="card-header">
-                            <div class="card-title"><h1 class="text-dark">Message Send Admin</h1>
-                                <p class="text-muted">Views Reply Messages Records</p>
+                            <div class="card-title"><h1 class="text-dark">Message Customers</h1>
+                                <p class="text-muted">Views Messages Records</p>
                             </div>
                             <div class="pull-right" style="text-align: right;">
                                 <a href="send_message.php" class="btn btn-info"><i class="fas fa-plus"></i> Compose</a>
-                                <a href="view_send_message.php" class="btn btn-info"><i class="fas fa-paper-plane"></i> Send Mail</a>
+                                <a href="view_send_message.php" class="btn btn-info"><i class="far fa-paper-plane"></i> Send Mail</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -41,8 +40,8 @@ include_once 'include/sidebar.php';
                                 <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
                                     <tr>
-                                        <th>Account Number</th>
-                                        <th>Send Date</th>
+                                        <th>Date</th>
+                                        <th>Customer Name</th>
                                         <th>Subject</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -51,23 +50,26 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT * FROM mail WHERE sender_id='$get_id' and status='Adminstrator Replied'";
+                                    $get_id = $_SESSION['id'];
+                                    $sql = "SELECT * FROM mail INNER JOIN customers_master ON customers_master.c_id=mail.sender_id  and reciverid='$get_id'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
                                     {
-                                        while ($row = $stmt->fetch()) {
-                                            $id = $row['m_id'];
-                                            $subject = $row['subject'];
-                                            $message = $row['message'];
+                                            while ($row = $stmt->fetch()) {
+                                            $m_id = $row['m_id'];
+                                            $f_name = $row['f_name'];
+                                            $l_name = $row['l_name'];
                                             $datetime = $row['datetime'];
+                                            $subject = $row['subject'];
                                             $account_no = $row['account_no'];
                                             $status = $row['status'];
+
                                             ?>
                                             <tr>
-                                                <td><?php  echo str_pad(substr($account_no,-2),13,'X',STR_PAD_LEFT); ?></td>
-                                                <td><?php echo $datetime; ?></td>
-                                                <td><?php echo $subject; ?></td>
+                                                <td><?php echo $datetime;?></td>
+                                                <td><?php echo $f_name; ?> <?php echo $l_name; ?></td>
+                                                <td><?php echo $subject;?></td>
                                                 <td>
                                                     <?php
                                                     if($status == "Adminstrator Replied") {
@@ -82,43 +84,45 @@ include_once 'include/sidebar.php';
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="delete_mail.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure Delete Mail.');" class="dropdown-item"><i class="menu-icon icon-trash"></i>Delete</a></li>
-                                                            <li><a class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['m_id']; ?>"><i class="menu-icon icon-edit"></i>View</a></li>
+                                                            <li><a href="delete_message.php?id=<?php echo $m_id; ?>" onclick="return confirm('Are you sure Delete Account.');" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li>
+                                                            <li><a class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['m_id']; ?>"><i class="fa fa-reply"></i> View Mail</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="modal fade" id="ExampleModal<?php echo $row['m_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title">View Customers</h5>
+                                                                    <h5 class="modal-title">View Mail</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <table id="example1" class="table table-bordered table-striped">
+                                                                <div  class="modal-body">
+                                                                    <table class="table table-bordered table-striped">
                                                                         <tr>
-                                                                            <th>Date</th>
-                                                                            <th><?php echo  $row['datetime']; ?></th>
+                                                                            <th>Sent On</th>
+                                                                            <td><?php echo $row['message']; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th>Account Number</th>
-                                                                            <td><?php echo  $row['account_no']; ?></td>
+                                                                            <th>Received From</th>
+                                                                            <td><?php echo $f_name; ?> <?php echo $l_name; ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Subject</th>
-                                                                            <td><?php echo  $row['subject']; ?></td>
+                                                                            <td><?php echo $row['subject']; ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Message</th>
                                                                             <td>
-                                                                                <textarea class="form-control" rows="5" cols="30" readonly><?php echo  $row['admin_response']; ?></textarea>
+                                                                                    <textarea rows="5" readonly class="form-control" cols="50"><?php echo $row['admin_response']; ?></textarea>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
+
+
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -145,6 +149,7 @@ include_once 'include/sidebar.php';
 </section>
 </div>
 <!-- /.content-wrapper -->
+
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -166,7 +171,6 @@ include 'include/footer.php';
         });
     });
 </script>
-<!-- DataTables -->
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>

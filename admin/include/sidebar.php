@@ -123,9 +123,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                            <a href="view_loan_pending.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Pending Loan Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -161,7 +161,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="view_message.php" class="nav-link">
                         <i class="nav-icon  fas fa-envelope"></i>
                         <p>
                             Message

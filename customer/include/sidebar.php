@@ -15,7 +15,7 @@
                 <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?php echo $_SESSION['f_name']; ?></a>
             </div>
         </div>
 
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="view_loan_accounts.php" class="nav-link">
                         <i class="nav-icon  fas fa-credit-card"></i>
                         <p>
                             Loans
@@ -88,9 +88,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="view_loan_type.php" class="nav-link">
+                            <a href="make_loan_payment.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Loan Category</p>
+                                <p>Make Loan Payment</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -106,14 +106,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-th"></i>
-                        <p>
-                            Message
-                        </p>
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
