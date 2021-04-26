@@ -5,6 +5,12 @@ include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
+$get_id = $_SESSION['id'];
+$q = "SELECT * FROM employees_master WHERE id ='$get_id'";
+$stmt = $con->query($q);
+$stmt->execute();
+$row = $stmt->fetch();
+$ifsc_code = $row['ifsccode'];
 if (isset($_POST["add_employee"])) {
     $ifsc_code = $_POST["branch"];
     $emp_name = $_POST["emp_name"];
@@ -86,7 +92,7 @@ include 'include/topbar.php';
                                             <option value="None" selected>None</option>
                                             <?php
                                                 global $con;
-                                                $q = "SELECT * FROM branch";
+                                                $q = "SELECT * FROM branch WHERE ifsccode='$ifsc_code'";
                                                 $stmt = $con->query($q);
                                                 $stmt->execute();
                                                 while ($row = $stmt->fetch()) {

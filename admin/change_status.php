@@ -11,7 +11,7 @@
     while ($row = $stmt->fetch()){
         $change_Status = $row['status'];
     }
-    if ($change_Status == 'deactive'){
+    if ($change_Status == 'Inactive'){
         $sql = "Update account_master SET status='active' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
@@ -23,11 +23,11 @@
             redirect('view_account.php');
         }
     }elseif ($change_Status == 'active') {
-        $sql = "Update account_master SET status='deactive' WHERE id='$get_id'";
+        $sql = "Update account_master SET status='Inactive' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
         if ($result) {
-            $_SESSION['success_message'] = "Account Deactived.!";
+            $_SESSION['success_message'] = "Account Inactive.!";
             redirect('view_account.php');
         } else {
             $_SESSION['error_message'] = "Something went wrong.Try again!";

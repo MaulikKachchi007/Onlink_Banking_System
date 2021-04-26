@@ -5,8 +5,9 @@ include('include/function.php');
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id = $_SESSION['c_id'];
+$id = $_GET['id'];
 global $con;
-$sql = "SELECT * FROM transaction INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE accounts.c_id='$get_id' AND (transaction.payment_status='active' OR transaction.payment_status='Approved') LIMIT 0,10";
+$sql = "SELECT * FROM transaction INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE accounts.c_id='$get_id' and transaction.trans_id='$_GET[id]'  and accounts.account_type='Saving Account' or accounts.account_type='Current Account' AND (transaction.payment_status='active' OR transaction.payment_status='Approved') LIMIT 0,10";
 $stmt = $con->query($sql);
 while ($row = $stmt->fetch()) {
     $trans_id = $row['trans_id'];
@@ -15,6 +16,7 @@ while ($row = $stmt->fetch()) {
     $particular = $row['particulars'];
     $amount = $row['amount'];
     $transaction_type = $row['transaction_type'];
+    $particulars = $row["particulars"];
     $t_datetime = $row['trans_date_time'];
     $approve_date_time = $row['approve_date_time'];
 }
@@ -47,12 +49,12 @@ include('include/sidebar.php');
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Receipt</h1>
+                        <h1>Transaction Receipt</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                            <li class="breadcrumb-item active">Receipt</li>
+                            <li class="breadcrumb-item active">Transaction Receipt</li>
                         </ol>
                     </div>
                 </div>
@@ -128,8 +130,12 @@ include('include/sidebar.php');
                                                 <td><?php echo $t_datetime; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Deposited Amount</th>
+                                                <th>Transaction Amount</th>
                                                 <td><?php echo $amount; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Particulars</th>
+                                                <td><?php echo $particulars; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Account Balance</th>
@@ -144,7 +150,7 @@ include('include/sidebar.php');
                             <!-- this row will not appear when printing -->
                             <div class="row no-print">
                                 <div class="col-12">
-                                    <a href="deposite_receipt_print.php" target="_blank" class="btn btn-default float-right"><i class="fas fa-print"></i> Print</a>
+                                    <a href="deposite_receipt_print.php?id=<?php echo $id; ?>" target="_blank" class="btn btn-default float-right"><i class="fas fa-print"></i> Print</a>
                                 </div>
                             </div>
                         </div>

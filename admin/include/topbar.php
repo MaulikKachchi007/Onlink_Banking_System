@@ -7,7 +7,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="index.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
@@ -38,7 +38,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -54,7 +54,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -70,7 +70,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Nora Silvester
@@ -119,14 +119,12 @@
 						<span class="user-icon">
 							<img src="image/photo5.jpg" class="direct-chat-img" alt="">
 						</span>
-                    <span class="text-muted text-center" style="vertical-align: middle;"> <?= $_SESSION['uname'] ?></span>
+                    <span class="text-muted text-center" style="vertical-align: middle;">Hi, <?= $_SESSION['ename'] ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list m-2">
-                    <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a class="dropdown-item" href="employee_profile.php"><i class="fas fa-user"></i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="profile.html"><i class="fas fa-cog"></i> Setting</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="faq.html"><i class="far fa-question-circle"></i> Help</a>
+                    <a class="dropdown-item" href="change_password.php"><i class="fas fa-cog"></i> Setting</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i>Log Out</a>
                     <div class="dropdown-divider"></div>

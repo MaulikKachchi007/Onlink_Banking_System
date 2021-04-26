@@ -11,10 +11,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src=" class="img-circle elevation-2" alt="User Image">
+                <img src="" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= $_SESSION['ename']; ?></a>
             </div>
         </div>
 
@@ -47,9 +47,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="customers_detail.php" class="nav-link">
+                            <a href="view_loan_type.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Customers Details</p>
+                                <p>Loan Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="view_deposite.php" class="nav-link">
+                            <a href="view_fd_accounts.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
                                 <p>Fixed Deposite</p>
                             </a>
@@ -92,7 +92,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="view_news.php" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                          <p>
                             News Management
@@ -105,7 +105,16 @@
                         <p>
                             Card Management
                         </p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="view_cards_type.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>View cards</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link  has-treeview">
@@ -117,30 +126,30 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="view_loan_type.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Manage Loan Accounts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="view_loan_pending.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
                                 <p>Pending Loan Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                            <a href="view_loan_account.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Loan Accounts</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="view_loan_payment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Loan Payment</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="view_employee.php" class="nav-link">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-user-plus nav-icon"></i>
                         <p>
-                            Manage Employee
+                            Manage Employees
                         </p>
                     </a>
                 </li>

@@ -9,21 +9,23 @@ if (isset($_POST["add_loan"])) {
     $loan_min_balance = $_POST["loan_min_balance"];
     $loan_max_balance = $_POST["loan_max_balance"];
     $interest = $_POST["loan_interest"];
+    $loan_terms = $_POST["loan_terms"];
     $prefix = $_POST["loan_prefix"];
     $status = "active";
-    if (empty($l_type) || empty($loan_min_balance) || empty($loan_max_balance) || empty($interest) || empty($prefix)) {
+    if (empty($l_type) || empty($loan_min_balance) || empty($loan_terms) || empty($loan_max_balance) || empty($interest) || empty($prefix)) {
         $_SESSION["error_message"] = "All must fill required.";
     }elseif ($l_type == "Select") {
         $_SESSION["error_message"] = "At least one input selected";
     }else {
         global $con;
-        $sql = "INSERT INTO loan_type_master(loan_type,prefix,min_amt,max_amt,interest,status) VALUES (:loan_type,:prefix,:min_balance,:max_balance,:interest,:status)";
+        $sql = "INSERT INTO loan_type_master(loan_type,prefix,min_amt,max_amt,interest,terms,status) VALUES (:loan_type,:prefix,:min_balance,:max_balance,:interest,:terms,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':loan_type',$l_type);
         $stmt->bindValue(':prefix',$prefix);
         $stmt->bindValue(':min_balance',$loan_min_balance);
         $stmt->bindValue(':max_balance',$loan_max_balance);
         $stmt->bindValue(':interest',$interest);
+        $stmt->bindValue(':terms',$loan_terms);
         $stmt->bindValue(':status',$status);
         $result = $stmt->execute();
         if ($result) {
@@ -97,6 +99,10 @@ include 'include/topbar.php';
                                     <div class="form-group">
                                         <label for="loan_interest">Loan Interest</label>
                                         <input class="form-control" name="loan_interest" placeholder="Interest">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="loan_interest">Loan Terms</label>
+                                        <input class="form-control" name="loan_terms" placeholder="Terms">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" name="add_loan" class="btn btn-primary">Add Record</button>

@@ -1,4 +1,4 @@
-<?php
+    <?php
 require_once "DB.php";
 require_once "session.php";
 #redirect
@@ -48,3 +48,22 @@ function confirm_login() {
 function getsid($id){
     return $id;
 }
+    #count Total customers
+    function Total_Customer() {
+
+        global $con;
+        $sql = "SELECT COUNT(*) FROM customers_master WHERE ";
+        $stmt = $con->query($sql);
+        $totalRows = $stmt->fetch();
+        $total = array_shift($totalRows);
+        echo $total;
+    }
+    # Count Total admins
+    function total_admin(){
+        global $con;
+        $sql = "SELECT COUNT(*) FROM employees_master";
+        $stmt = $con->query($sql);
+        $totalRows = $stmt->fetch();
+        $total = array_shift($totalRows);
+        echo $total;
+    }

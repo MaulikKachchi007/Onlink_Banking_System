@@ -8,9 +8,7 @@ $q = "SELECT * FROM employees_master WHERE id ='$get_id'";
 $stmt = $con->query($q);
 $stmt->execute();
 $row = $stmt->fetch();
-
     $ifsc_code = $row['ifsccode'];
-
 ?>
 <?php
 include_once 'include/header.php';
@@ -55,6 +53,7 @@ include_once 'include/sidebar.php';
                                     <table id="example1" class="table table-bordered table-striped table-sm">
                                         <thead>
                                         <tr>
+                                            <th>IFSC Code</th>
                                             <th>Employee Id</th>
                                             <th>Employee name</th>
                                             <th>Status</th>
@@ -64,7 +63,7 @@ include_once 'include/sidebar.php';
                                         <tbody>
                                         <?php
                                         global $con;
-                                        $sql = "SELECT * from employees_master WHERE ifsccode='$ifsc_code'";
+                                        $sql = "SELECT * from employees_master INNER JOIN branch ON employees_master.ifsccode = branch.ifsccode  WHERE employees_master.ifsccode='$ifsc_code'";
                                         $stmt = $con->query($sql);
                                         $result = $stmt->rowcount();
                                         if ($result > 0)
@@ -72,9 +71,12 @@ include_once 'include/sidebar.php';
                                             while ($row = $stmt->fetch()) {
                                                 $id = $row['id'];
                                                 $ename = $row['ename'];
+                                                $bname = $row['bname'];
+                                                $ifsccode = $row['ifsccode'];
                                                 $status = $row['status'];
                                                 ?>
                                                 <tr>
+                                                    <td><?php echo $ifsccode; ?>( <?php echo $bname;?> )</td>
                                                     <td><?php echo $id; ?></td>
                                                     <td><?php echo $ename; ?></td>
                                                     <td><?php echo $status; ?></td>

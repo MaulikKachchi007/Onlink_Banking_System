@@ -61,7 +61,7 @@ include_once 'include/sidebar.php';
                                     <?php
                                     global $con;
                                     $account_balance="";
-                                    $sql = "SELECT customers_master.*, accounts.*  FROM customers_master  INNER JOIN accounts ON customers_master.c_id = accounts.c_id";
+                                    $sql = "SELECT customers_master.*, accounts.*  FROM customers_master  INNER JOIN accounts ON customers_master.c_id = accounts.c_id where accounts.account_type='Saving Account' or accounts.account_type='Current Account'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowcount();
                                     if ($result > 0)
@@ -235,3 +235,9 @@ include 'include/footer.php';
         });
     });
 </script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

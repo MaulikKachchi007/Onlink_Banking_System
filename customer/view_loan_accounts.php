@@ -171,11 +171,12 @@ include_once 'include/sidebar.php';
 <?php
 include 'include/footer.php';
 ?>
+<!-- DataTables -->
 <script src="assets/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script>
+<script type="text/javascript">
     $(function () {
         $('#example1').DataTable({
 
@@ -189,4 +190,3 @@ include 'include/footer.php';
         });
     });
 </script>
-<!-- DataTables -->

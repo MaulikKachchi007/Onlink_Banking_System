@@ -6,7 +6,7 @@
    confirm_login();
     $get_id = $_SESSION['c_id'];
     global $con;
-    $sql = "SELECT * FROM accounts WHERE c_id = '$get_id'";
+    $sql = "SELECT * FROM accounts WHERE c_id = '$get_id' and account_type = 'Saving Account' or account_type = 'Current Account' ";
     $stmt = $con->query($sql);
     while ($row = $stmt->fetch()) {
         $account_no = $row['account_no'];
@@ -22,7 +22,8 @@ include('include/topbar.php');
 include('include/sidebar.php');
 ?>
 <!-- Content Wrapper. Contains page content -->
-<!-- Content Wrapper. Contains page content -->
+<link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -163,7 +164,27 @@ include('include/sidebar.php');
               </div>
               <!-- /.card-footer -->
             </div>
-            <!-- /.card -->
+                <!-- BAR CHART -->
+                <div class="card card-primary ml-3">
+                    <div class="card-header">
+                        <h3 class="card-title">Bar Chart</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- /.card -->
                 <div class="card card-primary ml-3">
                     <div class="card-header border-0">
                         <h3 class="card-title">Mini Statement</h3>
@@ -173,8 +194,8 @@ include('include/sidebar.php');
                             </a>
                         </div>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table  id="example1" class="table table-striped table-responsive">
+                    <div class="card card-body">
+                        <table id="example1" class="table table-striped table-bordered table-responsive">
                             <thead>
                             <tr>
                                 <th>Account No</th>
@@ -187,27 +208,31 @@ include('include/sidebar.php');
                             </thead>
                             <tbody>
                             <?php
-                                global $con;
-//                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
-                                $sql = "SELECT * FROM transaction INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE accounts.c_id='$get_id' AND (transaction.payment_status='active' OR transaction.payment_status='Approved') LIMIT 0,10";
-                                $stmt = $con->query($sql);
-                                while ($row = $stmt->fetch()) {
+                            global $con;
+                            //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
+                            $sql = "SELECT * FROM transaction 
+                                        INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE
+                                        accounts.c_id='$get_id' and accounts.account_type='Saving Account' or accounts.account_type='Current Account' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC";
+                            $stmt = $con->query($sql);
+                            while ($row = $stmt->fetch()) {
                                 $trans_id = $row['trans_id'];
                                 $account_no = $row['account_no'];
-                                $account_balance = $row['account_balance'];
+                                $account_balance = $row['amount'];
                                 $particular = $row['particulars'];
                                 $transaction_type = $row['transaction_type'];
                                 $t_datetime = $row['trans_date_time'];
-                                }
+                                ?>
+                                <tr>
+                                    <td><?php echo $account_no;?></td>
+                                    <td>&#8377;  <?php echo $account_balance;?></td>
+                                    <td><?php echo $particular;?></td>
+                                    <td><?php echo $transaction_type;?></td>
+                                    <td><?php echo $t_datetime;?></td>
+                                    <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
+                                </tr>
+                                <?php
+                            }
                             ?>
-                            <tr>
-                                <td><?php echo $account_no;?></td>
-                                <td><?php echo $account_balance;?></td>
-                                <td><?php echo $particular;?></td>
-                                <td><?php echo $transaction_type;?></td>
-                                <td><?php echo $t_datetime;?></td>
-                                <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -242,4 +267,31 @@ include('include/sidebar.php');
             "responsive": true,
         });
     });
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = jQuery.extend(true, {}, areaChartData)
+    var temp0 = areaChartData.datasets[0]
+    var temp1 = areaChartData.datasets[1]
+    barChartData.datasets[0] = temp1
+    barChartData.datasets[1] = temp0
+
+    var barChartOptions = {
+        responsive              : true,
+        maintainAspectRatio     : false,
+        datasetFill             : false
+    }
+
+    var barChart = new Chart(barChartCanvas, {
+        type: 'bar',
+        data: barChartData,
+        options: barChartOptions
+    })
+
 </script>
+<script src="assets/chart.js/Chart.min.js"></script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

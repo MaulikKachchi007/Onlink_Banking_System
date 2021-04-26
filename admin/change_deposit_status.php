@@ -6,6 +6,7 @@ include('include/function.php');
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
+$get_id = $_GET['id'];
     if(isset($_POST['verify_deposit'])) {
         $get_id = $_GET['id'];
         $qr = "SELECT * FROM fixed_deposite WHERE f_id='$get_id'";

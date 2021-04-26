@@ -68,7 +68,14 @@ include_once 'include/sidebar.php';
                                             <tr>
                                                 <td><?php echo $id; ?></td>
                                                 <td><?php echo $a_type; ?></td>
-                                                <td><?php echo $status; ?></td>
+                                                <td>
+                                                <?php
+                                                    if($status == "active"){
+                                                        echo "<div class='badge badge-success'>$status</div>";
+                                                    }elseif($status == "Inactive"){
+                                                        echo "<div class='badge badge-danger'>$status</div>";
+                                                    }
+                                                 ?>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
@@ -77,6 +84,7 @@ include_once 'include/sidebar.php';
                                                             <li><a href="delete_account.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure Delete Account.');" class="dropdown-item"><i class="menu-icon icon-trash"></i>Delete</a></li>
 
                                                             <li><a href="update_account.php?id=<?php echo $id; ?>" class="dropdown-item"><i class="menu-icon icon-edit"></i>Update</a></li>
+                                                            <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['id']; ?>">View</a></li>
                                                             <li>
                                                                 <?php if ($status == "active") {
                                                                     ?>
@@ -92,6 +100,50 @@ include_once 'include/sidebar.php';
                                                             </li>
 
                                                         </ul>
+                                                    </div>
+                                                    <div class="modal fade" id="ExampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">View Accounts Type</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div  class="modal-body">
+                                                                    <table class="table table-bordered table-striped">
+                                                                        <tr>
+                                                                            <th>Account ID</th>
+                                                                            <td><?php echo $row['id']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Account Type</th>
+                                                                            <td><?php echo $row['account_type']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Prefix</th>
+                                                                            <td><?php echo $row['prefix']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Minimum Balance</th>
+                                                                            <td><?php echo $row['min_balance']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Interest</th>
+                                                                            <td><?php echo $row['interest']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Status</th>
+                                                                            <td><?php echo $row['status']; ?></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -131,3 +183,9 @@ include_once 'include/sidebar.php';
         });
     });
 </script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

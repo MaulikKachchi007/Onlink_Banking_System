@@ -6,35 +6,52 @@ $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
 $c_id = $_SESSION['c_id'];
-//if (isset($_POST["add_branch"])) {
-//    $ifsc_code = $_POST["icode"];
-//    $branch_name = $_POST["branch_name"];
-//    $address = $_POST["address"];
-//    $city = $_POST["city"];
-//    $state = $_POST["state"];
-//    $country = $_POST["country"];
-//    $status = $_POST["status"];
-//    if (empty($branch_name) || empty($address) || empty($city) || empty($state) || empty($country) || empty($status)) {
-//        $_SESSION["error_message"] = "All must fill required.";
-//    }else {
-//        global $con;
-//        $sql = "INSERT INTO branch(ifsccode,bname,address,city,state,country,status) VALUES(:ifsccode,:bname,:address,:city,:state,:country,:status)";
-//        $stmt = $con->prepare($sql);
-//        $stmt->bindValue(':ifsccode',$ifsc_code);
-//        $stmt->bindValue(':bname',$branch_name);
-//        $stmt->bindValue(':address',$address);
-//        $stmt->bindValue(':city',$city);
-//        $stmt->bindValue(':state',$state);
-//        $stmt->bindValue(':country',$country);
-//        $stmt->bindValue(':status',$status);
-//        $result = $stmt->execute();
-//        if ($result) {
-//            $_SESSION['success_message'] = "Branch  Added Successfully";
-//        }else{
-//            $_SESSION['error_message'] = "Something went wrong. Try again!";
-//        }
-//    }
-//}
+if (isset($_POST["submit"])) {
+    $acc_no = $_POST["loan_account_number"];
+    $paidamt = $_POST["paid_amt"];
+    $account = $_POST['account'];
+    $loan_amount = $_POST['loan_amount'];
+    $interest = $_POST["interest"];
+    $balance = $_POST['bal_amt'];
+    $totamt = $_POST['totamt'];
+    $paid_date = date("Y-m-d");
+    if (empty($paid_date)) {
+        $_SESSION["error_message"] = "All must fill required.";
+    }else {
+        global $con;
+        $sql = "INSERT INTO loan_payment(c_id,loan_account_number,loan_amt,interest,total_amt,paid,payment_type,balance,paid_date) 
+                VALUES(:c_id,:loan_account_number,:loan_amt,:interest,:total_amt,:paid,:payment_type,:balance,:paid_date)";
+        $stmt = $con->prepare($sql);
+        $stmt->bindValue(':c_id',$c_id);
+        $stmt->bindValue(':loan_account_number',$acc_no);
+        $stmt->bindValue(':loan_amt',$loan_amount);
+        $stmt->bindValue(':interest',$interest);
+        $stmt->bindValue(':total_amt',$totamt);
+        $stmt->bindValue(':paid',$paidamt);
+        $stmt->bindValue(':payment_type','Debit');
+        $stmt->bindValue(':balance',$balance);
+        $stmt->bindValue(':paid_date',$paid_date);
+        $result = $stmt->execute();
+        $sql = "insert into transaction(to_account_no ,amount,comission,particulars,transaction_type,approve_date_time,payment_status) 
+                VALUES(:to_account_no ,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status) ";
+        $stmt = $con->prepare($sql);
+        $stmt->bindValue(':to_account_no', $account);
+        $stmt->bindValue(':amount', $paidamt);
+        $stmt->bindValue(':comission', '0');
+        $stmt->bindValue(':particulars', "To Paid Loan Amount");
+        $stmt->bindValue(':transaction_type', 'Debit');
+        $stmt->bindValue(':approve_date_time',$paid_date);
+        $stmt->bindValue(':payment_status', 'Active');
+        $result = $stmt->execute();
+        $sql = "UPDATE accounts SET account_balance= account_balance -  $paidamt  WHERE account_no=''";
+        $stmt = $con->query($sql);
+        if ($result) {
+            $_SESSION['success_message'] = "Loan Payment Successfully";
+        }else{
+            $_SESSION['error_message'] = "Something went wrong. Try again!";
+        }
+    }
+}
 ?>
 <?php
 include 'include/header.php';
@@ -61,7 +78,7 @@ include 'include/topbar.php';
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_branch.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_loan_accounts.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php
@@ -75,27 +92,27 @@ include 'include/topbar.php';
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="loan_account_number">Loan Account Number</label>
-                                        <select class="form-control"  name="loan_account_number" onChange="load_account_change(this.value)">
+                                        <select class="form-control"  name="loan_account_number" id="loan_account_number" onChange="load_account_change(this.value)">
                                             <option value="Select" selected>Select</option>
                                             <?php
                                                 global $con;
                                                 $c_id = $_SESSION['c_id'];
                                                 $sql = "SELECT * FROM loan WHERE c_id = '$c_id' AND status = 'Approved'";
                                                 $stmt = $con->query($sql);
-                                                var_dump($stmt->errorInfo());
                                                 while ($row = $stmt->fetch()) {
                                                     $loan_account_number = $row["loan_account_number"];
                                             ?>
                                                 <option value="<?php echo $loan_account_number;?>"><?php echo $loan_account_number;?></option>
                                         </select>
                                             <?php
-                                            }
+                                                }
                                             ?>
 
                                     </div>
+                                    <div id="loading_data">
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
-                                <div id="loading_data"></div>
                             </form>
                         </div>
                         <!-- /.card -->
@@ -104,7 +121,14 @@ include 'include/topbar.php';
             </div>
         </section>
     </div>
+<?php
+include 'include/footer.php';
+?>
 <script type="text/javascript">
+    function calculatebal(totamt,paidamt)
+    {
+        document.getElementById("balanceamt").value = totamt - paidamt;
+    }
     function load_account_change(loan_account_number) {
         document.getElementById("loading_data").innerHTML = "<img src='image/LoadingSmall.gif' width='172' height='172' />";
         if (window.XMLHttpRequest) {
@@ -118,7 +142,7 @@ include 'include/topbar.php';
             if (this.readyState == 4 && this.status == 200) {
                 if(this.responseText == 0)
                 {
-                    document.getElementById("loading_data").innerHTML = "<img src='images/LoadingSmall.gif' width='172' height='172' />";
+                    document.getElementById("loading_data").innerHTML = "<img src='image/LoadingSmall.gif' width='172' height='172' />";
                 }
                 else
                 {
@@ -129,8 +153,33 @@ include 'include/topbar.php';
         xmlhttp.open("GET","ajaxloanaccount.php?loan_account_number="+loan_account_number,true);
         xmlhttp.send();
     }
-
 </script>
-<?php
-include 'include/footer.php';
-?>
+<script>
+    function showcustomer(account_number)
+    {
+        document.getElementById("show_customer_record").innerHTML = "<img src='image/LoadingSmall.gif' width='172' height='172' />";
+
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText == 0)
+                {
+                    document.getElementById("show_customer_record").innerHTML = "<img src='image/LoadingSmall.gif' width='172' height='172' />";
+                }
+                else
+                {
+                    document.getElementById("show_customer_record").innerHTML = this.responseText;
+                }
+            }
+        };
+        xmlhttp.open("GET","ajaxloanpayment.php?account_number="+account_number,true);
+        xmlhttp.send();
+    }
+</script>

@@ -67,7 +67,7 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT * FROM customers_master WHERE ifsccode='$ifsccode'";
+                                    $sql = "SELECT * FROM customers_master INNER JOIN accounts ON customers_master.c_id = accounts.c_id  WHERE ifsccode='$ifsccode' and  accounts.account_type='Saving Account' or accounts.account_type='Current  Account'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)

@@ -7,11 +7,11 @@ function redirect($new_location){
     exit();
 }
 # Check User Exits or not
-function checkUserExists($email){
+function checkUserExists($loginid){
     global $con;
-    $sql = "SELECT * FROM employees_master WHERE email =:eMail";
+    $sql = "SELECT * FROM employees_master WHERE loginid =:loginid";
     $stmt = $con->prepare($sql);
-    $stmt->bindValue(':eMail',$email);
+    $stmt->bindValue(':loginid',$loginid);
     $stmt->execute();
     $row_count = $stmt->rowcount();
     if ($row_count == 1){
@@ -21,11 +21,11 @@ function checkUserExists($email){
     }
 }
 #login attempt
-function login_attempt($email,$password){
+function login_attempt($loginid,$password){
     global $con;
-    $sql = "SELECT * from employees_master WHERE email=:eMail AND pwd=:passWord LIMIT 1";
+    $sql = "SELECT * from employees_master WHERE loginid=:loginid AND pwd=:passWord LIMIT 1";
     $stmt = $con->prepare($sql);
-    $stmt->bindValue(':eMail',$email);
+    $stmt->bindValue(':loginid',$loginid);
     $stmt->bindValue(':passWord',$password);
     $stmt->execute();
     $result = $stmt->rowcount();
@@ -44,4 +44,22 @@ function confirm_login() {
         $_SESSION['error_message'] = "Login Required !";
         redirect('login.php');
     }
+}
+#count Total customers
+function Total_Customer() {
+    global $con;
+    $sql = "SELECT COUNT(*) FROM customers_master";
+    $stmt = $con->query($sql);
+    $totalRows = $stmt->fetch();
+    $total = array_shift($totalRows);
+    echo $total;
+}
+# Count Total admins
+function total_admin(){
+    global $con;
+    $sql = "SELECT COUNT(*) FROM employees_master";
+    $stmt = $con->query($sql);
+    $totalRows = $stmt->fetch();
+    $total = array_shift($totalRows);
+    echo $total;
 }

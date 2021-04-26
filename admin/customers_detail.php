@@ -17,39 +17,29 @@ include('include/sidebar.php');
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Customers</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Customers</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"">
+                        <div class="card card-default mt-2">
                             <div class="card-header">
-                                <h3 class="card-title">Customer Details</h3>
+                            <div class="card-title"><h1 class="text-dark">View Customers Detail</h1>
+                                <p class="text-muted">Views Customers Records</p>
                             </div>
+                            </div>
+
+                        </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Account Number</th>
+                                        <th>Login</th>
+                                        <th>IFSC Code</th>
                                         <th>Account Type</th>
                                         <th>Account Status</th>
                                         <th>Action</th>
@@ -60,27 +50,37 @@ include('include/sidebar.php');
                                                 echo ErrorMessage();
                                                 echo SuccessMessage();
                                                 global $con;
-
-                                                $sql = "SELECT customers_master.*, accounts.account_no  FROM customers_master  INNER JOIN accounts ON customers_master.c_id = accounts.c_id";
+                                                $sql = "SELECT *  FROM customers_master";
                                                 $stmt = $con->prepare($sql);
                                                 $result = $stmt->execute();
                                                 $num_rows = $stmt->rowcount();
                                                 if($num_rows > 0)
                                                 {
                                                 while ($row = $stmt->fetch()) {
+                                                    $ifsccode = $row['ifsccode'];
                                                     $id = $row['c_id'];
                                                     $f_name = $row['f_name'];
+                                                    $login = $row['email'];
                                                     $accounts_type = $row['account_type'];
                                                     $accounts_status = $row['accountstatus'];
-                                                    $account_no = $row['account_no'];
                                                 ?>
 
                                             <tr>
                                                 <td><?php echo $id;?></td>
                                                 <td><?php echo $f_name;?></td>
-                                                <td><?php echo $account_no;?></td>
+                                                <td><?php echo $login;?></td>
+                                                <td><?php echo $ifsccode;?></td>
                                                 <td><?php echo $accounts_type;?></td>
-                                                <td><?php echo $accounts_status;?></td>
+                                                <td>
+                                                <?php
+                                                    if($accounts_status == "active"){
+                                                        echo "<div class='badge badge-success'>$accounts_status</div>";
+                                                    }elseif($accounts_status == "Inactive"){
+                                                        echo "<div class='badge badge-danger'>$accounts_status</div>";
+                                                    }
+
+                                                ?>
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
@@ -113,16 +113,6 @@ include('include/sidebar.php');
                                             }
                                             ?>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Customer Name</th>
-                                        <th>Account Number</th>
-                                        <th>Account Type</th>
-                                        <th>Account Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -175,3 +165,9 @@ include('include/footer.php');
 </script>
 </body>
 </html>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

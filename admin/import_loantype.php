@@ -8,7 +8,7 @@ if (isset($_POST['add_import_account'])) {
     if ($_FILES['file']['size'] > 0) {
         $file = fopen($filename, "r");
         while (($line = fgetcsv($file,10000,",")) !== false) {
-            $sql = "INSERT INTO loan_type_masters (loan_type,prefix,min_amt,max_amt,interest,status) VALUES('". $line[0] ."','". $line[1] ."','". $line[2] ."','". $line[3] ."','". $line[4] ."','". $line[5] ."') ";
+            $sql = "INSERT INTO loan_type_masters (loan_type,prefix,min_amt,max_amt,interest,terms,status) VALUES('". $line[0] ."','". $line[1] ."','". $line[2] ."','". $line[3] ."','". $line[4] ."','". $line[5] ."','". $line[6] ."') ";
             $stmt = $con->prepare($sql);
             $result = $stmt->execute();
             if (isset($result)) {

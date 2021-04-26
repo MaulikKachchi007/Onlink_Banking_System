@@ -72,12 +72,19 @@ include_once 'include/sidebar.php';
                                             $max_amt= $row['max_amt'];
                                             $interest = $row['interest'];
                                             $terms = $row['terms'];
-//                                            $status = $row['status'];
+                                            $status = $row['status'];
                                             ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $row['d_type']; ?></td>
-                                                <td><?php echo $row['status']; ?></td>
+                                                <td>
+                                                    <?php
+                                                        if($status == "active"){
+                                                            echo "<div class='badge badge-success'>$status</div>";
+                                                        }elseif($status == "Inactive"){
+                                                            echo "<div class='badge badge-danger'>$status</div>";
+                                                        }
+                                                    ?></td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
@@ -86,7 +93,7 @@ include_once 'include/sidebar.php';
                                                             <li><a href="delete_deposit.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure Delete Account.');" class="dropdown-item"><i class="menu-icon icon-trash"></i>Delete</a></li>
 
                                                             <li><a href="update_deposit.php?id=<?php echo $id; ?>" class="dropdown-item "><i class="menu-icon icon-edit"></i>Update</a></li>
-                                                                <li><a href="#" class="dropdown-item"  >View</a></li>
+                                                                <li><a href="#" class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['f_id']; ?>" >View</a></li>
                                                             <li>
                                                                 <?php if ($status == "active") {
                                                                     ?>
@@ -198,3 +205,9 @@ include 'include/footer.php';
         });
     });
 </script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

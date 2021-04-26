@@ -1,10 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="index.php" class="brand-link">
+        <img src="image/avtar.png"   alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+             style="opacity: .8;background-color: white;">
+        <span class="brand-text font-weight-light">Octo Prime E-Banking</span>
     </a>
 
     <!-- Sidebar -->
@@ -48,25 +48,69 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                            <a href="change_pin_password.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Pin Password</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                            <a href="View_transaction.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Transaction</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="view_loan_payment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Loan Payments</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link has-treeview">
+                        <i class="nav-icon fas fa-money-bill"></i>
+                        <p>
+                            Fund Transfer
+                        </p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="fund_transfer.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Transfer Fund</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="registeredpayee.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Add Registered Payee</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="viewcustregisteredpayee.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>View Registered Payee</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a href="view_cards.php" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                          <p>
                             Cards
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="view_fd_account.php" class="nav-link">
+                        <i class="nav-icon fas fa-database"></i>
+                        <p>
+                            FD Accounts
                         </p>
                     </a>
                 </li>

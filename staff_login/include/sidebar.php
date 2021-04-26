@@ -54,9 +54,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                            <a href="view_fd_accounts.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage FD Accounts</p>
                             </a>
                         </li>
                     </ul>
@@ -87,28 +87,57 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="view_loan_type.php" class="nav-link">
+                            <a href="pending_loan_request.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
-                                <p>Manage Loan Accounts</p>
+                                <p>Pending Loan Request</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                            <a href="view_loan_account.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Loan Accounts</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                            <a href="view_loan_payment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>View Loan Payment</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link  has-treeview">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                             Transaction
+                        </p>
+                        <i class="fas fa-angle-left right"></i>
+                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="deposite_money.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Deposite Money</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Withdrawmoney.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Withdraw Money</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="loanpayment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Make loan Payment</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="view_employee.php" class="nav-link">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-user-plus nav-icon"></i>
                         <p>
                             Manage Employee
                         </p>
@@ -123,7 +152,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="view_message.php" class="nav-link">
                         <i class="nav-icon  fas fa-envelope"></i>
                         <p>
                             Message

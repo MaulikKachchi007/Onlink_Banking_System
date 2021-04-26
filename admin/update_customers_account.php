@@ -30,11 +30,11 @@
 
             if (!empty($_FILES["photo"]["name"])) {
             $q = "Update customers_master SET f_name='$fname',l_name='$lname',email='$emailid',phone='$mno',photo='$image',
-                  h_no='hno',locality='$c_locality',area='$c_area',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
+                  h_no='hno',locality='$c_locality',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
                  ,marital='$c_marital',occuption='$c_occuption',account_type='$c_account_type' WHERE id='$get_id'";
             }else{
                 $q = "Update customers_master SET f_name='$fname',l_name='$lname',email='$emailid',phone='$mno',
-                  h_no='$hno',locality='$c_locality',area='$c_area',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
+                  h_no='$hno',locality='$c_locality',pincode='$c_pincode',city='$c_city', adharnumber='$c_adharnumber',gender='$c_gender',birthdate='$c_date'
                  ,marital='$c_marital',occuption='$c_occuption',account_type='$c_account_type' WHERE c_id='$get_id'";
              }
             $stmt = $con->prepare($q);
@@ -51,7 +51,7 @@
         }
     }
     global $con;
-    $firstname = $lastname = $email = $photo = $phone = $houseno = $locality = $area = $pincode = $city = $gender = $date = $adharnumber = $marital = $occuption = $account_type = $password = $cpwd =$pin = $cpin =  "";
+    $firstname = $lastname = $email = $photo = $phone = $houseno = $locality  = $pincode = $city = $gender = $date = $adharnumber = $marital = $occuption = $account_type = $password = $cpwd =$pin = $cpin =  "";
     $sql = "SELECT * from customers_master WHERE c_id ='$get_id'";
     $stmt = $con->query($sql);
     $result = $stmt->execute();
@@ -63,8 +63,8 @@
         $phone = $row['phone'];
         $houseno = $row['h_no'];
         $locality = $row['locality'];
-        $area = $row['area'];
         $pincode = $row['pincode'];
+        $ifsccode = $row['ifsccode'];
         $city = $row['city'];
         $gender = $row['gender'];
         $date = $row['birthdate'];
@@ -76,7 +76,7 @@
 ?>
 <?php
 include 'include/header.php';
-//include 'include/sidebar.php';
+include 'include/sidebar.php';
 include 'include/topbar.php';
 ?>
 <div class="content-wrapper">
@@ -145,7 +145,7 @@ include 'include/topbar.php';
                                 </div>
                                 <div class="form-group">
                                     <label for="area">Area</label>
-                                    <input type="text" name="area" class="form-control" value="<?php echo $area; ?>">
+                                    <input type="text" name="area" class="form-control" value="<?php echo $ifsccode; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="pincode">Pincode</label>

@@ -6,7 +6,7 @@ $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id = $_SESSION['c_id'];
 global $con;
-$sql = "SELECT customers_master.*, accounts.* FROM customers_master  INNER JOIN accounts ON   customers_master.c_id='$get_id'";
+$sql = "SELECT customers_master.*, accounts.* FROM customers_master  INNER JOIN accounts ON   customers_master.c_id='$get_id' and accounts.account_type = 'Saving Account' or accounts.account_type = 'Current Account'";
 $stmt = $con->query($sql);
 while ($row = $stmt->fetch()) {
     $f_name = $row['f_name'];

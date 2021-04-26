@@ -9,6 +9,7 @@ if (isset($_POST["update_loan_type"])) {
     $min_amount = $_POST["min_amount"];
     $max_amount = $_POST["max_amount"];
     $interest = $_POST["loan_interest"];
+    $loan_terms = $_POST["terms"];
     $prefix = $_POST["loan_prefix"];
 //        $status = "active";
     if (empty($l_type) || empty($min_amount)|| empty($max_amount) || empty($interest) || empty($prefix)) {
@@ -17,7 +18,7 @@ if (isset($_POST["update_loan_type"])) {
         $_SESSION["error_message"] = "At least one input selected";
     }else {
         global $con;
-        $q =    "Update loan_type_master SET loan_type='$l_type',prefix='$prefix',min_amt='$min_amount',max_amt='$max_amount',interest='$interest' WHERE id='$get_id'";
+        $q =    "Update loan_type_master SET loan_type='$l_type',prefix='$prefix',min_amt='$min_amount',max_amt='$max_amount',interest='$interest',terms='$loan_terms' WHERE id='$get_id'";
         $stmt = $con->prepare($q);
         $result = $stmt->execute();
         if ($result) {
@@ -38,6 +39,7 @@ while ($row = $stmt->fetch()) {
     $min_amount = $row['min_amt'];
     $max_amount = $row['max_amt'];
     $interest = $row['interest'];
+    $terms = $row['terms'];
 }
 ?>
 <?php
@@ -102,9 +104,14 @@ include 'include/topbar.php';
                                     <label for="min_amount">Maximum Amount</label>
                                     <input class="form-control" name="max_amount" value="<?php echo $max_amount;?>" placeholder="Maximum Amount">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="loan_interest">Loan Interest</label>
                                     <input class="form-control" name="loan_interest" value="<?php echo $interest; ?>" placeholder="Interest">
+                                </div>
+                                <div class="form-group">
+                                    <label for="loan_terms">Loan Terms</label>
+                                    <input class="form-control" name="terms" value="<?php echo $terms; ?>" placeholder="terms">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="update_loan_type" class="btn btn-primary">Update Record</button>

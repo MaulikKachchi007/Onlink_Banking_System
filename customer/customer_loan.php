@@ -149,7 +149,7 @@ include 'include/topbar.php';
 <script type="text/javascript">
     function loadloanrec(id) {
         if(window.XMLHttpRequest){
-                xmlhttp = new XMLHttpRequest();
+            xmlhttp = new XMLHttpRequest();
         }else{
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }

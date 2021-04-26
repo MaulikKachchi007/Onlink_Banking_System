@@ -68,7 +68,16 @@ include_once 'include/sidebar.php';
                                                 <tr>
                                                     <td><?php echo $id; ?></td>
                                                     <td><?php echo $ename; ?></td>
-                                                    <td><?php echo $status; ?></td>
+                                                    <td>
+                                                       <?php
+                                                            if($status == "Active") {
+                                                                echo "<div class='badge badge-success'>".$status.'</div>';
+                                                            }
+                                                            elseif($status == "Inactive"){
+                                                                echo "<div class='badge badge-danger'>".$status.'</div>';
+                                                            }
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
@@ -179,3 +188,9 @@ include 'include/footer.php';
         });
     });
 </script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

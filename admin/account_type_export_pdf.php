@@ -40,17 +40,7 @@
             $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'utf8', false);
 
             $obj_pdf->SetCreator(PDF_CREATOR);
-            $obj_pdf->setTitle("Account Type Report");
-            $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);
-            $obj_pdf->SetHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-            $obj_pdf->SetFooterFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-            $obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-            $obj_pdf->SetDefaultMonospacedFont('helvetica');
-            $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);
-            $obj_pdf->SetPrintHeader(false);
-            $obj_pdf->SetPrintFooter(false);
-            $obj_pdf->SetAutoPageBreak(TRUE, 10);
-            $obj_pdf->SetFont('helvetica', '', 12);
+
             $obj_pdf->AddPage();
             $content = '';
             $content .= '

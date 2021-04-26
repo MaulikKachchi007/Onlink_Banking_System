@@ -44,17 +44,13 @@ include_once 'include/sidebar.php';
                                         </button>
                                     </div>
                                 </div>
-                                <form role="form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                                    <div class="row">
-                                        <div class="col-md-10 col-lg-10 col-xl-10 col-sm-10">
-                                            <div class="form-group">
-                                                <input class="form-control" id="tracknumber"  name="loan_app_number" placeholder="Loan Application Number">
-                                                <button type="button" id="trackbtn" class="btn btn-success btn-block" name="track_status">
+                                <form role="form" action="<?php echo $_SERVER['PHP_SELF'];?>" class="d-flex" method="post">
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" id="tracknumber"  name="loan_app_number" placeholder="Loan Application Number">
+                                                <button type="button" id="trackbtn" class="btn btn-success" name="track_status">
                                                     <i class="fa fa-search"></i>
                                                 </button>
                                             </div>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                              <div class="col-md-8 offset-md-2">

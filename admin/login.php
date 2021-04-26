@@ -8,22 +8,19 @@ if(isset($_SESSION["id"])){
     Redirect("index.php");
 }
 if (isset($_POST['login'])){
-    $email = $_POST['email'];
+    $login_id = $_POST['login_id'];
     $password = $_POST['pwd'];
-    if (empty($email) || empty($password)){
+    if (empty($login_id) || empty($password)){
         $_SESSION['error_message'] = "All Fill Must Be Required.";
-        redirect('login.php');
-    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $_SESSION['error_message'] = "* Please enter Valid Email";
         redirect('login.php');
     }else{
         // Checking Username and Passsword from database
-        $found_account = login_attempt($email,$password);
+        $found_account = login_attempt($login_id,$password);
         if ($found_account){
             $_SESSION['id'] = $found_account['id'];
-            $_SESSION['email'] = $found_account['email'];
-            $_SESSION['uname'] = $found_account['uname'];
-            $_SESSION['success_message'] = "Welcome to ".$_SESSION["uname"]."!";
+            $_SESSION['loginid'] = $found_account['loginid'];
+            $_SESSION['ename'] = $found_account['ename'];
+            $_SESSION['success_message'] = "Welcome to ".$_SESSION["ename"]."!";
             if (isset($_SESSION['TrackingURL'])) {
                 redirect($_SESSION['TrackingURL']);
             }else{
@@ -71,7 +68,7 @@ if (isset($_POST['login'])){
             ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="email" placeholder="Email">
+                    <input type="text" class="form-control" name="login_id" placeholder="Login ID">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
