@@ -23,6 +23,8 @@ include_once 'include/header.php';
 include_once 'include/topbar.php';
 include_once 'include/sidebar.php';
 ?>
+<link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <div class="content-wrapper">
     <section class="content">
         <div class="container">
@@ -127,7 +129,6 @@ include 'include/footer.php';
             "responsive": true,
         });
     });
-        window.addEventListener("load", window.print());
 </script>
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

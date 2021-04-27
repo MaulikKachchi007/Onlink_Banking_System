@@ -6,292 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f8a713c-6278-4825-b90d-eb20a8245fcb" name="Default Changelist" comment="3-25-2021">
-      <change afterPath="$PROJECT_DIR$/Database Backup/online_banking (4).sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/add_card_types.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/add_news.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/change_card_status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/change_news_status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/change_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/delete_card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/delete_news.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/demo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/employee_profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/DSCN00433 (2).psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/ph.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/53231627-infographic-of-e-banking.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/Banking-Services-in-India-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/banking_digital_transformation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/ja.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/news/rbi-explained.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/update_card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/update_news.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_cards_type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_fd_accounts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_loan_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_loan_payment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_news.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/FullPost.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/add_fd_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxbankaccount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxfdaccount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxfundtranfer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxloanpayment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxregisteredpayee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/ajaxregpayeedetails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/config/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/config/rollup.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/.jscsrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/AdminLTE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/CardRefresh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/CardWidget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/ControlSidebar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/DirectChat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/Dropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/Layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/PushMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/SiteSearch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/Toasts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/TodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/js/Treeview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/npm/DocsPlugins.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/npm/DocsPublish.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/npm/Plugins.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/npm/Publish.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/.csslintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-components.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-core.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-extra-components.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-pages.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-plugins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE-raw.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/AdminLTE.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_alerts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_bootstrap-variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_brand.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_callout.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_cards.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_carousel.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_control-sidebar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_direct-chat.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_dropdown.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_elevation.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_info-box.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_layout.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_main-header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_main-sidebar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_miscellaneous.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_modals.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_navs.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_print.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_products.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_progress-bars.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_sidebar-mini.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_small-box.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_social-widgets.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_table.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_text.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_timeline.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_toasts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_users-list.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_accent.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_backgrounds.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_cards.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_custom-forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_direct-chat.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_miscellaneous.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_navbar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_sidebar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/mixins/_toasts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_404_500_errors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_e-commerce.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_invoice.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_lockscreen.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_login_and_register.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_mailbox.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_profile.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/pages/_projects.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_components.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_core.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_extra-components.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_miscellaneous.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_pages.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/parts/_plugins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_bootstrap-slider.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_bootstrap-switch.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_fullcalendar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_icheck-bootstrap.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_jqvmap.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_mapael.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_miscellaneous.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_pace.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_select2.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_sweetalert2.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/assets/build/scss/plugins/_toastr.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/change_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/change_pin_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/contact.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/customer image/ph.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/fund_transfer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer-master.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/COMMITMENT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/PHPMailerAutoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/SECURITY.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/VERSION" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/get_oauth_token.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-af.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-am.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-az.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ba.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-be.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-bg.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ca.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-cs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-da.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-de.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-el.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-eo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-es.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-et.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-fa.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-fi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-fo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-fr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-gl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-he.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-hi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-hr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-hu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-hy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-id.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-it.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ja.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ka.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ko.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-lt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-lv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-mg.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-nb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-nl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-pl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-pt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-pt_br.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ro.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-ru.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-sk.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-sl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-sr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-sr_latn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-sv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-tl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-tr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-uk.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-vi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-zh.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/language/phpmailer.lang-zh_cn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/phpunit.xml.dist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/src/Exception.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/src/OAuth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/src/PHPMailer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/src/POP3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/PHPMailer/src/SMTP.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/image/LoadingSmall.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/image/avtar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/image/photo5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/image/register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/sendmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/loan_payment_receipt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/53231627-infographic-of-e-banking.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/Banking-Services-in-India-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/banking_digital_transformation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/ja.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/news/rbi-explained.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/registeredpayee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/update_custregisteredpayee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/verifytransaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/view_cards.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/view_fd_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/view_loan_payment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/view_transaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/viewcustregisteredpayee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxcreditdebit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxloanaccount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxwithdraw.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/deposite_money.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/image/LoadingSmall.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/image/Photo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/loanpayment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/pending_loan_request.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/reply_mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/send_message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/view_fd_accounts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/view_loan_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/view_loan_payment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/view_message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/view_send_message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/withdrawmoney.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/pending_card_request.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/add_card.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/ajaxcards.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/ajaxcardstatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/card_status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/account_type_export_pdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/account_type_export_pdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_loantype.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_loantype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_customer_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_customer_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_deposit_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_deposit_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/import_loantype.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/import_loantype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/function.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/topbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/update_customers_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/update_customers_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/update_loan_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/update_loan_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_customers_accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_customers_accounts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_deposite.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_deposite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_loan_pending.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_pending.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_loan_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/ajaxloanacoount.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/ajaxloanaccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/customer_loan.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/customer_loan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/depoitemoneyreceipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/depoitemoneyreceipt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/deposite_receipt_print.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/deposite_receipt_print.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/topbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/loan_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/loan_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/make_loan_payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/make_loan_payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/view_bank_accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_bank_accounts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/view_loan_accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_loan_accounts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/add_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/add_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/change_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/employee_profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_bank_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_bank_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_customers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_deposite.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_deposite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/view_cards.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_cards.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/view_loan_payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_loan_payment.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,19 +59,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\online_banking\customer\news" />
-      <recent name="C:\xampp\htdocs\online_banking\customer" />
-      <recent name="C:\xampp\htdocs\online_banking\customer\include" />
-      <recent name="C:\xampp\htdocs\online_banking\admin" />
-      <recent name="C:\xampp\htdocs\online_banking\staff_login\image" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js" />
       <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js\pages" />
       <recent name="C:\xampp\htdocs\online_banking\staff_login" />
       <recent name="C:\xampp\htdocs\online_banking" />
       <recent name="C:\xampp\htdocs\online_banking\include" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\online_banking\customer\news" />
+      <recent name="C:\xampp\htdocs\online_banking\customer" />
+      <recent name="C:\xampp\htdocs\online_banking\customer\include" />
+      <recent name="C:\xampp\htdocs\online_banking\admin" />
+      <recent name="C:\xampp\htdocs\online_banking\staff_login\image" />
     </key>
   </component>
   <component name="RunManager">
@@ -478,7 +204,9 @@
       <workItem from="1619321269730" duration="10301000" />
       <workItem from="1619345782092" duration="18330000" />
       <workItem from="1619407518395" duration="11964000" />
-      <workItem from="1619434884457" duration="7990000" />
+      <workItem from="1619434884457" duration="19840000" />
+      <workItem from="1619493015038" duration="10042000" />
+      <workItem from="1619522156131" duration="5065000" />
     </task>
     <servers />
   </component>
@@ -562,10 +290,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616646596547" />
-    <state x="533" y="381" key="NewPhpFileDialog" timestamp="1619443304933">
+    <state x="533" y="381" key="NewPhpFileDialog" timestamp="1619504141960">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="533" y="381" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1619443304933" />
+    <state x="533" y="381" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1619504141960" />
     <state x="212" y="0" key="SettingsEditor" timestamp="1618889316732">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -586,14 +314,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1616693825718" />
+    <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1619532737751">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1619532737751" />
     <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1619415903587">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1619415903587" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1619439618342">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1619523845441">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1619439618342" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1619523845441" />
     <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1617597861010">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

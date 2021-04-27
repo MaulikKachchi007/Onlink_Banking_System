@@ -114,6 +114,12 @@
                                 <p>View cards</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="pending_card_request.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Pending Card Request</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
