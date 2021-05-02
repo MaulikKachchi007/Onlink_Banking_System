@@ -20,10 +20,10 @@ if (isset($_POST['verify_account'])) {
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Verify.!";
-            redirect('view_bank_account.php');
+            redirect('view_customers.php');
         } else {
             $_SESSION['error_message'] = "Something went wrong.Try again!";
-            redirect('view_bank_account.php');
+            redirect('view_customers.php');
         }
     }
     elseif ($change_status == 'active') {
@@ -32,10 +32,10 @@ if (isset($_POST['verify_account'])) {
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Un-Verify.!";
-            redirect('view_bank_account.php');
+            redirect('view_customers.php');
         } else {
             $_SESSION['error_message'] = "Something went wrong.Try again!";
-            redirect('view_bank_account.php');
+            redirect('view_customers.php');
         }
     }
 }
@@ -90,7 +90,7 @@ include('include/sidebar.php');
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="customers_detail.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_customers.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php

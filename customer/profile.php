@@ -20,7 +20,6 @@ if (isset($_POST["update_record"])) {
     }
     elseif($imageFileType != "jpg" && $imageFileType != "jpeg" ) {
         $_SESSION['error_message'] = "Sorry, only JPG files are allowed.";
-        $uploadOk = 0;
     }else {
         global $con;
         if (!empty($_FILES["photo"]["name"])) {

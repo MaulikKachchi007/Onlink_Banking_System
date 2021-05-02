@@ -62,15 +62,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-newspaper"></i>
-                         <p>
-                            News Management
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="pending_card_request.php" class="nav-link">
                         <i class="nav-icon  fas fa-credit-card"></i>
                         <p>
                             Card Management
@@ -136,13 +128,43 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="#" class="nav-link  has-treeview">
+                        <i class="nav-icon fas fa-file-pdf"></i>
+                        <p>
+                            Reports
+                        </p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="view_transaction.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Transaction Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="income_expense.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Income Expence Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="loanpayment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Make loan Payment</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a href="view_employee.php" class="nav-link">
-                        <i class="fas fa-user-plus nav-icon"></i>
+                        <i class="nav-icon fas fa-user-plus"></i>
                         <p>
                             Manage Employee
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="view_branch.php" class="nav-link">
                         <i class="nav-icon  fas fa-th"></i>

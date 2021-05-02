@@ -1,4 +1,4 @@
-<?php
+    <?php
 //============================================================+
 // File name   : tcpdf_config.php
 // Begin       : 2004-06-11
@@ -99,22 +99,22 @@ define ('PDF_PAGE_ORIENTATION', 'P');
 /**
  * Document creator.
  */
-define ('PDF_CREATOR', 'OctoPrime E-Banking');
+define ('PDF_CREATOR', 'TCPDF');
 
 /**
  * Document author.
  */
-define ('PDF_AUTHOR', 'OctoPrime E-Banking');
+define ('PDF_AUTHOR', 'TCPDF');
 
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', 'OctoPrime E-Banking');
+define ('PDF_HEADER_TITLE', 'OctoPrime E-banking');
 
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "Mini Statement");
+define ('PDF_HEADER_STRING', "Accounts Reports");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

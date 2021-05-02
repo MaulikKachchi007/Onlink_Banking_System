@@ -4,6 +4,13 @@ include_once 'include/function.php';
 include_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
+global $con;
+$get_id = $_SESSION['id'];
+$q = "SELECT * FROM employees_master WHERE id ='$get_id'";
+$stmt = $con->query($q);
+while ($row = $stmt->fetch()){
+    $ifsccode = $row['ifsccode'];
+}
 ?>
 <?php
 include_once 'include/header.php';
@@ -50,7 +57,7 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT * FROM mail INNER JOIN  customers_master ON mail.sender_id = customers_master.c_id";
+                                    $sql = "SELECT * FROM mail INNER JOIN  customers_master ON mail.sender_id = customers_master.c_id WHERE customers_master.ifsccode='$ifsccode' and mail.status='Waiting for Response'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
@@ -99,7 +106,7 @@ include_once 'include/sidebar.php';
                                                                     <table class="table table-bordered table-striped">
                                                                         <tr>
                                                                             <th>Sent On</th>
-                                                                            <td><?php echo $row['message']; ?></td>
+                                                                            <td><?php echo $datetime; ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Received From</th>
@@ -107,7 +114,7 @@ include_once 'include/sidebar.php';
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Subject</th>
-                                                                            <td><?php echo $row['subject']; ?></td>
+                                                                            <td><?php echo $subject; ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Message</th>

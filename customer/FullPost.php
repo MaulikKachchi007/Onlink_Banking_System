@@ -49,7 +49,7 @@ include 'include/topbar.php';
                                 $datetime = $row['datetime'];
                                 ?>
                                 <div class="card">
-                                    <img src="news/<?php echo htmlentities($image);?>" style="maxheight:450px;" class="img-fluid">
+                                    <img src="../admin/news/<?php echo htmlentities($image);?>" style="maxheight:450px;" class="img-fluid">
                                     <div class="card-body">
                                         <h4 class="card-title"><h2><?php echo htmlentities($title); ?></h2></h4>
                                         <br>

@@ -4,6 +4,14 @@ include_once 'include/function.php';
 include_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
+global $con;
+$get_id = $_SESSION['id'];
+$q = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($q);
+$result = $stmt->execute();
+if ($row = $stmt->fetch()){
+    $ifsccode = $row['ifsccode'];
+}
 ?>
 <?php
 include_once 'include/header.php';
@@ -27,8 +35,8 @@ include_once 'include/sidebar.php';
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <span class="caret"></span></button>
-                                        <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                        <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
+                                        <a class="dropdown-item"  href="export_bankaccount.php">Export CSV</a>
+                                        <a class="dropdown-item" target="_blank" href="export_bankaccount_pdf.php">Export PDF</a>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +69,7 @@ include_once 'include/sidebar.php';
                                     <?php
                                     global $con;
                                     $account_balance="";
-                                    $sql = "SELECT customers_master.*, accounts.*  FROM customers_master  INNER JOIN accounts ON customers_master.c_id = accounts.c_id where accounts.account_type='Saving Account' or accounts.account_type='Current Account'";
+                                    $sql = "SELECT customers_master.*, accounts.*  FROM customers_master  INNER JOIN accounts ON customers_master.c_id = accounts.c_id where accounts.account_status ='Active' and accounts.account_type='Saving Account' or accounts.account_type='Current Account' and customers_master.ifsccode='$ifsccode'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowcount();
                                     if ($result > 0)

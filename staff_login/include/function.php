@@ -20,6 +20,19 @@ function checkUserExists($logid){
         return false;
     }
 }
+    function checkcustExists($email){
+        global $con;
+        $sql = "SELECT * FROM customers_master WHERE email =:eMail";
+        $stmt = $con->prepare($sql);
+        $stmt->bindValue(':eMail',$email);
+        $stmt->execute();
+        $row_count = $stmt->rowcount();
+        if ($row_count == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 #login attempt
 function login_attempt($logid,$password){
     global $con;

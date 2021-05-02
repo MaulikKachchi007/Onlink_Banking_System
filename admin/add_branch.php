@@ -1,7 +1,7 @@
 <?php
 include 'include/DB.php';
 include 'include/function.php';
-include 'include/se.php';
+//include 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
     global $con;

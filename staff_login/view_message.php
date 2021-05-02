@@ -58,7 +58,8 @@ include_once 'include/sidebar.php';
                                     <?php
                                     global $con;
                                     $get_id = $_SESSION['id'];
-                                    $sql = "SELECT mail.m_id,customers_master.f_name,customers_master.l_name,mail.datetime,mail.admin_response,mail.status,mail.account_no FROM mail INNER JOIN customers_master ON customers_master.c_id=mail.sender_id WHERE customers_master.ifsccode='$ifsccode'";
+                                    $sql = "SELECT mail.m_id,customers_master.f_name,customers_master.l_name,mail.subject,mail.datetime,mail.admin_response,mail.status,mail.account_no FROM mail 
+                                            INNER JOIN customers_master ON customers_master.c_id=mail.sender_id WHERE customers_master.ifsccode='$ifsccode' and mail.status='Adminstrator Replied'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
@@ -68,7 +69,7 @@ include_once 'include/sidebar.php';
                                             $f_name = $row['f_name'];
                                             $l_name = $row['l_name'];
                                             $datetime = $row['datetime'];
-                                            $subject = $row['admin_response'];
+                                            $subject = $row['subject'];
                                             $account_no = $row['account_no'];
                                             $status = $row['status'];
 
@@ -108,7 +109,7 @@ include_once 'include/sidebar.php';
                                                                     <table class="table table-bordered table-striped">
                                                                         <tr>
                                                                             <th>Sent On</th>
-                                                                            <td><?php echo $row['message']; ?></td>
+                                                                            <td><?php echo $row['datetime']; ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Received From</th>

@@ -98,7 +98,7 @@ include_once 'include/sidebar.php';
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $loan_id; ?>">View</a></li>
+                                                            <li><a href="view_loan_accounts_detail.php?id=<?php echo $loan_account_number; ?>" class="dropdown-item"> View</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="modal fade" id="ExampleModal<?php echo $row['loan_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

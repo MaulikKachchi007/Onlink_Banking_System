@@ -91,7 +91,7 @@ include 'include/topbar.php';
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_account.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_customers.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->

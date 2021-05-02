@@ -39,7 +39,7 @@ include_once 'include/sidebar.php';
                                     echo SuccessMessage();
                                     ?>
                                 </div>
-                                <table id="example1" class="table table-bordered table-striped table-sm">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>Loan Account Number</th>

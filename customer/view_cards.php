@@ -19,7 +19,7 @@ include_once 'include/sidebar.php';
 ?>
 <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/dist/css/style.css">
 <div class="content-wrapper">
     <section class="content">
         <div class="container">
@@ -74,6 +74,7 @@ include_once 'include/sidebar.php';
                                             $card_application_number = $row['card_application_number'];
                                             $f_name = $row['f_name'];
                                             $card_no = $row['card_no'];
+                                            $enddate = $row['enddate'];
                                             $reason  = $row['reason'];
                                             $startdate = $row['startdate'];
                                             $enddate = $row['enddate'];
@@ -118,9 +119,6 @@ include_once 'include/sidebar.php';
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="row" style="position: relative;">
-                                                                        <div class="col-md-6 col-lg-6">
-                                                                            <div class="center">
                                                                                 <div class="atm-card">
                                                                                     <div class="flip">
                                                                                         <div class="front">
@@ -143,13 +141,23 @@ include_once 'include/sidebar.php';
                                                                                                 <path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path>
                                                                                             </svg>
                                                                                             <div class="atm-card-number">
-                                                                                                <div class="section">5453</div>
-                                                                                                <div class="section">2000</div>
-                                                                                                <div class="section">0000</div>
-                                                                                                <div class="section">0000</div>
+                                                                                                <div class="section"><?php echo substr($card_no,0,4); ?></div>
+                                                                                                <div class="section"><?php echo substr($card_no,4,4); ?></div>
+                                                                                                <div class="section"><?php echo substr($card_no,8,4); ?></div>
+                                                                                                <div class="section"><?php echo substr($card_no,12,4); ?></div>
                                                                                             </div>
-                                                                                            <div class="end"><span class="end-text">exp. end:</span><span class="end-date"> 11/24</span></div>
-                                                                                            <div class="atm-card-holder">mr. Mailik Kachchhi</div>
+                                                                                            <div class="end"><span class="end-text">Exp. end:</span><span class="end-date"> <?php echo substr($enddate, 5,2); ?> / <?php echo substr($enddate,8,2);?></span></div>
+                                                                                            <div class="atm-card-holder">
+                                                                                               <?php
+                                                                                                    if($row['gender'] == 'Male'){
+                                                                                                        echo 'Mr.'.$f_name.' '.$row['l_name'];
+                                                                                                    }elseif($row['gender'] == 'Female'){
+                                                                                                        echo 'Mrs.'.$f_name.' '.$row['l_name'];
+                                                                                                    }
+                                                                                                ?>
+
+
+                                                                                            </div>
                                                                                             <div class="master">
                                                                                                 <div class="circle master-red"></div>
                                                                                                 <div class="circle master-yellow"></div>
@@ -159,17 +167,15 @@ include_once 'include/sidebar.php';
                                                                                             <div class="strip-black"></div>
                                                                                             <div class="ccv">
                                                                                                 <label>ccv</label>
-                                                                                                <div>123</div>
+                                                                                                <div><?php echo $row['cvv']; ?></div>
                                                                                             </div>
                                                                                             <div class="terms">
-                                                                                                <p>This atm-card is property of Monzo Bank, Wonderland. Misuse is criminal offence. If found, please return to Monzo Bank or to the nearest bank with Masteratm-card logo.</p>
+                                                                                                <p>This atm-card is property of OctoPrime e-Bank, Wonderland. Misuse is criminal offence. If found, please return to Monzo Bank or to the nearest bank with Masteratm-card logo.</p>
                                                                                                 <p>Use of this atm-card is subject to the credit card agreement.</p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                                
                                                                     </div>
 
                                                                 </div>
@@ -210,9 +216,9 @@ include_once 'include/sidebar.php';
 include 'include/footer.php';
 ?>
 <script type="text/javascript">
+
     $(function () {
         $('#example1').DataTable({
-
             "paging": true,
             "lengthChange": true,
             "searching": true,

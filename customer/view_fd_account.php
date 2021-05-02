@@ -93,7 +93,19 @@ include_once 'include/sidebar.php';
                                                 <td>₹ <?php echo $balance; ?></td>
                                                 <td>₹ <?php echo $profit; ?> (<?php echo $interest ?> %)</td>
                                                 <td>₹ <?php echo $total; ?></td>
-                                                <td><?php echo $status; ?></td>
+                                                <td>
+                                                    <?php
+                                                     if ($status == "Active") {
+                                                         echo "<div class='badge badge-success'>".$status."</div>";
+                                                     }elseif ($status == "Inactive") {
+                                                         echo "<div class='badge badge-danger'>".$status."</div>";
+                                                     }
+
+
+
+                                                    ?>
+
+                                                </td>
                                             </tr>
                                             <?php
                                         }

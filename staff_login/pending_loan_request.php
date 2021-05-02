@@ -4,6 +4,12 @@ include_once 'include/function.php';
 include_once 'include/session.php';
 $get_id = $_SESSION['id'];
 global $con;
+$q = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($q);
+$result = $stmt->execute();
+if ($row = $stmt->fetch()){
+    $ifsccode = $row['ifsccode'];
+}
 if (isset($_POST['verify_loan'])) {
     $loanid = $_GET['id'];
     $loan_status = $_POST["loanstatus"];
@@ -36,19 +42,6 @@ include_once 'include/sidebar.php';
                                 <p>View Pending Loan Requests</p>
                             </div>
 
-                            <div class="pull-right" style="text-align: right;">
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Export
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <span class="caret"></span></button>
-                                        <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                        <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- /.card-header -->
                     </div>
                     <div class="card card-body">
@@ -63,6 +56,7 @@ include_once 'include/sidebar.php';
                                 <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
                                     <tr>
+                                        <th>IFSC Code</th>
                                         <th>Customer Name</th>
                                         <th>Loan Account Number</th>
                                         <th>Loan Type</th>
@@ -77,14 +71,15 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT loan.loan_id,customers_master.l_name,customers_master.f_name,loan.loan_account_number,loan_type_master.loan_type,loan.c_id,loan.created_date,loan_amount,loan.intrest,loan.status from ((loan_type_master 
+                                    $sql = "SELECT customers_master.ifsccode,loan.loan_id,customers_master.l_name,customers_master.f_name,loan.loan_account_number,loan_type_master.loan_type,loan.c_id,loan.created_date,loan_amount,loan.intrest,loan.status from ((loan_type_master 
                                     INNER JOIN loan ON loan_type_master.id=loan.id)
-                                    INNER JOIN customers_master ON customers_master.c_id=loan.c_id)";
+                                    INNER JOIN customers_master ON customers_master.c_id=loan.c_id) WHERE customers_master.ifsccode='$ifsccode'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowcount();
                                     if ($result > 0)
                                     {
                                         while ($row = $stmt->fetch()) {
+                                            $ifsccode=$row['ifsccode'];
                                             $loan_id = $row['loan_id'];
                                             $loan_account_number = $row['loan_account_number'];
                                             $f_name = $row['f_name'];
@@ -96,6 +91,7 @@ include_once 'include/sidebar.php';
                                             $status = $row['status'];
                                             ?>
                                             <tr>
+                                                <td><?php echo $ifsccode;?></td>
                                                 <td><?php echo $f_name; ?></td>
                                                 <td><?php echo $loan_account_number; ?></td>
                                                 <td><?php echo $l_type; ?></td>

@@ -4,43 +4,49 @@ include 'include/function.php';
 include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
-$get_id = $_GET['id'];
+$get_id = $_SESSION['id'];
+$q = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($q);
+while ($row = $stmt->fetch()){
+    $ifsccode = $row['ifsccode'];
+}
 if (isset($_POST["update_branch"])) {
     $get_id = $_GET['id'];
-    $ifsc_code = $_POST["branch"];
-    $emp_name = $_POST["emp_name"];
-    $l_id = $_POST["l_id"];
-    $email = $_POST["email"];
-    $mno = $_POST["mno"];
-    $e_type = $_POST["e_type"];;
-    if (empty($ifsc_code) || empty($emp_name) || empty($l_id) || empty($email) || empty($mno) || empty($e_type)) {
+    $branch_name = $_POST["branch_name"];
+    $address = $_POST["address"];
+    $city = $_POST["city"];
+    $state = $_POST["state"];
+    $country = $_POST["country"];
+    if (empty($branch_name ) || empty($address) || empty($city) || empty($state) || empty($country)) {
         $_SESSION["error_message"] = "All must fill required.";
+        redirect('bank_settings.php');
     }else {
         global $con;
-        $sql = "Update employees_master SET ifsccode='$ifsc_code',ename='$emp_name',loginid='$l_id',email='$email',contact='$mno',employee_type='$e_type' WHERE id='$get_id'";
+        $sql = "Update branch SET bname='$branch_name',address='$address',city='$city',state='$state',country='$country' WHERE ifsccode='$ifsccode'";
         $stmt = $con->prepare($sql);
-        $result = $stmt->execute();;
+        $result = $stmt->execute();
         if ($result) {
-            $_SESSION['success_message'] = "Employee Updated Successfully";
-            redirect('view_employee.php');
+            $_SESSION['success_message'] = "Branch Updated Successfully";
+            redirect('bank_settings.php');
         }else{
             $_SESSION['error_message'] = "Something went wrong. Try again!";
+            redirect('bank_settings.php');
 
         }
     }
 }
 global $con;
-$q = "SELECT * FROM  employees_master WHERE id='$get_id'";
+$q = "SELECT * FROM branch WHERE ifsccode='$ifsccode'";
 $stmt = $con->query($q);
 $res = $stmt->execute();
-while ($row = $stmt->fetch()) {
-    $icode = $row['ifsccode'];
-    $ename = $row['ename'];
-    $loginid = $row['loginid'];
-    $email = $row['email'];
-    $phone = $row['contact'];
-    $employee_type= $row['employee_type'];
-    $status = $row['status'];
+while($row = $stmt->fetch()) {
+    $icode = $row["ifsccode"];
+    $bname = $row["bname"];
+    $add = $row["address"];
+    $bcity = $row["city"];
+    $bstate = $row["state"];
+    $bcountry = $row["country"];
+    $status = $row["status"];
 }
 ?>
 <?php
@@ -78,60 +84,88 @@ include 'include/topbar.php';
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="bank_settings.php?id=<?php echo $get_id; ?>" method="post">
+                            <form role="form" action="bank_settings.php" method="post">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="emp_name">Branch</label>
-                                        <select class="form-control" name="branch">
-                                            <option value="<?php echo $icode; ?>" selected><?php echo $icode; ?></option>
+                                        <label for="ifsc_Code">IFSC Code</label>
+                                        <input class="form-control" style="color: red;" value="<?php echo $icode;  ?>" name="icode" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="b_name">Branch Name</label>
+                                        <input class="form-control" name="branch_name" value="<?php echo $bname;  ?>" placeholder="Branch Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add">Address</label>
+                                        <textarea class="form-control" name="address" rows="5" cols="25"><?php echo $add;  ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input class="form-control" name="city" value="<?php echo $bcity;  ?>" Branch placeholder="City">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">State</label>
+                                        <select class="form-control" name="state">
+                                            <option value="<?php echo $bstate;  ?>" selected><?php echo $bstate;  ?></option>
                                             <?php
-                                            global $con;
-                                            $q = "SELECT * FROM branch";
-                                            $stmt = $con->query($q);
-                                            $stmt->execute();
-                                            while ($row = $stmt->fetch()) {
-                                                $icode = $row['ifsccode'];
-                                                $branch_name = $row['bname'];
-                                                $add = $row['address'];
-                                                $state = $row['state'];
-                                                $country = $row['country'];
+                                            $state = array('AP' => 'Andhra Pradesh',
+                                                'AR' => 'Arunachal Pradesh',
+                                                'AS' => 'Assam',
+                                                'BR' => 'Bihar',
+                                                'CT' => 'Chhattisgarh',
+                                                'GA' => 'Goa',
+                                                'GJ' => 'Gujarat',
+                                                'HR' => 'Haryana',
+                                                'HP' => 'Himachal Pradesh',
+                                                'JK' => 'Jammu and Kashmir',
+                                                'JH' => 'Jharkhand',
+                                                'KA' => 'Karnataka',
+                                                'KL' => 'Kerala',
+                                                'MP' => 'Madhya Pradesh',
+                                                'MH' => 'Maharashtra',
+                                                'MN' => 'Manipur',
+                                                'ML' => 'Meghalaya',
+                                                'MZ' => 'Mizoram',
+                                                'NL' => 'Nagaland',
+                                                'OR' => 'Odisha',
+                                                'PB' => 'Punjab',
+                                                'RJ' => 'Rajasthan',
+                                                'SK' => 'Sikkim',
+                                                'TN' => 'Tamil Nadu',
+                                                'TG' => 'Telangana',
+                                                'TR' => 'Tripura',
+                                                'UT' => 'Uttarakhand',
+                                                'UP' => 'Uttar Pradesh',
+                                                'WB' => 'West Bengal',
+                                                'AN' => 'Andaman and Nicobar Islands',
+                                                'CH' => 'Chandigarh',
+                                                'DN' => 'Dadra and Nagar Haveli',
+                                                'DD' => 'Daman and Diu',
+                                                'DL' => 'Delhi',
+                                                'LD' => 'Lakshadweep',
+                                                'PY' => 'Puducherry'
+                                            );
+                                            foreach ($state as $st => $value) {
                                                 ?>
-                                                echo '<option value="<?php echo $icode; ?>"><?php echo $branch_name; ?> (<?php echo $icode; ?>) <?php echo $add;?>  <?php echo $state; ?> <?php echo $country; ?></option>';
+                                                <option value='<?php echo $value; ?>'><?php echo $value; ?></option>
                                                 <?php
                                             }
                                             ?>
-
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="emp_name">Employee Name</label>
-                                        <input class="form-control" type="text" value="<?php echo $ename; ?>" name="emp_name" placeholder="Employee Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="loginid">Login ID</label>
-                                        <input class="form-control" type="text" value="<?php echo $loginid; ?>" name="l_id" placeholder="Login ID">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email ID</label>
-                                        <input class="form-control" type="email" value="<?php echo $email; ?>" name="email" placeholder="Email ID">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contact">Contact Number</label>
-                                        <input class="form-control" type="text" name="mno" value="<?php echo $phone; ?>" placeholder="Contact Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="e_type">Employee Type</label>
-                                        <select class="form-control" name="e_type">
-                                            <option value="<?php echo $employee_type; ?>" selected><?php echo $employee_type; ?></option>
-                                            <option value="Admin" >Admin</option>
-                                            <option value="Manager">Manager</option>
-                                            <option value="Staff" >Staff</option>
+                                        <label for="country">Country</label>
+                                        <select class="form-control" name="country">
+                                            <option value="<?php echo $bcountry;?>" selected><?php echo $bcountry;  ?></option>
+                                            <option value="India">India</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="update_branch" class="btn btn-primary">Update Settings</button>
+                                        <button type="submit" name="update_branch" class="btn btn-primary">Update Branch</button>
                                     </div>
                                 </div>
+                                <!-- /.card-body -->
+                            </form>
                         </div>
                         <!-- /.card -->
                     </div>

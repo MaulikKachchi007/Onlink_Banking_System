@@ -33,8 +33,8 @@ include_once 'include/sidebar.php';
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                             <span class="caret"></span></button>
-                                            <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                            <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
+                                            <a class="dropdown-item"  href="export_employees.php">Export CSV</a>
+                                            <a class="dropdown-item" target="_blank" href="export_employees_pdf.php">Export PDF</a>
                                         </div>
                                     </div>
                                 </div>

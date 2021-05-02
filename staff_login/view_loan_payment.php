@@ -4,19 +4,26 @@ include_once 'include/function.php';
 include_once 'include/session.php';
 $get_id = $_SESSION['id'];
 global $con;
-$sql = "SELECT * from customers_master 
-        INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id";
-$stmt = $con->query($sql);
+$q = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($q);
+$result = $stmt->execute();
 while ($row = $stmt->fetch()){
-    $f_name = $row['f_name'];
-    $l_name = $row['l_name'];
-    $loan_amount = $row['loan_amt'];
-    $paid = $row['paid'];
     $ifsccode = $row['ifsccode'];
-    $balance = $row['balance'];
-    $payment_type = $row['payment_type'];
-    $total_amt = $row['total_amt'];
-    $paid_date = $row['paid_date'];
+}
+global $con;
+$sql = "SELECT * from loan_type_master 
+        INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.status='Approved'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $loan_id = $row['loan_id'];
+    $loan_account_number = $row['loan_account_number'];
+    $loan_amount = $row['loan_amount'];
+    $interest = $row['intrest'];
+    $loan_interest = $row['interest'];
+    $term = "$row[terms] years";
+    $created_date = $row['created_date'];
+    $total_payable = $loan_amount + $interest;
+    $status = $row['status'];
 }
 ?>
 <?php
@@ -31,8 +38,8 @@ include_once 'include/sidebar.php';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card card-default mt-2">
                         <div class="card-header">
-                            <div class="card-title"><h1 class="text-dark">View Loan Accounts</h1>
-                                <p>View Loan Accounts</p>
+                            <div class="card-title"><h1 class="text-dark">View Loan Payment</h1>
+                                <p>View Loan Payment</p>
                             </div>
 
                         </div>
@@ -65,22 +72,23 @@ include_once 'include/sidebar.php';
                                 <tbody>
                                 <?php
                                 global $con;
-                                $sql = "SELECT * from loan_type_master 
-                                    INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.status='Approved'";
+                                $sql = "SELECT * from customers_master 
+                                        INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id where customers_master.ifsccode='$ifsccode'";
                                 $stmt = $con->query($sql);
                                 $result = $stmt->rowcount();
                                 if ($result > 0)
                                 {
-                                    while ($row = $stmt->fetch()) {
-                                        $loan_id = $row['loan_id'];
-                                        $loan_account_number = $row['loan_account_number'];
-                                        $loan_amount  = $row['loan_amount'];
-                                        $interest = $row['intrest'];
-                                        $loan_interest = $row['interest'];
-                                        $term=  "$row[terms] years";
-                                        $created_date = $row['created_date'];
-                                        $total_payable = $loan_amount + $interest;
-                                        $status = $row['status'];
+                                        while ($row = $stmt->fetch()){
+                                            $payment_id = $row['payment_id'];
+                                            $f_name = $row['f_name'];
+                                            $l_name = $row['l_name'];
+                                            $loan_amount = $row['loan_amt'];
+                                            $paid = $row['paid'];
+                                            $ifsccode = $row['ifsccode'];
+                                            $balance = $row['balance'];
+                                            $payment_type = $row['payment_type'];
+                                            $total_amt = $row['total_amt'];
+                                            $paid_date = $row['paid_date'];
                                         ?>
                                         <tr>
                                             <td><?php echo $f_name; ?></td>
@@ -96,10 +104,10 @@ include_once 'include/sidebar.php';
                                                     <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
                                                         <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $loan_id; ?>">View</a></li>
+                                                        <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $payment_id; ?>">View</a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="modal fade" id="ExampleModal<?php echo $row['loan_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="ExampleModal<?php echo $payment_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -108,7 +116,7 @@ include_once 'include/sidebar.php';
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-                                                            <div  class="modal-body">
+                                                            <div class="modal-body">
                                                                 <table class="table table-bordered table-striped">
                                                                     <tr>
                                                                         <th>Customer Name</th>
@@ -128,11 +136,11 @@ include_once 'include/sidebar.php';
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Loan Amount</th>
-                                                                        <td><?php echo $row['loan_amount']; ?></td>
+                                                                        <td><?php echo $loan_amount; ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Interest Amount</th>
-                                                                        <td><?php echo $row['intrest']; ?> (<?php echo $loan_interest; ?> %)</td>
+                                                                        <td><?php echo $interest; ?> (<?php echo $loan_interest; ?> %)</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Total Amount</th>
@@ -141,7 +149,7 @@ include_once 'include/sidebar.php';
                                                                     <tr>
                                                                         <th>Total Paid</th>
                                                                         <td><?php echo $paid; ?></td>
-                                                                    </tr>s
+                                                                    </tr>
                                                                     <tr>
                                                                         <th>Paid Date</th>
                                                                         <td><?php echo $paid_date; ?></td>

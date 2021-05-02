@@ -137,25 +137,13 @@
                                 <p>Make Loan Payment</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-tools"></i>
+                    <a href="custom_reports.php" class="nav-link">
+                        <i class="nav-icon  fas fa-file-pdf"></i>
                         <p>
-                            FAQ
+                            Reports
                         </p>
                     </a>
                 </li>

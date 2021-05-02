@@ -5,6 +5,13 @@ include_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
+$get_id = $_SESSION['id'];
+$q = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($q);
+$result = $stmt->execute();
+if ($row = $stmt->fetch()){
+    $ifsccode = $row['ifsccode'];
+}
 $sql = "SELECT * FROM accounts 
         INNER JOIN fixed_deposite ON fixed_deposite.f_id=accounts.f_id
         where accounts.f_id!='0'";
@@ -14,7 +21,6 @@ while ($row = $stmt->fetch()){
     $interest = $row['interest'];
     $term = "$row[terms] years";
 }
-$stmt = $con->query($sql);
 ?>
 <?php
 include_once 'include/header.php';
@@ -31,6 +37,18 @@ include_once 'include/sidebar.php';
                         <div class="card-header">
                             <div class="card-title"><h1 class="text-dark">View FD Accounts</h1>
                                 <p class="text-muted">Views FD Accounts Records</p>
+                            </div>
+                            <div class="pull-right" style="text-align: right;">
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Export
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <span class="caret"></span></button>
+                                        <a class="dropdown-item"  href="export_fdaccount.php">Export CSV</a>
+                                        <a class="dropdown-item" target="_blank" href="export_fdaccount_pdf.php">Export PDF</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -63,7 +81,7 @@ include_once 'include/sidebar.php';
                                     global $con;
                                     $q = "SELECT * FROM accounts 
                                           INNER JOIN customers_master ON customers_master.c_id=accounts.c_id
-                                          where accounts.account_type='Fixed Deposite Account' and accounts.f_id!='0'";
+                                          where accounts.account_type='Fixed Deposite Account' and accounts.f_id!='0' and customers_master.ifsccode='$ifsccode'";
                                     $stmt = $con->query($q);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
@@ -88,7 +106,13 @@ include_once 'include/sidebar.php';
                                                 <td>₹ <?php echo $balance; ?></td>
                                                 <td>₹ <?php echo $profit; ?> (<?php echo $interest ?> %)</td>
                                                 <td>₹ <?php echo $total; ?></td>
-                                                <td><?php echo $status; ?></td>
+                                                <td><?php
+                                                    if($status == "Active") {
+                                                        echo "<div class='badge badge-success'>".$status.'</div>';
+                                                    }
+                                                    else{
+                                                        echo "<div class='badge badge-danger'>".$status.'</div>';
+                                                    }?></td>
                                             </tr>
                                             <?php
                                         }

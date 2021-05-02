@@ -232,7 +232,6 @@ h1 .subtitle {
 }
 .wizard-card .picture-src {
   width: 100%;
-  height: 100%;
 }
 .wizard-card .tab-content {
   min-height: 340px;
@@ -427,6 +426,7 @@ h1 .subtitle {
 .has-success .form-control,
 .form-control .has-success .form-control-feedback, .form-control.valid:focus {
   border-color: #05AE0E;
+  color: #05AE0E;
 }
 .has-error .form-control,
 .form-control .has-error .form-control-feedback, .form-control.error {
