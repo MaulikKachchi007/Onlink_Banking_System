@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2021 at 05:09 AM
+-- Generation Time: May 07, 2021 at 08:16 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -45,7 +45,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`account_no`, `c_id`, `f_id`, `account_type`, `account_balance`, `unclear_balance`, `account_open_date`, `interest`, `account_status`, `datetime`) VALUES
-('OPB0731010001', 1, 0, 'Saving Account', 53541.00, 10000.00, '2021-04-19', 7.50, 'Active', '2021-04-19 08:58:38'),
+('OPB0731010001', 1, 0, 'Saving Account', 53491.00, 10000.00, '2021-04-19', 7.50, 'Active', '2021-04-19 08:58:38'),
 ('OPB0731010002', 2, 0, 'Saving Account', 34300.00, 0.00, '2021-04-19', 6.00, 'Active', '2021-04-19 08:58:49'),
 ('OPB0731010003', 1, 2, 'Fixed Deposite Account', 15000.00, 0.00, '2021-04-19', 100.00, 'Active', '2021-04-19 09:44:10'),
 ('OPB0731010004', 2, 2, 'Fixed Deposite Account', 10000.00, 0.00, '2021-04-19', 100.00, 'Active', '2021-04-19 12:10:49'),
@@ -72,9 +72,9 @@ CREATE TABLE `account_master` (
 --
 
 INSERT INTO `account_master` (`id`, `account_type`, `prefix`, `min_balance`, `interest`, `status`, `datetime`) VALUES
-(2, 'Current Account', 'CA', 2000.00, 7.50, 'active', '2021-03-14 17:44:54'),
-(3, 'Fixed Deposite Account', 'FDA', 1000.00, 7.50, 'active', '2021-04-16 14:26:08'),
-(1, 'Saving Account', 'SA', 1000.00, 6.00, 'active', '2021-03-14 17:44:40');
+(2, 'Current Account', 'CA', 2000.00, 7.50, 'Active', '2021-03-14 17:44:54'),
+(3, 'Fixed Deposite Account', 'FDA', 1000.00, 7.50, 'Active', '2021-04-16 14:26:08'),
+(1, 'Saving Account', 'SA', 1000.00, 6.00, 'Active', '2021-03-14 17:44:40');
 
 -- --------------------------------------------------------
 
@@ -99,8 +99,8 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`bid`, `ifsccode`, `bname`, `address`, `city`, `state`, `country`, `status`, `datetime`) VALUES
-(1, 'OBP00001', 'Surat', 'SH 602, Shreeji Nagar-2, Uttran Station', 'Surat', 'Gujarat', 'India', 'active', '2021-03-25 10:35:30'),
-(2, 'OBP00002', 'Vadodara', 'Alkapuri Petrol Pump, RC Dutt Rd, opp. Alkapuri, A', 'Vadodara', 'Gujarat', 'India', 'active', '2021-03-25 10:42:44');
+(1, 'OBP00001', 'Surat', 'SH 602, Shreeji Nagar-2, Uttran Station', 'Surat', 'Gujarat', 'India', 'Active', '2021-03-25 10:35:30'),
+(2, 'OBP00002', 'Vadodara', 'Alkapuri Petrol Pump, RC Dutt Rd, opp. Alkapuri, A', 'Vadodara', 'Gujarat', 'India', 'Active', '2021-03-25 10:42:44');
 
 -- --------------------------------------------------------
 
@@ -151,8 +151,9 @@ CREATE TABLE `card_type_master` (
 --
 
 INSERT INTO `card_type_master` (`id`, `card_type`, `prefix`, `min_amt`, `max_amt`, `terms`, `status`, `datetime`) VALUES
-(1, 'Credit Master Card', 'CMC', 1000.00, 100000.00, 5, 'Active', '2021-04-16 13:51:47'),
-(2, 'Debit Master Card', 'DMCC', 1000.00, 50000.00, 5, 'Active', '2021-04-16 13:52:42');
+(1, 'Credit Master Card', 'CMC', 1000.00, 1000.00, 2, 'Active', '2021-04-16 13:51:47'),
+(2, 'Debit Master Card', 'DMCC', 1000.00, 50000.00, 5, 'Active', '2021-04-16 13:52:42'),
+(4, 'Credit RuPay Card', 'CRC', 1000.00, 1000.00, 3, 'Active', '2021-05-06 11:09:04');
 
 -- --------------------------------------------------------
 
@@ -182,6 +183,7 @@ CREATE TABLE `customers_master` (
   `occuption` varchar(50) NOT NULL,
   `account_type` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `token` varchar(15) NOT NULL,
   `pin` varchar(50) NOT NULL,
   `accountstatus` varchar(50) NOT NULL,
   `datetime` varchar(50) NOT NULL DEFAULT current_timestamp()
@@ -191,11 +193,11 @@ CREATE TABLE `customers_master` (
 -- Dumping data for table `customers_master`
 --
 
-INSERT INTO `customers_master` (`c_id`, `f_name`, `l_name`, `email`, `phone`, `photo`, `idproof`, `h_no`, `locality`, `ifsccode`, `pincode`, `city`, `state`, `country`, `adharnumber`, `gender`, `birthdate`, `marital`, `occuption`, `account_type`, `password`, `pin`, `accountstatus`, `datetime`) VALUES
-(1, 'Maulik', 'Kachchhi', 'maulikkachchhi2000@gmail.com', '9537706261', 'ph.jpg', '', 49, '49,Sataadhar Society,Behind Sarsawati School,A.K.R', 'OBP00001', 395008, 'Surat', '', '0', '393900832583', 'Male', '2000-02-08', 'Single', 'Professional', 'Saving Account', 'Maulik@123', '7890', 'active', '2021-04-18 22:16:37'),
-(2, 'Raj', 'Kachadiya', 'rk@gmail.com', '8563214476', 'Photo.jpg', '', 50, 'Sardar Society', 'OBP00001', 395008, 'Surat', '', '0', '393900832581', 'Male', '2001-02-05', 'Single', 'Professional', 'Saving Account', 'raj@12345', '123456', 'active', '2021-04-18 22:18:31'),
-(3, 'Kishan', 'Jodhani', 'kishanjodhani20@gmail.com', '8536574123', 'DSCN00433 (2).jpg', '', 59, '49,Sataadhar Society,Behind Sarsawati School,A.K.R', 'OBP00002', 395008, 'Surat', '', '0', '393900832583', 'Male', '2000-02-08', 'Single', 'Professional', 'Saving Account', 'Kishan@123', '123456', 'Inactive', '2021-04-19 17:51:56'),
-(4, 'Geet', 'Patel', 'geetpatel20@gmail.co', '7569832569', '2.jpg', '', 50, 'Lord Plazza', 'OBP00001', 395008, 'Surat', '', '0', '39850456854569', 'Male', '2001-02-05', 'Single', 'Student', 'Saving Account', 'Geet@123', '123456', 'Inactive', '2021-04-19 19:19:24');
+INSERT INTO `customers_master` (`c_id`, `f_name`, `l_name`, `email`, `phone`, `photo`, `idproof`, `h_no`, `locality`, `ifsccode`, `pincode`, `city`, `state`, `country`, `adharnumber`, `gender`, `birthdate`, `marital`, `occuption`, `account_type`, `password`, `token`, `pin`, `accountstatus`, `datetime`) VALUES
+(1, 'Maulik', 'Kachchhi', 'maulikkachchhi2000@gmail.com', '9537706261', 'avatar04.jpg', '', 49, '49,Sataadhar Society,Behind Sarsawati School,A.K.R', 'OBP00001', 395008, 'Surat', '', '0', '393900832583', 'Male', '2000-02-08', 'Single', 'Professional', 'Saving Account', 'Mk@007', '1ad7d94f8902e81', '7890', 'active', '2021-04-18 22:16:37'),
+(2, 'Raj', 'Kachadiya', 'rk@gmail.com', '8563214476', 'Photo.jpg', '', 50, 'Sardar Society', 'OBP00001', 395008, 'Surat', '', '0', '393900832581', 'Male', '2001-02-05', 'Single', 'Professional', 'Saving Account', 'raj@12345', '6179c2b109467f6', '123456', 'active', '2021-04-18 22:18:31'),
+(3, 'Kishan', 'Jodhani', 'kishanjodhani20@gmail.com', '8536574123', 'DSCN00433 (2).jpg', '', 59, '49,Sataadhar Society,Behind Sarsawati School,A.K.R', 'OBP00002', 395008, 'Surat', '', '0', '393900832583', 'Male', '2000-02-08', 'Single', 'Professional', 'Saving Account', 'Kishan@123', 'ede6c8cd63eb8fc', '123456', 'Inactive', '2021-04-19 17:51:56'),
+(4, 'Geet', 'Patel', 'geetpatel20@gmail.com', '7569832569', '2.jpg', '', 50, 'Lord Plazza', 'OBP00001', 395008, 'Surat', '', '0', '39850456854569', 'Male', '2001-02-05', 'Single', 'Student', 'Saving Account', 'Geet@123', '221e48520318706', '123456', 'Inactive', '2021-04-19 19:19:24');
 
 -- --------------------------------------------------------
 
@@ -212,8 +214,10 @@ CREATE TABLE `employees_master` (
   `contact` varchar(20) NOT NULL,
   `photo` varchar(50) NOT NULL,
   `pwd` varchar(50) NOT NULL,
+  `token` varchar(15) NOT NULL,
   `employee_type` varchar(50) NOT NULL,
   `status` varchar(20) NOT NULL,
+  `create_date` date NOT NULL DEFAULT current_timestamp(),
   `datetime` varchar(20) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -221,11 +225,11 @@ CREATE TABLE `employees_master` (
 -- Dumping data for table `employees_master`
 --
 
-INSERT INTO `employees_master` (`id`, `ifsccode`, `ename`, `loginid`, `email`, `contact`, `photo`, `pwd`, `employee_type`, `status`, `datetime`) VALUES
-(3, 'OBP00001', 'Maulik Kachchhi', 'Maulik@123', 'maulikkachchhi2000@gmail.com', '9537706261', '', '12345', 'Admin', 'Active', '2021-03-27 19:49:49'),
-(4, 'OBP00001', 'Maulik', 'administrator', 'maulikkachchhi2000@gmail.com', '9537706261', 'ph.jpg', '123', 'Admin', 'Active', '2021-04-01 11:59:51'),
-(5, 'OBP00001', 'admin', 'admin', 'admin@admin.com', '9856478965', 'ui-sam.jpg', '123', 'Staff', 'Active', '2021-04-02 08:54:59'),
-(6, 'OBP00002', 'Raj', 'raj@123', 'Rajgk@gmail.com', '9856356985', '', '123', 'Staff', 'Active', '2021-04-03 09:35:40');
+INSERT INTO `employees_master` (`id`, `ifsccode`, `ename`, `loginid`, `email`, `contact`, `photo`, `pwd`, `token`, `employee_type`, `status`, `create_date`, `datetime`) VALUES
+(1, 'OBP00001', 'Maulik', 'administrator', 'maulikkachchhi2000@gmail.com', '9537706261', 'avatar04.jpg', 'Mk@123', '3b2a61679ed336a', 'Admin', 'Active', '2021-05-07', '2021-05-07 09:32:02'),
+(2, 'OBP00001', 'Darshak', 'Darshak', 'darshakkachchhi009@gmail.com', '9067611767', 'user1-128x128.jpg', 'Dk@123', '0311adcffd5131a', 'Staff', 'Active', '2021-05-07', '2021-05-07 09:33:44'),
+(3, 'OBP00002', 'Dharmik', 'Dharmik', 'dharmikkapupara123@gmail.com', '8354469856', '', 'Dk@123', 'bc127dc9c1a443c', 'Manager', 'Active', '2021-05-07', '2021-05-07 09:34:43'),
+(4, 'OBP00001', 'Yash', 'Yash', 'maulikkachchhi0208@gmail.com', '9537706261', 'avatar04.jpg', 'Yk@007', '0879ce6a6961eda', 'Staff', 'Active', '2021-05-07', '2021-05-07 09:58:02');
 
 -- --------------------------------------------------------
 
@@ -250,8 +254,8 @@ CREATE TABLE `fixed_deposite` (
 --
 
 INSERT INTO `fixed_deposite` (`f_id`, `d_type`, `prefix`, `min_amt`, `max_amt`, `interest`, `terms`, `status`, `datetime`) VALUES
-(1, 'Lakhs Plan', 'LP', 5000.00, 100000.00, 5.00, 2, 'active', '2021-03-23 10:00:30'),
-(2, 'Double Plan', 'DP', 10000.00, 100000.00, 100.00, 10, 'active', '2021-03-23 10:01:14');
+(1, 'Lakhs Plan', 'LP', 5000.00, 100000.00, 5.00, 2, 'Active', '2021-03-23 10:00:30'),
+(2, 'Double Plan', 'DP', 10000.00, 100000.00, 100.00, 10, 'Active', '2021-03-23 10:01:14');
 
 -- --------------------------------------------------------
 
@@ -331,10 +335,10 @@ CREATE TABLE `loan_type_master` (
 
 INSERT INTO `loan_type_master` (`id`, `loan_type`, `prefix`, `min_amt`, `max_amt`, `interest`, `terms`, `status`, `datetime`) VALUES
 (1, 'Home Loan', 'HL', 50000, 1000000.00, 6.50, 10, 'Inactive', '2021-03-14 17:53:39'),
-(2, 'Car Loan', 'CL', 50000, 1000000.00, 8.50, 4, 'active', '2021-03-14 17:53:55'),
-(3, 'Personal Loan', 'PL', 100000, 2000000.00, 7.00, 1, 'active', '2021-03-14 17:54:10'),
-(4, 'Gold Loan', 'GL', 100000, 2000000.00, 7.00, 2, 'active', '2021-03-14 17:54:34'),
-(5, 'Payday Loan', 'PDL', 50000, 500000.00, 7.50, 3, 'active', '2021-03-14 17:54:58');
+(2, 'Car Loan', 'CL', 50000, 1000000.00, 8.50, 4, 'Active', '2021-03-14 17:53:55'),
+(3, 'Personal Loan', 'PL', 100000, 2000000.00, 7.00, 1, 'Active', '2021-03-14 17:54:10'),
+(4, 'Gold Loan', 'GL', 100000, 2000000.00, 7.00, 2, 'Active', '2021-03-14 17:54:34'),
+(5, 'Payday Loan', 'PDL', 50000, 500000.00, 7.50, 3, 'Active', '2021-03-14 17:54:58');
 
 -- --------------------------------------------------------
 
@@ -494,7 +498,8 @@ INSERT INTO `transaction` (`trans_id`, `registered_payee_id`, `from_account_no`,
 (61, 1, 'OPB0731010001', 'OPB0731010002', 1000.00, 0.00, 'fds', 'Debit', '2021-04-27', '2021-04-27', 'Active'),
 (62, 1, 'OPB0731010001', 'OPB0731010002', 1000.00, 0.00, 'fds', 'Credit', '2021-04-27', '2021-04-27', 'Active'),
 (63, 1, 'OPB0731010001', 'OPB0731010002', 1000.00, 0.00, 'fds', 'Debit', '2021-04-28', '2021-04-28', 'Active'),
-(64, 1, 'OPB0731010001', 'OPB0731010002', 1000.00, 0.00, 'fds', 'Credit', '2021-04-28', '2021-04-28', 'Active');
+(64, 1, 'OPB0731010001', 'OPB0731010002', 1000.00, 0.00, 'fds', 'Credit', '2021-04-28', '2021-04-28', 'Active'),
+(65, 0, '', 'OPB0731010001', 50.00, 0.00, 'To Sms Charge        ', 'Debit', '2021-05-03', '2021-05-03', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -634,7 +639,7 @@ ALTER TABLE `cards`
 -- AUTO_INCREMENT for table `card_type_master`
 --
 ALTER TABLE `card_type_master`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers_master`
@@ -646,7 +651,7 @@ ALTER TABLE `customers_master`
 -- AUTO_INCREMENT for table `employees_master`
 --
 ALTER TABLE `employees_master`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fixed_deposite`
@@ -694,7 +699,7 @@ ALTER TABLE `registered_payee`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `trans_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `trans_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Constraints for dumped tables
