@@ -2,6 +2,9 @@
 require_once ('include/DB.php');
 require_once ('include/session.php');
 require_once ('include/function.php');
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
+ob_start();
 ?>
 <?php
 $get_id = $_SESSION['id'];
@@ -12,6 +15,21 @@ if (isset($_POST['change_pwd'])){
 
     if(empty($old_password) || empty($new_password) || empty($confirm_Password)) {
         $_SESSION['error_message'] = "All Fill Must Required.";
+        redirect('change_password.php');
+    }elseif (strlen($new_password)  > 7) {
+        $_SESSION['error_message'] = "Your Password  Less than 7 characters!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[0-9]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[A-Z]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Capital Letter!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[a-z]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
+        redirect('change_password.php');
+    }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Special Character !";
         redirect('change_password.php');
     }
     else if ($new_password != $confirm_Password) {

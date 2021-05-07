@@ -12,6 +12,7 @@ if (isset($_POST["submit"])) {
     $from_account_no = $_POST['regpaybank_acc_no'];
     $registered_payee_id = $_POST['registered_payee'];
     $approve_date_time = date('Y-m-d');
+    $trans_date_time = date('Y-m-d');
     $amount = $_POST['amount'];
     $particular = $_POST['particular'];
     $transfer_upto =  $_POST['transfer_upto'];
@@ -22,8 +23,8 @@ if (isset($_POST["submit"])) {
         global $con;
         if ($regpayregistered_payee_type == 'OctoPrime E-Banking') {
 //            Transaction Debit
-            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status)
-            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status)
+            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':registered_payee_id', $registered_payee_id);
             $stmt->bindValue(':from_account_no', $to_account_no);
@@ -32,6 +33,7 @@ if (isset($_POST["submit"])) {
             $stmt->bindValue(':comission', '0');
             $stmt->bindValue(':particulars', $particular);
             $stmt->bindValue(':transaction_type', 'Debit');
+            $stmt->bindValue(':trans_date_time', $trans_date_time);
             $stmt->bindValue(':approve_date_time', $approve_date_time);
             $stmt->bindValue(':payment_status', 'Active');
             $result = $stmt->execute();
@@ -50,6 +52,7 @@ if (isset($_POST["submit"])) {
             $stmt->bindValue(':comission', '0');
             $stmt->bindValue(':particulars', $particular);
             $stmt->bindValue(':transaction_type', 'Credit');
+            $stmt->bindValue(':trans_date_time', $trans_date_time);
             $stmt->bindValue(':approve_date_time', $approve_date_time);
             $stmt->bindValue(':payment_status', 'Active');
             $result = $stmt->execute();
@@ -69,6 +72,7 @@ if (isset($_POST["submit"])) {
             $stmt->bindValue(':comission', '5');
             $stmt->bindValue(':particulars', $particular);
             $stmt->bindValue(':transaction_type', 'Debit');
+            $stmt->bindValue(':trans_date_time', $trans_date_time);
             $stmt->bindValue(':approve_date_time', $approve_date_time);
             $stmt->bindValue(':payment_status', 'Active');
             $result = $stmt->execute();

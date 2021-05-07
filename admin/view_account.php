@@ -70,7 +70,7 @@ include_once 'include/sidebar.php';
                                                 <td><?php echo $a_type; ?></td>
                                                 <td>
                                                 <?php
-                                                    if($status == "active"){
+                                                    if($status == "Active"){
                                                         echo "<div class='badge badge-success'>$status</div>";
                                                     }elseif($status == "Inactive"){
                                                         echo "<div class='badge badge-danger'>$status</div>";
@@ -86,12 +86,12 @@ include_once 'include/sidebar.php';
                                                             <li><a href="update_account.php?id=<?php echo $id; ?>" class="dropdown-item"><i class="menu-icon icon-edit"></i>Update</a></li>
                                                             <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['id']; ?>">View</a></li>
                                                             <li>
-                                                                <?php if ($status == "active") {
+                                                                <?php if ($status == "Active") {
                                                                     ?>
-                                                                <a href="change_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account Deactived?')" class="dropdown-item">Deactive</a>
+                                                                <a href="change_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account Deactived?')" class="dropdown-item">Inactive</a>
                                                                 <?php
                                                                 }
-                                                                else{
+                                                                elseif ($status == "Inactive") {
                                                                 ?>
                                                                     <a href="change_status.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Account activated?')" class="dropdown-item">Active</a>
                                                                 <?php

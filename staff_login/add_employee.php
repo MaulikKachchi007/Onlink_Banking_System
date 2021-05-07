@@ -19,6 +19,7 @@ if (isset($_POST["add_employee"])) {
     $mno = $_POST["mno"];
     $pwd = $_POST["pwd"];
     $cpwd = $_POST["cpwd"];
+    $token = bin2hex(random_bytes(15));
     $e_type = $_POST["e_type"];
     $status = $_POST["status"];
     if (empty($ifsc_code) || empty($emp_name ) || empty($l_id) || empty($pwd) || empty($cpwd) || empty($email) || empty($mno) || empty($e_type) || empty($status)) {
@@ -29,8 +30,8 @@ if (isset($_POST["add_employee"])) {
         redirect('add_employee.php');
     }else {
         global $con;
-        $sql = "INSERT INTO employees_master(ifsccode,ename,loginid,email,contact,pwd,employee_type,status)
-        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,:employee_type,:status)";
+        $sql = "INSERT INTO employees_master(ifsccode,ename,loginid,email,contact,pwd,token,employee_type,status)
+        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,$token,:employee_type,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':ifsccode',$ifsc_code);
         $stmt->bindValue(':ename',$emp_name);
@@ -38,6 +39,7 @@ if (isset($_POST["add_employee"])) {
         $stmt->bindValue(':email',$email);
         $stmt->bindValue(':contact',$mno);
         $stmt->bindValue(':pwd',$pwd);
+        $stmt->bindValue(':token',$token);
         $stmt->bindValue(':employee_type',$e_type);
         $stmt->bindValue(':status',$status);
         $result = $stmt->execute();

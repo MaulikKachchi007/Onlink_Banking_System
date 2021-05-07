@@ -15,7 +15,7 @@ if (isset($_POST['verify_branch'])) {
     $row = $stmt->fetch();
         $change_status = $row['status'];
     if ($change_status == 'Inactive') {
-        $sql = "Update branch SET status='active' WHERE bid='$get_id'";
+        $sql = "Update branch SET status='Active' WHERE bid='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
         if ($result) {
@@ -26,8 +26,7 @@ if (isset($_POST['verify_branch'])) {
             redirect('view_branch.php');
         }
     }
-    elseif ($change_status == 'active') {
-        echo $change_status;
+    elseif ($change_status == 'Active') {
         $sql = "Update branch SET status='Inactive' WHERE bid='$get_id'";
         echo $sql;
         $stmt = $con->prepare($sql);

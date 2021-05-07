@@ -1,7 +1,7 @@
 <?php
 include 'include/DB.php';
 include 'include/function.php';
-include 'include/footer.php';
+//include 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -12,6 +12,7 @@ if (isset($_POST["add_employee"])) {
     $email = $_POST["email"];
     $mno = $_POST["mno"];
     $pwd = $_POST["pwd"];
+    $token = bin2hex(random_bytes(15));
     $cpwd = $_POST["cpwd"];
     $e_type = $_POST["e_type"];
     $status = $_POST["status"];
@@ -23,8 +24,8 @@ if (isset($_POST["add_employee"])) {
         redirect('add_employee.php');
     }else {
         global $con;
-        $sql = "INSERT INTO employees_master(ifsccode,ename,loginid,email,contact,pwd,employee_type,status)
-        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,:employee_type,:status)";
+        $sql = "INSERT INTO employees_master(ifsccode,ename,loginid,email,contact,pwd,token,employee_type,status)
+        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,:token,:employee_type,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':ifsccode',$ifsc_code);
         $stmt->bindValue(':ename',$emp_name);
@@ -32,20 +33,23 @@ if (isset($_POST["add_employee"])) {
         $stmt->bindValue(':email',$email);
         $stmt->bindValue(':contact',$mno);
         $stmt->bindValue(':pwd',$pwd);
+        $stmt->bindValue(':token',$token);
         $stmt->bindValue(':employee_type',$e_type);
         $stmt->bindValue(':status',$status);
         $result = $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Employee  Added Successfully";
+            redirect('add_employee.php');
         }else{
             $_SESSION['error_message'] = "Something went wrong. Try again!";
+            redirect('add_employee.php');
         }
     }
 }
 ?>
 <?php
 include 'include/header.php';
- include 'include/sidebar.php';
+include 'include/sidebar.php';
 include 'include/topbar.php';
 ?>
     <div class="content-wrapper">

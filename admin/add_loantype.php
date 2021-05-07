@@ -11,10 +11,10 @@ if (isset($_POST["add_loan"])) {
     $interest = $_POST["loan_interest"];
     $loan_terms = $_POST["loan_terms"];
     $prefix = $_POST["loan_prefix"];
-    $status = "active";
+    $status = $_POST["status"];
     if (empty($l_type) || empty($loan_min_balance) || empty($loan_terms) || empty($loan_max_balance) || empty($interest) || empty($prefix)) {
         $_SESSION["error_message"] = "All must fill required.";
-    }elseif ($l_type == "Select") {
+    }elseif ($l_type == "Select" || $status=="Select") {
         $_SESSION["error_message"] = "At least one input selected";
     }else {
         global $con;
@@ -103,6 +103,14 @@ include 'include/topbar.php';
                                     <div class="form-group">
                                         <label for="loan_interest">Loan Terms</label>
                                         <input class="form-control" name="loan_terms" placeholder="Terms">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select class="form-control" name="status">
+                                            <option value="None" selected>None</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" name="add_loan" class="btn btn-primary">Add Record</button>

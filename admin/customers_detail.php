@@ -50,7 +50,7 @@ include('include/sidebar.php');
                                                 echo ErrorMessage();
                                                 echo SuccessMessage();
                                                 global $con;
-                                                $sql = "SELECT *  FROM customers_master";
+                                                $sql = "SELECT *  FROM customers_master order by c_id DESC";
                                                 $stmt = $con->prepare($sql);
                                                 $result = $stmt->execute();
                                                 $num_rows = $stmt->rowcount();

@@ -22,7 +22,7 @@ if ($change_Status == 'Inactive'){
         $_SESSION['error_message'] = "Something went wrong.Try again!";
         redirect('view_cards_type.php');
     }
-}elseif ($change_Status == 'active') {
+}elseif ($change_Status == 'Active') {
     $sql = "Update card_type_master SET status='Inactive' WHERE id='$get_id'";
     $stmt = $con->prepare($sql);
     $result = $stmt->execute();

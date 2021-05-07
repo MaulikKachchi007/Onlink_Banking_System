@@ -1,3 +1,17 @@
+<?php
+include_once 'DB.php';
+include_once 'function.php';
+include_once 'session.php';
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
+$get_id = $_SESSION['c_id'];
+global $con;
+$sql = "SELECT * FROM customers_master WHERE c_id='$get_id'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $photo = $row['photo'];
+}
+?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -17,38 +31,11 @@
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-            </div>
-        </li>
         <div class="user-info-dropdown dropdown-menu-right">
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="image/photo5.jpg" class="direct-chat-img" alt="">
+							<img src="customer image/<?php echo $photo;?>" class="direct-chat-img" alt="">
 						</span>
                     <span class="text-muted text-center" style="vertical-align: middle;">  <?= $_SESSION['f_name'] ?></span>
                 </a>

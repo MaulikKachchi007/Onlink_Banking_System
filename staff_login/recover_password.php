@@ -2,9 +2,16 @@
 require_once ('include/DB.php');
 require_once ('include/session.php');
 require_once ('include/function.php');
+ob_start();
 ?>
 <?php
-$email = $_SESSION['email'];
+global $con;
+$token = $_GET['token'];
+$sql = "SELECT * FROM employees_master WHERE token='$token'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $email = $row['email'];
+}
 if (isset($_POST['recover_password'])){
 
     $old_password = $_POST['old_password'];

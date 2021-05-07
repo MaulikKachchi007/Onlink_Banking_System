@@ -36,18 +36,6 @@ include_once 'include/sidebar.php';
                                 <p>View Pending Loan Requests</p>
                             </div>
 
-                            <div class="pull-right" style="text-align: right;">
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Export
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <span class="caret"></span></button>
-                                        <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                        <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                     </div>

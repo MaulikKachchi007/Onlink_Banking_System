@@ -15,7 +15,7 @@ if (isset($_POST["update_record"])) {
     $imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
     if (empty($photo)) {
         $_SESSION["error_message"] = "All must fill required.";
-    }elseif($_FILES['photo']['size'] <= 300000 ){
+    }elseif($_FILES['photo']['size'] > 300000 ){
         $_SESSION["error_message"] = "image size must be 3MB or less than.";
     }
     elseif($imageFileType != "jpg" && $imageFileType != "jpeg" ) {
@@ -23,7 +23,7 @@ if (isset($_POST["update_record"])) {
     }else {
         global $con;
         if (!empty($_FILES["photo"]["name"])) {
-            $sql = "Update employees_master SET photo='$photo' WHERE id='$get_id'";
+            $sql = "Update customers_master SET photo='$photo' WHERE c_id='$get_id'";
         }
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();

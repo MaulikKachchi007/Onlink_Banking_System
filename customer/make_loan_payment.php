@@ -15,6 +15,7 @@ if (isset($_POST["submit"])) {
     $balance = $_POST['bal_amt'];
     $totamt = $_POST['totamt'];
     $paid_date = date("Y-m-d");
+    $trans_date_time =date("Y-m-d");
     if (empty($paid_date)) {
         $_SESSION["error_message"] = "All must fill required.";
     }else {
@@ -32,14 +33,15 @@ if (isset($_POST["submit"])) {
         $stmt->bindValue(':balance',$balance);
         $stmt->bindValue(':paid_date',$paid_date);
         $result = $stmt->execute();
-        $sql = "insert into transaction(to_account_no ,amount,comission,particulars,transaction_type,approve_date_time,payment_status) 
-                VALUES(:to_account_no ,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status) ";
+        $sql = "insert into transaction(to_account_no ,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
+                VALUES(:to_account_no ,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status) ";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':to_account_no', $account);
         $stmt->bindValue(':amount', $paidamt);
         $stmt->bindValue(':comission', '0');
         $stmt->bindValue(':particulars', "To Paid Loan Amount");
         $stmt->bindValue(':transaction_type', 'Debit');
+        $stmt->bindValue(':trans_date_time', $trans_date_time);
         $stmt->bindValue(':approve_date_time',$paid_date);
         $stmt->bindValue(':payment_status', 'Active');
         $result = $stmt->execute();

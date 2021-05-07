@@ -8,11 +8,14 @@ $get_id = $_GET['id'];
 if (isset($_POST["update_card"])) {
     $card_type = $_POST["card_type"];
     $cardprefix = $_POST["card_prefix"];
-    if (empty($card_type) || empty($cardprefix)) {
+    $max_amt = $_POST["max_amt"];
+    $min_amt = $_POST["min_amt"];
+    $terms = $_POST["terms"];
+    if (empty($card_type) || empty($cardprefix) || empty($min_amt) ||empty($max_amt) || empty($terms)) {
         $_SESSION["error_message"] = "All must fill required.";
     }else {
         global $con;
-        $q = "Update card_type_master SET card_type='$card_type',prefix='$cardprefix' WHERE id='$get_id'";
+        $q = "Update card_type_master SET card_type='$card_type',min_amt='$min_amt',max_amt='$min_amt',terms='$terms',prefix='$cardprefix' WHERE id='$get_id'";
         $stmt = $con->prepare($q);
         $result = $stmt->execute();
         if ($result) {
@@ -30,11 +33,15 @@ $result = $stmt->execute();
 while ($row = $stmt->fetch()) {
     $card_type = $row['card_type'];
     $prefix = $row['prefix'];
+    $min_amount = $row['min_amt'];
+    $max_amount = $row['max_amt'];
+    $terms = $row['terms'];
+
 }
 ?>
 <?php
 include 'include/header.php';
-//include 'include/sidebar.php';
+include 'include/sidebar.php';
 include 'include/topbar.php';
 ?>
 <div class="content-wrapper">
@@ -83,8 +90,20 @@ include 'include/topbar.php';
                             </select>
                         </div>
                             <div class="form-group">
-                                <label for="card_prefix">card Prefix</label>
+                                <label for="card_prefix">Card Prefix</label>
                                 <input class="form-control" name="card_prefix" value="<?php echo $prefix;?>" placeholder="Account Prefix">
+                            </div>
+                            <div class="form-group">
+                                <label for="min_amt">Minimum Amount</label>
+                                <input class="form-control" name="min_amt" value="<?php echo $min_amount;?>" placeholder="Minimum Amount">
+                            </div>
+                            <div class="form-group">
+                                <label for="max_amt">Maximum Amount</label>
+                                <input class="form-control" name="max_amt" value="<?php echo $max_amount;?>" placeholder="Maximum Amount">
+                            </div>
+                            <div class="form-group">
+                                <label for="terms">Terms</label>
+                                <input class="form-control" name="terms" value="<?php echo $terms;?>" placeholder="Terms">
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="update_card" class="btn btn-primary">Update Record</button>

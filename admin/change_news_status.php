@@ -114,12 +114,12 @@ include('include/sidebar.php');
                                         <form method="post" action="change_news_status.php?id=<?php echo $get_id; ?>">
                                             <?php if ($status == "Active") {
                                                 ?>
-                                                <button type="submit" name="verify_news" onclick="confirm('Connfirm Verify Status');" class="btn btn-danger">Un-Verify Status</button>
+                                                <button type="submit" name="verify_news" onclick="confirm('Connfirm Verify Status');" class="btn btn-danger">Un-Verify News</button>
                                                 <?php
                                             }
                                             else if($status == "Inactive"){
                                                 ?>
-                                                <button type="submit" name="verify_news" onclick="confirm('Connfirm Verify Status');" class="btn btn-success">Verify Status</button>
+                                                <button type="submit" name="verify_news" onclick="confirm('Connfirm Verify Status');" class="btn btn-success">Verify News</button>
                                                 <?php
                                             }
                                             ?>

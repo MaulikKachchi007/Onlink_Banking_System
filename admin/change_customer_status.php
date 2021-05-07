@@ -90,7 +90,7 @@ include('include/sidebar.php');
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="customers_detail.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_customers_accounts.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php

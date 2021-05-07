@@ -98,65 +98,8 @@ include_once 'include/sidebar.php';
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $loan_id; ?>">View</a></li>
+                                                            <li><a href="view_loan_accounts_detail.php?id=<?php echo $loan_account_number;?>" class="dropdown-item">View</a></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="modal fade" id="ExampleModal<?php echo $row['loan_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">View Paid Loan Receipt</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div  class="modal-body">
-                                                                    <table class="table table-bordered table-striped">
-                                                                        <tr>
-                                                                            <th>Customer Name</th>
-                                                                            <td><?php echo $f_name; ?> <?php echo $l_name; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Account Number</th>
-                                                                            <td><?php echo $row['loan_account_number']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Type</th>
-                                                                            <td><?php echo $row['loan_type']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Amount</th>
-                                                                            <td><?php echo $row['loan_amount']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Interest Amount</th>
-                                                                            <td><?php echo $row['intrest']; ?> (<?php echo $loan_interest; ?> %)</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Amount</th>
-                                                                            <td><?php echo $total_amt; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Paid</th>
-                                                                            <td><?php echo $paid; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Balance</th>
-                                                                            <td><?php echo $balance; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Paid Date</th>
-                                                                            <td><?php echo $paid_date; ?></td>
-                                                                        </tr>
-
-
-                                                                    </table>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

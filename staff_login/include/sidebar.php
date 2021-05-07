@@ -1,3 +1,17 @@
+<?php
+include 'DB.php';
+//include 'function.php';
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
+global $con;
+$get_id = $_SESSION['id'];
+$sql = "SELECT * FROM employees_master WHERE id='$get_id'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $image = $row['photo'];
+    $f_name = $row['ename'];
+}
+?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -12,10 +26,10 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
 
-                <img src=" class="img-circle elevation-2" alt="User Image">
+                <img src="../staff_login/image/<?php echo $image;?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="employee_profile.php" class="d-block"><?php echo $f_name;?></a>
             </div>
         </div>
 
@@ -57,6 +71,12 @@
                             <a href="view_fd_accounts.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
                                 <p>Manage FD Accounts</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="view_transaction.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Manage Transaction</p>
                             </a>
                         </li>
                     </ul>
@@ -128,35 +148,6 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link  has-treeview">
-                        <i class="nav-icon fas fa-file-pdf"></i>
-                        <p>
-                            Reports
-                        </p>
-                        <i class="fas fa-angle-left right"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="view_transaction.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Transaction Reports</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="income_expense.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Income Expence Reports</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="loanpayment.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Make loan Payment</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
                     <a href="view_employee.php" class="nav-link">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>
@@ -178,6 +169,49 @@
                         <i class="nav-icon  fas fa-envelope"></i>
                         <p>
                             Message
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link  has-treeview">
+                        <i class="nav-icon fas fa-file-pdf"></i>
+                        <p>
+                            Reports
+                        </p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="custom_reports.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Transaction Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="custom_accounts_reports.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Customer Accounts Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="custom_loan_account_reports.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Loan Accounts Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="custom_fd_reports.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>FD Accounts Reports</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="search_accounts.php" class="nav-link">
+                        <i class="nav-icon  fas fa-search"></i>
+                        <p>
+                            Search Accounts
                         </p>
                     </a>
                 </li>

@@ -7,17 +7,23 @@ confirm_login();
 if (isset($_POST["add_card"])) {
     $card_type = $_POST["card_type"];
     $prefix = $_POST["card_prefix"];
+    $min_amount = $_POST["min_amt"];
+    $max_amount = $_POST["max_amt"];
+    $terms = $_POST["terms"];
     $status = $_POST["status"];
-    if (empty($card_type) || empty($status) || empty($prefix)) {
+    if (empty($card_type) || empty($status) || empty($prefix) || empty($min_amount) || empty($max_amount) || empty($terms)) {
         $_SESSION["error_message"] = "All must fill required.";
     }elseif ($card_type == "Select" || $status=="Select") {
         $_SESSION["error_message"] = "At least one input selected";
     }else {
         global $con;
-        $sql = "INSERT INTO card_type_master (card_type,prefix,status) VALUES (:card_type,:prefix,:status)";
+        $sql = "INSERT INTO card_type_master (card_type,prefix,min_amt,max_amt,terms,status) VALUES (:card_type,:prefix,:min_amt,:max_amt,:terms,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':card_type',$card_type);
         $stmt->bindValue(':prefix',$prefix);
+        $stmt->bindValue(':min_amt',$min_amount);
+        $stmt->bindValue(':max_amt',$max_amount);
+        $stmt->bindValue(':terms',$terms);
         $stmt->bindValue(':status',$status);
         $result = $stmt->execute();
         if ($result) {
@@ -82,6 +88,18 @@ include 'include/topbar.php';
                                     <div class="form-group">
                                         <label for="card_prefix">Card Prefix</label>
                                         <input class="form-control" name="card_prefix" placeholder="Account Prefix">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="min_amt">Minimum Amount</label>
+                                        <input class="form-control" name="min_amt" placeholder="Minimum Amount">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="max_amt">Maximum Amount</label>
+                                        <input class="form-control" name="max_amt" placeholder="Maximum Amount">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="terms">Terms(No of Year)</label>
+                                        <input class="form-control" name="terms" placeholder="Terms">
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Card Status</label>

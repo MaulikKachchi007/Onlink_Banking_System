@@ -51,7 +51,7 @@ include_once 'include/sidebar.php';
                                     <?php
                                     global $con;
                                     $get_id = $_SESSION['id'];
-                                    $sql = "SELECT * FROM mail INNER JOIN customers_master ON customers_master.c_id=mail.sender_id  and reciverid='$get_id'";
+                                    $sql = "SELECT * FROM mail INNER JOIN customers_master ON customers_master.c_id=mail.sender_id  and status='Adminstrator Replied'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)

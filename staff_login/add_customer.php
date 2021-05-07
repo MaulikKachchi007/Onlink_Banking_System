@@ -3,6 +3,7 @@ include 'include/DB.php';
 include 'include/function.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
+ob_start();
 //$get_id = $_GET['id'];
 if (isset($_POST['add_account'])){
     $firstname = $_POST['firstname'];
@@ -73,19 +74,19 @@ if (isset($_POST['add_account'])){
         redirect('add_customer.php');
     }elseif (strlen($password)  > 11) {
         $_SESSION['error_message'] = "Your Password  Less than 10 characters!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     }elseif(!preg_match("#[0-9]+#",$password)) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     }elseif(!preg_match("#[A-Z]+#",$password)) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Capital Letter!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     }elseif(!preg_match("#[a-z]+#",$password)) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Special Character !";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     } else if($password != $confirm_password){
         $_SESSION['error_message'] = "Password and Confirm Password Not Same.";
         redirect('add_customer.php');

@@ -6,6 +6,7 @@
    confirm_login();
     $get_id = $_SESSION['c_id'];
     global $con;
+
     $sql = "SELECT * FROM accounts INNER JOIN customers_master ON customers_master.c_id = accounts.c_id WHERE accounts.c_id='$get_id' and accounts.account_type = 'Saving Account' or accounts.account_type = 'Current Account' ";
     $stmt = $con->query($sql);
     while ($row = $stmt->fetch()) {
@@ -168,7 +169,7 @@ include('include/sidebar.php');
                 <!-- BAR CHART -->
                 <div class="card card-primary ml-3">
                     <div class="card-header">
-                        <h3 class="card-title">Bar Chart</h3>
+                        <h3 class="card-title">Income and Expense Reports</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -186,62 +187,60 @@ include('include/sidebar.php');
                 <!-- /.card -->
 
                 <!-- /.card -->
-                               </div>
-
-            <div class="card card-primary ml-3">
-                <div class="card-header border-0">
-                    <h3 class="card-title">Mini Statement</h3>
-                    <div class="card-tools">
-                        <a href="mini_statement.php?birthdate=<?php echo substr($birthdate,0,4);?>" class="btn btn-tool btn-sm">
-                            <i class="fas fa-download"></i>
-                        </a>
+                <div class="card card-primary ml-3">
+                    <div class="card-header border-0">
+                        <h3 class="card-title">Mini Statement</h3>
+                        <div class="card-tools">
+                            <a href="mini_statement.php?birthdate=<?php echo substr($birthdate,0,4);?>" class="btn btn-tool btn-sm">
+                                <i class="fas fa-download"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="card card-body">
-                    <table id="example1" class="table table-striped table-bordered table-responsive">
-                        <thead>
-                        <tr>
-                            <th>Account No</th>
-                            <th>Amount</th>
-                            <th>Particulars</th>
-                            <th>Transaction Types</th>
-                            <th>Transaction Date Time</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        global $con;
-                        //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
-                        $sql = "SELECT * FROM transaction 
+                    <div class="card card-body">
+                        <table id="example1" class="table table-striped table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Account No</th>
+                                <th>Amount</th>
+                                <th>Particulars</th>
+                                <th>Transaction Types</th>
+                                <th>Transaction Date Time</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            global $con;
+                            //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
+                            $sql = "SELECT * FROM transaction 
                                     INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE
                                     accounts.c_id='$get_id' and accounts.account_type='Saving Account' or accounts.account_type='Current Account' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC LIMIT 1,10";
-                        $stmt = $con->query($sql);
-                        while ($row = $stmt->fetch()) {
-                            $trans_id = $row['trans_id'];
-                            $account_no = $row['account_no'];
-                            $account_balance = $row['amount'];
-                            $particular = $row['particulars'];
-                            $transaction_type = $row['transaction_type'];
-                            $t_datetime = $row['trans_date_time'];
+                            $stmt = $con->query($sql);
+                            while ($row = $stmt->fetch()) {
+                                $trans_id = $row['trans_id'];
+                                $account_no = $row['account_no'];
+                                $account_balance = $row['amount'];
+                                $particular = $row['particulars'];
+                                $transaction_type = $row['transaction_type'];
+                                $t_datetime = $row['trans_date_time'];
+                                ?>
+                                <tr>
+                                    <td><?php echo $account_no;?></td>
+                                    <td>&#8377;  <?php echo $account_balance;?></td>
+                                    <td><?php echo $particular;?></td>
+                                    <td><?php echo $transaction_type;?></td>
+                                    <td><?php echo $t_datetime;?></td>
+                                    <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
+                                </tr>
+                                <?php
+                            }
                             ?>
-                            <tr>
-                                <td><?php echo $account_no;?></td>
-                                <td>&#8377;  <?php echo $account_balance;?></td>
-                                <td><?php echo $particular;?></td>
-                                <td><?php echo $transaction_type;?></td>
-                                <td><?php echo $t_datetime;?></td>
-                                <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <!-- /.card -->
-
+                <!-- /.card -->
+                               </div>
         </div>
             <!-- /.row -->
 
@@ -257,6 +256,18 @@ include('include/sidebar.php');
 
 <?php
     include('include/footer.php');
+    $exps= ExpensebarChart();
+    $data = array();
+    foreach($exps as $exp) {
+        $expense[] = $exp['y'];
+        $label[] = $exp['label'];
+    }
+    $incs = IncomebarChart();
+    $data = array();
+    foreach($incs as $inc) {
+    $income[] = $inc['y'];
+    $label[] = $inc['label'];
+    }
 ?>
 <script>
     $(function () {
@@ -269,7 +280,34 @@ include('include/sidebar.php');
             "autoWidth": true,
             "responsive": true,
         });
-    });
+    var areaChartData = {
+        labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+        datasets: [
+            {
+                label: 'Expense',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: <?php echo json_encode($expense); ?>
+            },
+            {
+                label               : 'Income',
+                backgroundColor     : 'rgba(210, 214, 222, 1)',
+                borderColor         : 'rgba(210, 214, 222, 1)',
+                pointRadius         : false,
+                pointColor          : 'rgba(210, 214, 222, 1)',
+                pointStrokeColor    : '#c1c7d1',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data: <?php echo json_encode($income); ?>,
+
+            },
+        ]
+    }
     //-------------
     //- BAR CHART -
     //-------------
@@ -279,19 +317,17 @@ include('include/sidebar.php');
     var temp1 = areaChartData.datasets[1]
     barChartData.datasets[0] = temp1
     barChartData.datasets[1] = temp0
-
     var barChartOptions = {
         responsive              : true,
-        maintainAspectRatio     : false,
-        datasetFill             : false
+        maintainAspectRatio     : true,
+        datasetFill             : true
     }
-
     var barChart = new Chart(barChartCanvas, {
         type: 'bar',
         data: barChartData,
         options: barChartOptions
     })
-
+    });
 </script>
 <script src="assets/plugins/chart.js/Chart.min.js"></script>
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>

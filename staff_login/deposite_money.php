@@ -16,6 +16,7 @@ if (isset($_POST["deposite_money"])) {
     $amount = $_POST["amount"];
     $particulars = $_POST["particulars"];
     $approve_date_time = date("Y-m-d");
+    $trans_date_time = date("Y-m-d");
 //    $status = $_POST["status"];
     if (empty($amount) || empty($d_type) || empty($particulars)) {
         $_SESSION["error_message"] = "All must fill required.";
@@ -23,14 +24,15 @@ if (isset($_POST["deposite_money"])) {
         global $con;
         if($d_type == "Cash")
         {
-            $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status) 
-            VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+            $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
+            VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':to_acc_no',$acc_no);
             $stmt->bindValue(':amount',$amount);
             $stmt->bindValue(':comission','0');
             $stmt->bindValue(':particulars',$particulars);
             $stmt->bindValue(':transaction_type','Cash');
+            $stmt->bindValue(':trans_date_time', $trans_date_time);
             $stmt->bindValue(':approve_date_time',$approve_date_time);
             $stmt->bindValue(':payment_status','Active');
             $result = $stmt->execute();
@@ -44,14 +46,15 @@ if (isset($_POST["deposite_money"])) {
         }
         elseif($_POST['d_type'] == "Cheque")
         {
-            $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status) 
-            VALUES(:to_account_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+            $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
+            VALUES(:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':to_account_no',$acc_no);
             $stmt->bindValue(':amount',$amount);
             $stmt->bindValue(':comission','0');
             $stmt->bindValue(':particulars',$particulars);
             $stmt->bindValue(':transaction_type','Cheque');
+            $stmt->bindValue(':trans_date_time', $trans_date_time);
             $stmt->bindValue(':approve_date_time',$approve_date_time);
             $stmt->bindValue(':payment_status','Pending');
             $res = $stmt->execute();

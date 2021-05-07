@@ -47,7 +47,8 @@ include_once 'include/sidebar.php';
                                 </div>
                                 <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
-                                    <tr>
+                                    <th>
+                                        tr>
                                         <th>Customer Name</th>
                                         <th>Loan Account Number</th>
                                         <th>Loan Type</th>
@@ -57,8 +58,7 @@ include_once 'include/sidebar.php';
                                         <th>Interest Amount</th>
                                         <th>Total Payble</th>
                                         <th>Total Paid</th>
-                                        <th>Balance</th>
-                                        <th>Action</th>
+                                        <th>Balance</   <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>

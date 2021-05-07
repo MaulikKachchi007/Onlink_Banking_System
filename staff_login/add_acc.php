@@ -26,6 +26,7 @@ if (isset($_POST["add_account"])) {
     $interest = $_POST["interest"];
     $status = $_POST["account_status"];
     $date = date("Y-m-d");
+
     if (empty($a_type) || empty($balance) || empty($interest) || empty($status)) {
         $_SESSION["error_message"] = "All must fill required.";
     }elseif ($status == "Select") {
@@ -44,7 +45,8 @@ if (isset($_POST["add_account"])) {
         $result = $stmt->execute();
 //        Add Clear Balance
         date_default_timezone_set('asia/Calcutta');
-        $approve_date_time = date('Y-m-d h:m:s');
+        $approve_date_time = date('Y-m-d');
+        $trans_date_time = date('Y-m-d');
         $iq = "INSERT INTO transaction(to_account_no,amount,comission, particulars,transaction_type, approve_date_time, payment_status) 
         VALUES(:to_account_no,:amount,:comission, :particulars,:transaction_type, :approve_date_time, :payment_status)";
         $stmt = $con->prepare($iq);
@@ -53,6 +55,7 @@ if (isset($_POST["add_account"])) {
         $stmt->bindValue(':comission',0);
         $stmt->bindValue(':particulars','Account opening balance');
         $stmt->bindValue(':transaction_type','Credit');
+        $stmt->bindValue(':trans_date_time', $trans_date_time);
         $stmt->bindValue(':approve_date_time',$approve_date_time);
         $stmt->bindValue(':payment_status','Approved');
         $result = $stmt->execute();

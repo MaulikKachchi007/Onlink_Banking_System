@@ -44,11 +44,11 @@ include 'include/topbar.php';
                 else{
                     $showPostPage=($Page*5)-5;
                 }
-                $sql = "SELECT * FROM news ORDER BY id desc LIMIT $showPostPage,4";
+                $sql = "SELECT * FROM news status='Active' ORDER BY  id desc LIMIT $showPostPage,4";
                 $stmt = $con->query($sql);
             }
 //            else{
-                $sql = "SELECT * FROM news ORDER BY id DESC";
+                $sql = "SELECT * FROM news WHERE status='Active' ORDER BY id DESC";
                 $stmt = $con->query($sql);;
 //            }
             while ($row = $stmt->fetch()) {

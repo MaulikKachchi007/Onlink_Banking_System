@@ -1,3 +1,17 @@
+<?php
+include_once 'DB.php';
+include_once 'function.php';
+include_once 'session.php';
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
+$get_id = $_SESSION['c_id'];
+global $con;
+$sql = "SELECT * FROM customers_master WHERE c_id='$get_id'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $photo = $row['photo'];
+}
+?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -12,10 +26,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="customer image/<?php echo $photo;?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?php echo $_SESSION['f_name']; ?></a>
+                <a href="profile.php" class="d-block"><?php echo $_SESSION['f_name']; ?></a>
             </div>
         </div>
 
@@ -25,7 +39,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="index.php" class="nav-link active">
+                    <a href="index.php" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard

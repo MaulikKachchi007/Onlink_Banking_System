@@ -127,6 +127,18 @@ include_once 'include/sidebar.php';
                                                                             <td><?php echo $row['prefix']; ?></td>
                                                                         </tr>
                                                                         <tr>
+                                                                            <th>Minimum Amount</th>
+                                                                            <td><?php echo $row['min_amt']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Maximum Amount</th>
+                                                                            <td><?php echo $row['max_amt']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Terms</th>
+                                                                            <td><?php echo $row['terms']; ?></td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <th>Status</th>
                                                                             <td><?php echo $row['status']; ?></td>
                                                                         </tr>

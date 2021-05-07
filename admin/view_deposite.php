@@ -2,9 +2,8 @@
 include_once 'include/DB.php';
 include_once 'include/function.php';
 include_once 'include/session.php';
-
-
-
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
 ?>
 <?php
 include_once 'include/header.php';
@@ -29,8 +28,8 @@ include_once 'include/sidebar.php';
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <span class="caret"></span></button>
-                                        <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                        <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
+                                        <a class="dropdown-item"  href="export_deposit_account.php">Export CSV</a>
+                                        <a class="dropdown-item" target="_blank" href="export_deposit_pdf.php">Export PDF</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +78,7 @@ include_once 'include/sidebar.php';
                                                 <td><?php echo $row['d_type']; ?></td>
                                                 <td>
                                                     <?php
-                                                        if($status == "active"){
+                                                        if($status == "Active"){
                                                             echo "<div class='badge badge-success'>$status</div>";
                                                         }elseif($status == "Inactive"){
                                                             echo "<div class='badge badge-danger'>$status</div>";
@@ -95,14 +94,14 @@ include_once 'include/sidebar.php';
                                                             <li><a href="update_deposit.php?id=<?php echo $id; ?>" class="dropdown-item "><i class="menu-icon icon-edit"></i>Update</a></li>
                                                                 <li><a href="#" class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['f_id']; ?>" >View</a></li>
                                                             <li>
-                                                                <?php if ($status == "active") {
+                                                                <?php if ($status == "Active") {
                                                                     ?>
-                                                                    <a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['f_id'] ?>" >Deactive</a>
+                                                                    <a class="dropdown-item" href="change_deposit_status.php?id=<?php echo $id ?>" onclick="return confirm('Are you sure you want to FD Type Deactivated?')">Inactive</a>
                                                                     <?php
                                                                 }
-                                                                else{
+                                                                elseif ($status == "Inactive"){
                                                                     ?>
-                                                                    <a class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['f_id']?>">Active</a>
+                                                                    <a class="dropdown-item" href="change_deposit_status.php?id=<?php echo $id ?>" onclick="return confirm('Are you sure you want to FD Type activated?')">Active</a>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -151,19 +150,7 @@ include_once 'include/sidebar.php';
                                                                     </table>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <form method="POST" action="change_deposit_status.php?id=<?php echo $row['f_id']; ?>">
-                                                                    <?php if ($row['status'] == "active") {
-                                                                        ?>
-                                                                        <button type="submit" name="verify_deposit" onclick="confirm('Connfirm Verify Account');" class="btn btn-danger">Un-Verify Account</button>
-                                                                        <?php
-                                                                    }
-                                                                    else{
-                                                                        ?>
-                                                                        <button type="submit" name="verify_deposit" onclick="confirm('Connfirm Verify Account');" class="btn btn-success">Verify Deposite</button>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                    </form>
+                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>

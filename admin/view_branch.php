@@ -29,8 +29,8 @@ include_once 'include/sidebar.php';
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <span class="caret"></span></button>
-                                        <a class="dropdown-item"  href="export_account.php">Export CSV</a>
-                                        <a class="dropdown-item" target="_blank" href="account_type_export_pdf.php">Export PDF</a>
+                                        <a class="dropdown-item"  href="export_branch.php">Export CSV</a>
+                                        <a class="dropdown-item" target="_blank" href="export_branch_report_pdf.php">Export PDF</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,6 +50,7 @@ include_once 'include/sidebar.php';
                                     <thead>
                                     <tr>
                                         <th>Branch Id</th>
+                                        <th>IFSC Code</th>
                                         <th>Branch name</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -66,14 +67,16 @@ include_once 'include/sidebar.php';
                                         while ($row = $stmt->fetch()) {
                                             $id = $row['bid'];
                                             $bname = $row['bname'];
+                                            $ifsccode = $row['ifsccode'];
                                             $status = $row['status'];
                                             ?>
                                             <tr>
                                                 <td><?php echo $id; ?></td>
+                                                <td><?php echo $ifsccode; ?></td>
                                                 <td><?php echo $bname; ?></td>
                                                 <td>
                                                     <?php
-                                                    if($status == "active") {
+                                                    if($status == "Active") {
                                                         echo "<div class='badge badge-success'>".$status.'</div>';
                                                     }
                                                     elseif($status == "Inactive"){
@@ -91,12 +94,12 @@ include_once 'include/sidebar.php';
                                                             <li><a href="update_branch.php?id=<?php echo $id; ?>" class="dropdown-item"><i class="menu-icon icon-edit"></i>Update</a></li>
                                                             <li><a  class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['ifsccode']; ?>">View</a></li>
                                                             <li>
-                                                                <?php if ($status == "active") {
+                                                                <?php if ($status == "Active") {
                                                                     ?>
                                                                     <a href="change_branch_status.php?id=<?php echo $id; ?>" class="dropdown-item">Un-Verify Branch</a>
                                                                     <?php
                                                                 }
-                                                                else{
+                                                                else  if ($status == "Inactive"){
                                                                     ?>
                                                                     <a href="change_branch_status.php?id=<?php echo $id; ?>"  class="dropdown-item">Verify Branch</a>
                                                                     <?php

@@ -11,7 +11,7 @@ while($row = $stmt->fetch()){
     $c_id = $row['c_id'];
 }
 if (isset($_POST["make_payment"])) {
-
+    $acc_no = $_POST["acc_no"];
     $payment_type = $_POST["payment_type"];
     $paidamt = $_POST["paidamt"];
     $c_id = $_POST["custid"];

@@ -15,9 +15,6 @@
 <script src="assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="assets/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="assets/plugins/moment/moment.min.js"></script>
-<script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
@@ -36,7 +33,7 @@
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="assets/dist/js/pages/dashboard.js"></script>
+<!--<script src="assets/dist/js/pages/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 </body>
 </html>

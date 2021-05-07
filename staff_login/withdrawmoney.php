@@ -16,6 +16,7 @@ if (isset($_POST["Withdraw_money"])) {
     $withdrawamount = $_POST["withdrawamount"];
     $particulars = $_POST["particulars"];
     $approve_date_time = date("Y-m-d");
+    $trans_date_time =date("Y-m-d");
     if (empty($amount)  || empty($particulars)) {
         $_SESSION["error_message"] = "All must fill required.";
         redirect('withdrawmoney.php');
@@ -24,14 +25,15 @@ if (isset($_POST["Withdraw_money"])) {
         redirect('withdrawmoney.php');
     } else{
         global $con;
-        $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status) 
-            VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+        $sql = "insert into transaction(to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
+            VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':to_acc_no', $acc_no);
         $stmt->bindValue(':amount', $amount);
         $stmt->bindValue(':comission', '0');
         $stmt->bindValue(':particulars', $particulars);
         $stmt->bindValue(':transaction_type', 'Debit');
+        $stmt->bindValue(':trans_date_time', $trans_date_time);
         $stmt->bindValue(':approve_date_time', $approve_date_time);
         $stmt->bindValue(':payment_status', 'Active');
         $result = $stmt->execute();

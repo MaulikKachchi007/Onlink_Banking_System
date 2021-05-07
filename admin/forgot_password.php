@@ -2,6 +2,8 @@
 require_once ('include/DB.php');
 require_once ('include/session.php');
 require_once ('include/function.php');
+require_once ('include/sendmail.php');
+ob_start();
 ?>
 <?php
     if (isset($_POST['forgot_password'])){
@@ -19,13 +21,21 @@ require_once ('include/function.php');
             $stmt = $con->prepare($sql);
             $stmt->bindValue('eMail',$email);
             $stmt->execute();
-            var_dump($con);
+            while ($row = $stmt->fetch()) {
+                $username = $row['ename'];
+                $token = $row['token'];
+            }
             $result = $stmt->rowcount();
             if ($result) {
-                $_SESSION["success_message"] = "Email sent successfully";
-                redirect('recover_password.php');
-            }else {
-                $_SESSION["error_message"] = "Incorrect Email address";
+                $url = 'http://'.$_SERVER['SERVER_NAME'].'/online_banking/admin/recover_password.php?token='.$token.'';
+                $output = "Hi,Dear $username, Please Click here to change your password.<br>" . $url;
+                $subject = "Reset Password";
+                sendmail($email,$subject, $output, "OctoPrime E-Banking");
+                    $_SESSION['success_message'] = "Email sent successfully";
+                    redirect('login.php');
+
+            }else{
+                $_SESSION["error_message"] = "Something went wrong! Try again later.";
                 redirect('forgot_password.php');
             }
         }
@@ -85,9 +95,6 @@ require_once ('include/function.php');
 
             <p class="mt-3 mb-1">
                 <a href="login.php">Login</a>
-            </p>
-            <p class="mb-0">
-                <a href="register.php" class="text-center">Register a new membership</a>
             </p>
         </div>
         <!-- /.login-card-body -->

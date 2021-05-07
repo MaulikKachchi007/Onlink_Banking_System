@@ -9,10 +9,10 @@
         $balance = $_POST["account_balance"];
         $interest = $_POST["account_interest"];
         $prefix = $_POST["account_prefix"];
-        $status = "active";
-        if (empty($a_type) || empty($balance) || empty($interest) || empty($prefix)) {
+        $status = $_POST["status"];
+        if (empty($a_type) || empty($balance) || empty($interest) || empty($prefix) ) {
             $_SESSION["error_message"] = "All must fill required.";
-        }elseif ($a_type == "Select") {
+        }elseif ($a_type == "Select" || $status == "Select") {
             $_SESSION["error_message"] = "At least one input selected";
         }else {
             global $con;
@@ -90,6 +90,14 @@ include 'include/topbar.php';
                                 <div class="form-group">
                                     <label for="account_interest">Account Interest</label>
                                     <input class="form-control" name="account_interest" placeholder="Interest">
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control" name="status">
+                                        <option value="None" selected>None</option>
+                                        <option value="Active" >Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="add_account" class="btn btn-primary">Add Record</button>

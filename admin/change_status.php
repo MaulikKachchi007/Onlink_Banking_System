@@ -12,7 +12,7 @@
         $change_Status = $row['status'];
     }
     if ($change_Status == 'Inactive'){
-        $sql = "Update account_master SET status='active' WHERE id='$get_id'";
+        $sql = "Update account_master SET status='Active' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
         if ($result) {
@@ -22,7 +22,7 @@
             $_SESSION['error_message'] = "Something went wrong.Try again!";
             redirect('view_account.php');
         }
-    }elseif ($change_Status == 'active') {
+    }elseif ($change_Status == 'Active') {
         $sql = "Update account_master SET status='Inactive' WHERE id='$get_id'";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();

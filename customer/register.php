@@ -1,7 +1,9 @@
 <?php
  include_once "include/DB.php";
  include_once "include/session.php";
- include_once "include/function.php";
+include_once "include/function.php";
+include_once "include/sendmail.php";
+ ob_start();
     include_once "emailSend.php";
 if (isset($_POST['finish'])){
     $firstname = $_POST['firstname'];
@@ -22,6 +24,7 @@ if (isset($_POST['finish'])){
     $account_type = $_POST['accountType'];
     $password = $_POST['password'];
     $cpwd = $_POST['rpwd'];
+    $token = bin2hex(random_bytes(15));
     $pin = $_POST['pin'];
     $cpin = $_POST['cpin'];
     $accountstatus = "Inactive";
@@ -30,31 +33,42 @@ if (isset($_POST['finish'])){
         redirect('register.php');
     }else{
         global $con;
-        $sql = "INSERT INTO customers_master(f_name,l_name,email,phone,photo,h_no,locality,ifsccode,pincode,city,adharnumber,gender,birthdate,marital,occuption,account_type,password,pin,accountstatus) VALUES(:f_Name,:l_name,:email,:phone,:photo,:h_no,:locality,:ifsccode,:pincode,:city,:adharnumber,:gender,:birthdate,:marital,:occupation,:account_type,:password,:pin,:accountstatus)";
+        $sql = "INSERT INTO customers_master(f_name,l_name,email,phone,photo,h_no,locality,ifsccode,pincode,city,adharnumber,gender,birthdate,marital,occuption,account_type,password,token,pin,accountstatus) VALUES(:f_Name,:l_name,:email,:phone,:photo,:h_no,:locality,:ifsccode,:pincode,:city,:adharnumber,:gender,:birthdate,:marital,:occupation,:account_type,:password,:token,:pin,:accountstatus)";
         $stmt = $con->prepare($sql);
-        $stmt->bindValue('f_Name',$firstname);
-        $stmt->bindValue('l_name',$lastname);
-        $stmt->bindValue('email',$email);
-        $stmt->bindValue('phone',$phone);
-        $stmt->bindValue('photo',$photo);
-        $stmt->bindValue('h_no',$houseno);
-        $stmt->bindValue('locality',$locality);
-        $stmt->bindValue('ifsccode',$ifsccode);
-        $stmt->bindValue('pincode',$pincode);
-        $stmt->bindValue('city',$city);
-        $stmt->bindValue('adharnumber',$adharnumber);
-        $stmt->bindValue('gender',$gender);
-        $stmt->bindValue('birthdate',$date);
-        $stmt->bindValue('marital',$marital);
-        $stmt->bindValue('occupation',$occuption);
-        $stmt->bindValue('account_type',$account_type);
-        $stmt->bindValue('password',$password);
-        $stmt->bindValue('pin',$pin);
-        $stmt->bindValue('accountstatus',$accountstatus);
+        $stmt->bindValue(':f_Name',$firstname);
+        $stmt->bindValue(':l_name',$lastname);
+        $stmt->bindValue(':email',$email);
+        $stmt->bindValue(':phone',$phone);
+        $stmt->bindValue(':photo',$photo);
+        $stmt->bindValue(':h_no',$houseno);
+        $stmt->bindValue(':locality',$locality);
+        $stmt->bindValue(':ifsccode',$ifsccode);
+        $stmt->bindValue(':pincode',$pincode);
+        $stmt->bindValue(':city',$city);
+        $stmt->bindValue(':adharnumber',$adharnumber);
+        $stmt->bindValue(':gender',$gender);
+        $stmt->bindValue(':birthdate',$date);
+        $stmt->bindValue(':marital',$marital);
+        $stmt->bindValue(':occupation',$occuption);
+        $stmt->bindValue(':account_type',$account_type);
+        $stmt->bindValue(':password',$password);
+        $stmt->bindValue(':token',$token);
+        $stmt->bindValue(':pin',$pin);
+        $stmt->bindValue(':accountstatus',$accountstatus);
         $result = $stmt->execute();
         if ($result){
-//            emailSend($c_id,$email);
+            $date = date("Y");
+            $subject = "Welcome to OctoPrime E-Banking Open Bank Account";
+            $output = "Hi,Dear $firstname,\n
+                            Welcome to OctoPrime E-Banking Open a  new Bank Account.your Bank account activated with in 24 hours\n 
+                               We will soon contact you once it gets activated.\n
+                       In case you need any further clarification for the same, please do get in touch with your Branch
+                    
+                       Please Do Not Reply this email. Emails sent to this address will not be answered.Copyright ©$date Octo-Prime Bank.
+                       ";
+            sendmail($email,$subject, $output, "OctoPrime E-Banking");
             $_SESSION['success_message'] = "Your Account was created successfully You have received Notifications Send to Mail";
+            redirect('login.php');
         }else{
             $_SESSION['error_message'] = "Something went wrong! Try again.";
             redirect('register.php');
@@ -225,6 +239,15 @@ if (isset($_POST['finish'])){
                                             <div class="form-group">
                                                 <label>Adhar Number</label>
                                                 <input type="number" class="form-control" name="adharnumber" placeholder="Adhar Number">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>ID Proof</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">

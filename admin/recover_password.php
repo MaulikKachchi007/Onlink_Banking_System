@@ -2,17 +2,38 @@
 require_once ('include/DB.php');
 require_once ('include/session.php');
 require_once ('include/function.php');
+ob_start();
 ?>
 <?php
-$email = $_SESSION['email'];
+global $con;
+$token = $_GET['token'];
+$sql = "SELECT * FROM employees_master WHERE token='$token'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()) {
+    $email = $row['email'];
+}
 if (isset($_POST['recover_password'])){
-
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
     $confirm_Password = $_POST['confirm_password'];
     if ($new_password != $confirm_Password) {
         $_SESSION['error_message'] = "Password and Confirm Password Not match.";
         redirect('recover_password.php');
+    }elseif (strlen($new_password)  > 10) {
+        $_SESSION['error_message'] = "Your Password  Less than 10 characters!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[0-9]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[A-Z]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Capital Letter!";
+        redirect('change_password.php');
+    }elseif(!preg_match("#[a-z]+#",$new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
+        redirect('change_password.php');
+    }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $new_password)) {
+        $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Special Character !";
+        redirect('change_password.php');
     }
     else {
         #Request for Email code and check email
@@ -78,7 +99,7 @@ if (isset($_POST['recover_password'])){
                 echo SuccessMessage();
                 echo ErrorMessage();
             ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <form action="recover_password.php?token=<?php echo $token; ?>" method="post">
                 <div class="input-group mb-3">
                     <input type="password" class="form-control"  name="old_password" placeholder="Old Password">
                     <div class="input-group-append">

@@ -28,6 +28,7 @@ if (isset($_POST["add_fd_account"])) {
     $fd_type = $_POST['fd_type'];
     $fd_amount = $_POST['inv_amt'];
     $fd_date =  date('Y-m-d');
+    $trans_date_time = date('Y-m-d');
     $interest = $_POST['interest'];
     $status = "Active";
     if (empty($fd_amount)) {
@@ -62,8 +63,8 @@ if (isset($_POST["add_fd_account"])) {
 //        $q = "INSERT INTO transaction (from_account_no,to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status)
 //              VALUES ('$ac_no','$accounts_no','$fd_amount','0','To The Invesment Fixed Deposite Account','Debit','$fd_date','Active')";
 //        echo $q;
-        $q = "INSERT INTO transaction (from_account_no,to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status)
-              VALUES (:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+        $q = "INSERT INTO transaction (from_account_no,to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status)
+              VALUES (:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
         $st = $con->prepare($q);
         $st->bindValue(':from_account_no',$acc_number);
         $st->bindValue(':to_account_no',$ac_no);
@@ -71,6 +72,7 @@ if (isset($_POST["add_fd_account"])) {
         $st->bindValue(':comission','0');
         $st->bindValue(':particulars','To The Invesment Fixed Deposite Account');
         $st->bindValue(':transaction_type','Debit');
+        $stmt->bindValue(':trans_date_time', $trans_date_time);
         $st->bindValue(':approve_date_time', $fd_date);
         $st->bindValue(':payment_status','Active');
         $result = $st->execute();
