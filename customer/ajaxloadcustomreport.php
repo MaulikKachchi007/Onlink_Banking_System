@@ -8,6 +8,12 @@ confirm_login();
 $get_id = $_SESSION['c_id'];
 $fromDate = $_GET['fromDate'];
 $toDate = $_GET['toDate'];
+global $con;
+$sql = "SELECT * FROM customers_master INNER JOIN accounts ON customers_master.c_id = accounts.c_id WHERE accounts.c_id='$get_id'";
+$stmt = $con->query($sql);
+while ($row = $stmt->fetch()){
+    $account_no = $row['account_no'];
+}
 ?>
 <div class="card card-primary">
     <div class="card-header border-0">
@@ -35,7 +41,7 @@ $toDate = $_GET['toDate'];
         <tr>
             <?php
             global $con;
-            $sql = "SELECT * FROM transaction WHERE trans_date_time BETWEEN  '$fromDate' AND '$toDate'";
+            $sql = "SELECT * FROM transaction INNER JOIN accounts ON accounts.account_no=transaction.to_account_no  WHERE accounts.c_id='$get_id' and trans_date_time BETWEEN  '$fromDate' AND '$toDate'";
             $stmt = $con->query($sql);
             $rcount = $stmt->rowCount();
             if ($rcount > 0) {

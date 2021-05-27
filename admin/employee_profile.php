@@ -15,8 +15,8 @@ $target = "image/" . basename($_FILES["photo"]["name"]);
     $imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
 if (empty($emp_name) || empty($l_id) || empty($email) || empty($mno) || empty($photo)) {
     $_SESSION["error_message"] = "All must fill required.";
-}elseif($_FILES['photo']['size'] > 300000 ){
-    $_SESSION["error_message"] = "image size must be 3MB or less than.";
+}elseif($_FILES['photo']['size'] > 500000 ){
+    $_SESSION["error_message"] = "image size must be 5MB or less than.";
 }
 elseif($imageFileType != "jpg" && $imageFileType != "jpeg" ) {
         $_SESSION['error_message'] = "Sorry, only JPG files are allowed.";

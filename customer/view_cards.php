@@ -64,7 +64,7 @@ include_once 'include/sidebar.php';
                                     <?php
                                     global $con;
                                     $sql = "SELECT * from cards 
-                                    INNER JOIN customers_master ON customers_master.c_id=cards.c_id WHERE cards.status='Approved'";
+                                    INNER JOIN customers_master ON customers_master.c_id=cards.c_id WHERE customers_master.c_id='$get_id' and cards.status='Approved'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowcount();
                                     if ($result > 0)

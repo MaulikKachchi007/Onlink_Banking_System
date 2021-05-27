@@ -12,7 +12,6 @@ include_once 'include/topbar.php';
 include_once 'include/sidebar.php';
 ?>
 <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <div class="content-wrapper">
     <section class="content">
         <div class="container">
@@ -55,8 +54,8 @@ include_once 'include/sidebar.php';
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT loan.loan_id,loan.loan_account_number,loan_type_master.loan_type,loan.c_id,loan.created_date,loan_amount,loan.intrest,loan.status from loan_type_master 
-                                    INNER JOIN loan ON loan_type_master.id=loan.id and loan.status='Approved'";
+                                    $sql = "SELECT loan.loan_id,loan.loan_account_number,loan.c_id,loan_type_master.loan_type,loan.c_id,loan.created_date,loan_amount,loan.intrest,loan.status from loan_type_master 
+                                    INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.c_id='$get_id' and loan.status='Approved'";
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowCount();
                                     if ($result > 0)
@@ -171,11 +170,6 @@ include_once 'include/sidebar.php';
 <?php
 include 'include/footer.php';
 ?>
-<!-- DataTables -->
-<script src="assets/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $('#example1').DataTable({
@@ -190,3 +184,8 @@ include 'include/footer.php';
         });
     });
 </script>
+<!-- DataTables -->
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>

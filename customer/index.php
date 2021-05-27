@@ -136,7 +136,7 @@ include('include/sidebar.php');
                     <tbody>
                         <tr>
                             <th>Account Open Date</th>
-                        
+
                              <td><?php echo $account_open_date; ?></td>
                         </tr>
                         <tr>
@@ -213,8 +213,8 @@ include('include/sidebar.php');
                             global $con;
                             //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
                             $sql = "SELECT * FROM transaction 
-                                    INNER JOIN accounts ON transaction.to_account_no=accounts.account_no WHERE
-                                    accounts.c_id='$get_id' and accounts.account_type='Saving Account' or accounts.account_type='Current Account' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC LIMIT 1,10";
+                                    INNER JOIN accounts ON transaction.to_account_no= accounts.account_no WHERE
+                                    accounts.c_id='$get_id' and (accounts.account_type='Saving Account' or accounts.account_type='Current Account') AND (transaction.payment_status='Active' or transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC LIMIT 1,10";
                             $stmt = $con->query($sql);
                             while ($row = $stmt->fetch()) {
                                 $trans_id = $row['trans_id'];

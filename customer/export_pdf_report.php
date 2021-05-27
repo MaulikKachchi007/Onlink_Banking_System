@@ -9,10 +9,10 @@ class MYPDF extends TCPDF {
     public function LoadData() {
         // Read file lines
         global $con;
-//        $get_id = $_SESSION['id'];
+        $get_id = $_SESSION['c_id'];
         $fromDate = $_GET['fromDate'];
         $toDate = $_GET['toDate'];
-        $sql = "SELECT * FROM transaction WHERE trans_date_time BETWEEN  '$fromDate' AND '$toDate'";
+        $sql = "SELECT * FROM transaction INNER JOIN accounts ON accounts.account_no=transaction.to_account_no  WHERE accounts.c_id='$get_id' and trans_date_time BETWEEN  '$fromDate' AND '$toDate'";
         $stmt = $con->query($sql);
         $row = $stmt->fetchALL();
         return $row;

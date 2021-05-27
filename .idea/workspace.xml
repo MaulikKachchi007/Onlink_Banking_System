@@ -1,203 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f8a713c-6278-4825-b90d-eb20a8245fcb" name="Default Changelist" comment="3-25-2021">
-      <change afterPath="$PROJECT_DIR$/admin/ajax_custom_load_loan_account_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajax_custom_loan_account_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxaccountreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxcustomreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxempreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxfdreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxloadaccountsreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxloadcustomreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxloadempreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/ajaxloadfdreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/assets/dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/custom_accounts_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/custom_employees_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/custom_fd_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/custom_loan_account_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/custom_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_account_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_branch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_branch_report_pdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_customer_account_pdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_deposit_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_deposit_pdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_employee_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_fdreport_pdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_loan_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/export_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/Photo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/ui-sam.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/user2-160x160.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/user8-128x128.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/COMMITMENT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/PHPMailerAutoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/SECURITY.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/VERSION" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/get_oauth_token.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-af.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-am.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-az.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ba.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-be.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-bg.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ca.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-cs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-da.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-de.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-el.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-eo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-es.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-et.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-fa.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-fi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-fo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-fr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-gl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-he.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-hi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-hr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-hu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-hy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-id.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-it.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ja.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ka.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ko.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-lt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-lv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-mg.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-nb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-nl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-pl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-pt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-pt_br.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ro.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-ru.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-sk.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-sl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-sr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-sr_latn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-sv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-tl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-tr.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-uk.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-vi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-zh.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/language/phpmailer.lang-zh_cn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/phpunit.xml.dist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/src/Exception.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/src/OAuth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/src/PHPMailer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/src/POP3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/PHPMailer/src/SMTP.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/include/sendmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/view_loan_accounts_detail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/customer image/avatar04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/include/demo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/recover_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajax_custom_load_loan_account_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajax_custom_loan_account_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajax_search_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxaccountreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxcustomreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxfdreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxloadaccountsreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxloadcustomreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/ajaxloadfdreport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/assets/dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/custom_accounts_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/custom_fd_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/custom_loan_account_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/custom_reports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/export_account_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/export_fdreport_pdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/export_loan_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/export_pdf_report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/image/avatar04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/image/user1-128x128.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/include/demo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff_login/search_accounts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/assets/css/bootstrap-5.0.0.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/assets/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/customer image/Adhaar Card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/customer image/New Phto.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/customer image/Photo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/reg.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/account_type_export_pdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/account_type_export_pdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_card_types.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_card_types.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_loantype.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_loantype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_branch_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_branch_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_card_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_card_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_customer_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_customer_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_deposit_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_deposit_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_news_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_news_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/change_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/change_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/forgot_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/forgot_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/import_loantype.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/import_loantype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/include/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/include/topbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/loan_type_export_pdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/loan_type_export_pdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/loantype_change_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/loantype_change_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/recover_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/recover_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tcpdf/config/tcpdf_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tcpdf/config/tcpdf_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tcpdf/tcpdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tcpdf/tcpdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/update_card.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/update_card.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_cards_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_cards_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_deposite.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_deposite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_loan_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_loan_pending.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_pending.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_loan_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/add_fd_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/add_fd_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/forgot-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/forgot_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/employee_profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/image/ph.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/image/ph.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/ajaxloadcustomreport.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/ajaxloadcustomreport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/ajaxloanpayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/ajaxloanpayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/export_pdf_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/export_pdf_report.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/fund_transfer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/fund_transfer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/include/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/include/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/include/topbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/make_loan_payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/make_loan_payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/add_acc.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/add_acc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/view_cards.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_cards.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/view_loan_accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view_loan_accounts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/staff_login/add_customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/add_customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/add_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/add_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/bank_settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/bank_settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/change_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/deposite_money.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/deposite_money.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/forgot_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/forgot_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/include/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/include/topbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/loanpayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/loanpayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/news.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/news.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/recover_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/recover_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/view_loan_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_loan_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/withdrawmoney.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/withdrawmoney.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,23 +66,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/staff_login" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\online_banking\staff_login" />
-      <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js" />
-      <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js\pages" />
-      <recent name="C:\xampp\htdocs\online_banking" />
-      <recent name="C:\xampp\htdocs\online_banking\include" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\online_banking\staff_login" />
       <recent name="C:\xampp\htdocs\online_banking\customer\news" />
       <recent name="C:\xampp\htdocs\online_banking\customer" />
       <recent name="C:\xampp\htdocs\online_banking\customer\include" />
       <recent name="C:\xampp\htdocs\online_banking\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\online_banking\staff_login" />
+      <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js" />
+      <recent name="C:\xampp\htdocs\online_banking\customer\assets\dist\js\pages" />
+      <recent name="C:\xampp\htdocs\online_banking" />
+      <recent name="C:\xampp\htdocs\online_banking\include" />
     </key>
   </component>
   <component name="RunManager">
@@ -407,7 +238,16 @@
       <workItem from="1620215609568" duration="11347000" />
       <workItem from="1620269705583" duration="15076000" />
       <workItem from="1620298045517" duration="13925000" />
-      <workItem from="1620356976519" duration="9980000" />
+      <workItem from="1620356976519" duration="12922000" />
+      <workItem from="1620385094313" duration="15966000" />
+      <workItem from="1620443153714" duration="13779000" />
+      <workItem from="1620482377979" duration="388000" />
+      <workItem from="1620617036942" duration="2469000" />
+      <workItem from="1620628007984" duration="3522000" />
+      <workItem from="1620667096587" duration="330000" />
+      <workItem from="1620713571076" duration="3914000" />
+      <workItem from="1620788818834" duration="2748000" />
+      <workItem from="1620801968605" duration="1623000" />
     </task>
     <servers />
   </component>
@@ -491,14 +331,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1620282654658" />
-    <state x="500" y="229" key="NewPhpFileDialog" timestamp="1620365302768">
+    <state x="500" y="229" key="NewPhpFileDialog" timestamp="1620400204055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="229" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1620365302768" />
-    <state x="212" y="0" key="SettingsEditor" timestamp="1618889316732">
+    <state x="500" y="229" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1620400204055" />
+    <state x="212" y="0" key="SettingsEditor" timestamp="1620401758907">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="212" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1618889316732" />
+    <state x="212" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620401758907" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1620184452629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -527,14 +367,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="600" height="428" key="javadoc.popup/0.0.1366.728@0.0.1366.728" timestamp="1620194776031" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1620359311135">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1620717897977">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1620359311135" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1620365529740">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1620717897977" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1620631380485">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1620365529740" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1620631380485" />
     <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1617597861010">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

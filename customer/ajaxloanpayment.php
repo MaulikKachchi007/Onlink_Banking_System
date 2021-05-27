@@ -1,4 +1,4 @@
-<?php
+-   <?php
 include 'include/DB.php';
 include 'include/function.php';
 global $con;

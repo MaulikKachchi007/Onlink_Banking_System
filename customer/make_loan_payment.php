@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
         $stmt->bindValue(':approve_date_time',$paid_date);
         $stmt->bindValue(':payment_status', 'Active');
         $result = $stmt->execute();
-        $sql = "UPDATE accounts SET account_balance= account_balance -  $paidamt  WHERE account_no=''";
+        $sql = "UPDATE accounts SET account_balance= account_balance -  $paidamt  WHERE account_no='$account'";
         $stmt = $con->query($sql);
         if ($result) {
             $_SESSION['success_message'] = "Loan Payment Successfully";

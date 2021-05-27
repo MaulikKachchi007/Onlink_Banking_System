@@ -105,7 +105,7 @@ function IncomebarChart(){
     $may_start_date = $maysy.'-'.$maysm.'-'.$maysd;
     $mayey=date('Y');$mayem=date('05');$mayed=date('31');
     $may_end_date = $mayey.'-'.$mayem.'-'.$mayed;
-    $sql = "SELECT sum(amount)  FROM transaction 
+    $sql = "SELECT sum(transaction.amount)  FROM transaction 
     INNER JOIN accounts ON accounts.account_no=transaction.to_account_no 
     WHERE transaction.transaction_type='Credit' and transaction.transaction_type='Cash'  
     and  (transaction .payment_status='Approved' or transaction .payment_status='Active')  

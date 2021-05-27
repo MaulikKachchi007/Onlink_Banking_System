@@ -27,8 +27,8 @@ if (isset($_POST["submit"])) {
             VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':registered_payee_id', $registered_payee_id);
-            $stmt->bindValue(':from_account_no', $to_account_no);
-            $stmt->bindValue(':to_account_no', $from_account_no);
+            $stmt->bindValue(':from_account_no', $from_account_no);
+            $stmt->bindValue(':to_account_no',  $to_account_no);
             $stmt->bindValue(':amount', $amount);
             $stmt->bindValue(':comission', '0');
             $stmt->bindValue(':particulars', $particular);
@@ -42,8 +42,8 @@ if (isset($_POST["submit"])) {
             $result=$stmt->execute();
 
 //            Transaction Update on Credit Account
-            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status)
-            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status)
+            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':registered_payee_id', $registered_payee_id);
             $stmt->bindValue(':from_account_no', $to_account_no);
@@ -62,8 +62,8 @@ if (isset($_POST["submit"])) {
         }
         if ($regpayregistered_payee_type =='Other') {
             $amt = $amount + 5;
-            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,approve_date_time,payment_status)
-            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:approve_date_time,:payment_status)";
+            $sql = "insert into transaction(registered_payee_id,from_account_no,to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status)
+            VALUES(:registered_payee_id,:from_account_no,:to_account_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':registered_payee_id', $registered_payee_id);
             $stmt->bindValue(':from_account_no', $to_account_no);

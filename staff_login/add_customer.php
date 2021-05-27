@@ -62,10 +62,10 @@ if (isset($_POST['add_account'])){
         redirect('add_customer.php');
     }elseif (strlen($pin)  > 6) {
         $_SESSION['error_message'] = "Your Transaction Pin  Less than 6 characters!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     }elseif(!preg_match('/^[0-9]{6}+$/',$pin)) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
-        redirect('change_password.php');
+        redirect('add_customer.php');
     } else if($password != $confirm_password){
         $_SESSION['error_message'] = "Password and Confirm Password Not Same.";
         redirect('add_customer.php');
@@ -291,10 +291,10 @@ include 'include/topbar.php';
                                         foreach ($state as $st => $value) {
                                             ?>
                                             <option value='<?php echo $value; ?>'><?php echo $value; ?></option>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
-                                        ?>
+
                                     </select>
                                 </div>
                                 <div class="form-group">

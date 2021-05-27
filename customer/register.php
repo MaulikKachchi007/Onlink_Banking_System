@@ -4,7 +4,6 @@
 include_once "include/function.php";
 include_once "include/sendmail.php";
  ob_start();
-    include_once "emailSend.php";
 if (isset($_POST['finish'])){
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -12,6 +11,7 @@ if (isset($_POST['finish'])){
     $photo = $_FILES['photo']['name'];
     $phone = $_POST['phonenumber'];
     $houseno = $_POST['houseno'];
+    $idproof = $_FILES['idproof']['name'];
     $locality = $_POST['locality'];
     $ifsccode = $_POST['ifsccode'];
     $pincode = $_POST['pincode'];
@@ -28,6 +28,8 @@ if (isset($_POST['finish'])){
     $pin = $_POST['pin'];
     $cpin = $_POST['cpin'];
     $accountstatus = "Inactive";
+    $target = "customer image/" . basename($_FILES["photo"]["name"]);
+    $targetidproof = "customer image/" . basename($_FILES["idproof"]["name"]);
     if (checkUserExists($email)) {
         $_SESSION['error_message'] = "User already exists";
         redirect('register.php');
@@ -56,6 +58,8 @@ if (isset($_POST['finish'])){
         $stmt->bindValue(':pin',$pin);
         $stmt->bindValue(':accountstatus',$accountstatus);
         $result = $stmt->execute();
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $target);
+        move_uploaded_file($_FILES["idproof"]["tmp_name"], $targetidproof);
         if ($result){
             $date = date("Y");
             $subject = "Welcome to OctoPrime E-Banking Open Bank Account";
@@ -99,10 +103,11 @@ if (isset($_POST['finish'])){
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!--     Fonts and icons     -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+<!--    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">-->
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
     <link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 
 </head>
@@ -200,19 +205,20 @@ if (isset($_POST['finish'])){
                                                 <label>Branch Name</label>
                                                 <select class="form-control" name="ifsccode">
                                                     <option value="None">None</option>
-                                                <?php
-                                                    global $con;
-                                                    $sql = "SELECT * from branch";
-                                                    $stmt = $con->query($sql);
-                                                    $stmt->execute();
-                                                    while($row = $stmt->fetch()) {
-                                                        $bname  = $row['bname'];
-                                                        $ifsccode = $row['ifsccode'];
-                                                        ?>
-                                                    <option value='<?php echo $ifsccode; ?>'><?php echo $ifsccode; ?> (<?php echo $bname; ?>)</option>
                                                     <?php
+                                                    global $con;
+                                                    $sql = "SELECT * FROM branch";
+                                                    $stmt = $con->query($sql);
+                                                    while ($row = $stmt->fetch()) {
+                                                        $ifsccode = $row['ifsccode'];
+                                                        $bname = $row['bname'];
+                                                        $address = $row['address'];
+                                                        $city = $row['city'];
+                                                        ?>
+                                                        <option value='<?php echo $ifsccode;?>'><?php echo $ifsccode;?> (<?php echo $bname;?> <?php echo  $address;?>,<?php echo $city; ?>)</option>
+                                                        <?php
                                                     }
-                                                ?>
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -243,18 +249,16 @@ if (isset($_POST['finish'])){
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>ID Proof</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                                </div>
+                                                <label for="exampleFormControlFile1">ID Proof</label>
+                                                <input type="file" class="form-control-file" name="idproof" id="exampleFormControlFile1">
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 <select class="form-control" name="gender">
-                                                    <option value="Male" selected>Male</option>
+                                                    <option value="Select">Select</option>
+                                                    <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Other">Other</option>
                                                 </select>
@@ -363,11 +367,12 @@ if (isset($_POST['finish'])){
                 </div> <!-- wizard container -->
             </div>
         </div><!-- end row -->
-    </div> <!--  big container -->
 
+    </div> <!--  big container -->
 
     </div>
     <!-- /.register-box -->
+    <div class="text text-center"><a href="login.php" class="link link-primary">Click Here to Login</a></div>
 </body>
 
 <!-- jQuery -->
@@ -379,6 +384,7 @@ if (isset($_POST['finish'])){
     <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="assets/js/wizard.js"></script>
 
     <!--  Plugin for the Wizard -->
     <script src="assets/js/gsdk-bootstrap-wizard.js"></script>
