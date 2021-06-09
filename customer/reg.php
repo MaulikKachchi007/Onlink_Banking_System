@@ -23,9 +23,9 @@ if (isset($_POST['submit'])){
     $marital = $_POST['marital'];
     $occuption = $_POST['occuption'];
     $account_type = $_POST['accounttype'];
-    $password = md5($_POST['password']);
+    $password = base64_encode($_POST['password']);
     $confirm_password = $_POST['rpwd'];
-    $pin = md5($_POST['pin']);
+    $pin = base64_encode($_POST['pin']);
     $cpin = $_POST['cpin'];
     $token = bin2hex(random_bytes(15));
     $target = "customer image/" . basename($_FILES["photo"]["name"]);
@@ -36,20 +36,7 @@ if (isset($_POST['submit'])){
         $_SESSION['error_message'] = "User already exists";
         redirect('reg.php');
     }
-//    elseif(file_exists($target)){
-//        $photoerror = 'Photo already Exists.';
-//    }elseif ($_FILES["photo"]["size"] > 500000) {
-//        $photoerror = 'Photo Si Exists.';
-//    }elseif ($_FILES["photo"]["type"] != 'image/jpeg'||$_FILES["idproof"]["type"] != 'image/jpg'){
-//        $photoerror = 'Only JPEG/image allowed.';
-//    }if(file_exists($targetidproof)){
-//        $iderror = 'idproof already Exists.';
-//    }elseif ($_FILES["idproof"]["size"] > 500000) {
-//        $iderror = 'Sorry,Photo already Exists.';
-//    }elseif ($_FILES["idproof"]["type"] != 'image/jpeg' ||$_FILES["idproof"]["type"] != 'image/jpg'){
-//        $iderror = 'Only JPEG/image allowed.';
-//    }
-else {
+    else {
         global $con;
         $sql = "INSERT INTO customers_master(f_name,l_name,email,phone,photo,idproof,h_no,locality,ifsccode,pincode,city,state,country,adharnumber,gender,birthdate,marital,occuption,account_type,password,token,pin,accountstatus)
                VALUES(:f_Name,:l_name,:email,:phone,:photo,:idproof,:h_no,:locality,:ifsccode,:pincode,:city,:state,:country,:adharnumber,:gender,:birthdate,:marital,:occupation,:account_type,:password,:token,:pin,:accountstatus)";
@@ -83,6 +70,7 @@ else {
         move_uploaded_file($_FILES["idproof"]["tmp_name"], $targetidproof);
         include_once 'include/sendmail.php';
         $msg = "<strong>Dear Mr/Mrs. $firstname,</strong><br><br>
+                        <p>Welcome to OctoPrime E-Banking. Join the Family.</p>
                     	 <P>In case you need any further clarification for the same, please do get in touch with your Branch</P></br>
                     	 <hr>
                         <p>Please do not reply to this email. Emails sent to this address will not be answered. Copyright ©2021 OctoPrime E-Banking. </p>
@@ -117,7 +105,7 @@ else {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <div class="border border-info mt-3 rounded my_form">
+                <div class="border border-info mt-3 rounded my_form" style="background-color: #e9ecef;">
                     <h4>Customer Registration</h4>
                     <p class="text-muted">Please Register with us to take the benefits of Our Online Banking Facilities</p>
                     <div class="container p-1">
@@ -421,13 +409,13 @@ else {
             if (document.register.branch.value == "select") {
                 document.getElementById("errorbranch").innerHTML = "Branch must be Selected";
                 validateform=1;
-            }if(document.register.FirstName.value =="")
+            }if(document.register.first_name.value =="")
             {
                 document.getElementById("first_name_error").innerHTML ="First Name Must Required.";
                 validateform=1;
             }else
             {
-                if(!document.register.FirstName.value.match(alphaExp))
+                if(!document.register.first_name.value.match(alphaExp))
                 {
                     document.getElementById("first_name_error").innerHTML = "Only Alphabets allowed";
                     validateform=1;
@@ -453,7 +441,6 @@ else {
                     validateform = 1;
                 }
             }
-
             if(document.register.phone.value == "")
             {
                 document.getElementById("phoneerror").innerHTML ="Mobile Number Must Required.";
@@ -545,7 +532,7 @@ else {
                 if (!document.register.pincode.value.match(numericExpression)) {
                     document.getElementById("pincode_error").innerHTML = "Enter Valid Pincode Format";
                     validateform = 1;
-                }else if(pnumber.length  != 6){
+                }else if(document.register.pincode.length != 6){
                     document.getElementById("pincode_error").innerHTML = "Pincode Must be 6 Digit";
                     validateform = 1;
                 }
@@ -570,11 +557,11 @@ else {
                 document.getElementById("adharnumber_error").innerHTML ="Adhar Number  Must Required.";
                 validateform=1;
             }else{
-                if (!document.register.pincode.value.match(numericExpression)) {
+                if (!document.register.adharnumber.match(numericExpression)) {
                     document.getElementById("adharnumber_error").innerHTML = "Enter Adhar Number Format.";
                     validateform = 1;
-                }else if(pnumber.length  != 12){
-                    document.getElementById("adharnumber_error").innerHTML = "Pincode Must be 12 Digit.";
+                }else if(document.register.adharnumber.length  != 12){
+                    document.getElementById("adharnumber_error").innerHTML = "Adhar NumberMust be 12 Digit.";
                     validateform = 1;
                 }
             }
@@ -586,7 +573,7 @@ else {
                 document.getElementById("datebirth_error").innerHTML = "Birthdate must be Required.";
                 validateform=1;
             }
-            if (document.register.marital   .value == "Select") {
+            if (document.register.marital.value == "Select") {
                 document.getElementById("marital_error").innerHTML = "Marital Staus must be Selected.";
                 validateform=1;
             }
@@ -598,30 +585,45 @@ else {
                 document.getElementById("a_type_error").innerHTML = "Occupation must be Selected.";
                 validateform=1;
             }
-            if(document.register.photo.length != 0)
-            {
-                var valid_size = 3*1000*1000;
-                file_name = document.register.photo[0].name;
-                file_size = document.register.photo[0].size;
-                file_type = document.register.photo[0].type;
-                if(file_type!="image/jpeg" || file_type!="image/jpg")
-                {
-                    document.getElementById("photo_error").innerHTML = "Only JPG/JPEG file type supported.";
-                    validateform=1;
-                }
-
-                if(file_size > valid_size)
-                {
-                    document.getElementById("photo_error").innerHTML = "Filesize should be upto 3MB.";
-                    validateform=1;
-                }
-
-            }
-            else
+            if (document.register.photo.value == "")
             {
                 document.getElementById("photo_error").innerHTML = "Please Select any image.";
                 validateform=1;
+            }else{
+                var  validext = ["jpeg","jpg"];
+                var pos_of_dot = document.register.photo.value.lastIndexOf('.')+1;
+                var img_ext = document.register.photo.value.substring(pos_of_dot);
+                var result =  validext.includes(img_ext);
+                if (result==false) {
+                    document.getElementById("photo_error").innerHTML = "Only JPG Files Allowed.";
+                    validateform=1;
+                }else{
+                    if (parseFloat(document.register.photo.files[0].size/(1024*1024))>= 3){
+                        document.getElementById("photo_error").innerHTML = "Files Size Must be Smaller than 3MB.";
+                        validateform=1;
+                    }
+                }
             }
+            if (document.register.idproof.value == "")
+            {
+                document.getElementById("idprooferror").innerHTML = "Please Select any image.";
+                validateform=1;
+            }else {
+                var  validext = ["jpeg","jpg"];
+                var pos_of_dot = document.register.idproof.value.lastIndexOf('.')+1;
+                var img_ext = document.register.idproof.value.substring(pos_of_dot);
+                var result =  validext.includes(img_ext);
+                if (result==false) {
+                    document.getElementById("idprooferror").innerHTML = "Only JPG Files Allowed.";
+                    validateform=1;
+                }else{
+                    if (parseFloat(document.register.idproof.files[0].size/(1024*1024))>= 3){
+                            document.getElementById("idprooferror").innerHTML = "Files Size Must be Smaller than 3MB.";
+                        validateform=1;
+                    }
+                }
+            }
+
             if (validateform==0){
                 return true;
             }else{

@@ -1,8 +1,8 @@
 <?php
 require_once 'tcpdf/tcpdf.php';
-include('include/DB.php');
-include('include/session.php');
-include('include/function.php');
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 class MYPDF extends TCPDF {
     // Load table data from file
 //    private $_password;

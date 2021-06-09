@@ -1,7 +1,6 @@
 <?php
 include 'include/DB.php';
 include 'include/function.php';
-include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id  = $_GET['id'];
@@ -36,9 +35,9 @@ include 'include/topbar.php';
                             <?php
                             global $con;
                             //Query When Pagination is Active i.g.Blog.php?page=1
-
-                                $sql = "SELECT * FROM news where id='$get_id'";
-                                $stmt = $con->query($sql);
+                            $get_id  = $_GET['id'];
+                            $sql = "SELECT * FROM news where id='$get_id'";
+                            $stmt = $con->query($sql);
                             while ($row = $stmt->fetch()) {
                                 # code...
                                 $title = $row['title'];
@@ -92,7 +91,7 @@ include 'include/topbar.php';
                                         $datetime = $row['datetime'];
                                         ?>
                                         <div class="media">
-                                            <img src="news/<?php echo $image; ?>" class="d-block img-fluid align-self-start" width="90px" height="90px" alt="" srcset="">
+                                            <img src="../admin/news/<?php echo $image; ?>" class="d-block img-fluid align-self-start" width="90px" height="90px" alt="" srcset="">
                                             <div class="media-body ml-2">
                                                 <a href="FullPost.php?id=<?php echo htmlentities($id);?>" target="_blank"><h6 class="lead"><?php echo htmlentities($title);?></h6></a>
                                                 <p class="small"><?php echo htmlentities($datetime); ?></p>

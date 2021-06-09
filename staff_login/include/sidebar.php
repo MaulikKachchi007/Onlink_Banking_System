@@ -111,6 +111,12 @@ while ($row = $stmt->fetch()) {
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="loanpayment.php" class="nav-link">
+                                <i class="fas fa-minus nav-icon"></i>
+                                <p>Make loan Payment</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="view_loan_payment.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
                                 <p>View Loan Payment</p>
@@ -137,12 +143,6 @@ while ($row = $stmt->fetch()) {
                             <a href="Withdrawmoney.php" class="nav-link">
                                 <i class="fas fa-minus nav-icon"></i>
                                 <p>Withdraw Money</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="loanpayment.php" class="nav-link">
-                                <i class="fas fa-minus nav-icon"></i>
-                                <p>Make loan Payment</p>
                             </a>
                         </li>
                     </ul>

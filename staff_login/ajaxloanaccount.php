@@ -26,12 +26,15 @@ if ($rowcount==0) {
     $sqlloan ="SELECT sum(paid) FROM loan_payment WHERE loan_account_number='$get_id'";
     $stmt = $con->query($sqlloan);
     $row_data = $stmt->fetch();
-    $sql = "SELECT * FROM customers_master INNER JOIN loan  ON customers_master.c_id=loan.c_id WHERE loan.c_id='$c_id' and loan.status='Approved'";
+    $sql = "SELECT * FROM customers_master INNER JOIN loan  ON customers_master.c_id=loan.c_id 
+            INNER JOIN accounts ON accounts.c_id= customers_master.c_id
+            WHERE loan.c_id='$c_id' and loan.status='Approved' and accounts.account_type='Saving Account' or accounts.account_type= 'Current Account';";
     $stmt = $con->query($sql);
     while ($row = $stmt->fetch()) {
         $f_name = $row['f_name'];
         $l_name = $row['l_name'];
         $ifsccode = $row['ifsccode'];
+        $account_no = $row['account_no'];
     }
     ?>
     <table class="table table-bordered table-striped">
@@ -76,35 +79,24 @@ if ($rowcount==0) {
             <td><?php echo $balamt = $total_payable - $row_data[0]; ?></td>
         </tr>
     </table>
-    <input type="hidden" name="totamt" id="totamt" value="<?php echo $balamt; ?>" >
     <input type="hidden" name="custid" value="<?php echo $c_id; ?>" >
     <input type="hidden" name="loan_amt" value="<?php echo $loan_amount; ?>" >
     <input type="hidden" name="interest" value="<?php echo $interest; ?>" >
+    <input type="hidden" name="account_no" value="<?php echo $account_no; ?>" >
     <?php if (isset($_SESSION['id'])){
         ?>
     <div class="form-group">
         <label for="amt">Paid Amount</label>
-        <input class="form-control" type="text" name="paidamt" id="paidamt" onkeyup="calculatebal(totamt.value,this.value)" placeholder="Paid Amount">
-    </div>
-    <div class="form-group">
-        <label for="balamt">Balance Amount</label>
-        <input class="form-control" type="text" id="balanceamt" readonly name="balanceamt" placeholder="Total Amount">
+        <input class="form-control" type="text" name="paidamt" readonly id="paidamt" value="<?php echo $loan_amount;?>" placeholder="Paid Amount">
     </div>
         <div class="form-group">
             <label for="particulars">Particulars</label>
             <textarea class="form-control"  name="particulars" rows="5" col="25" placeholder="Particulars">
         </textarea>
         </div>
-        <div class="form-group">
-            <label for="payment_type">Payment Type</label>
-            <select class="form-control" name="payment_type">
-                <option value="Select">Select</option>
-                <option value="Cash">Cash</option>
-                <option value="Cheque">Cheque</option>
-            </select>
-        </div>
+
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="make_payment" value="Make Money"/>
+        <input type="submit" class="btn btn-primary" name="make_payment" value="Transfer Money"/>
     </div>
     <?php
 }

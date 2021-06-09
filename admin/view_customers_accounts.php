@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 ?>
 <?php
 include_once 'include/header.php';
@@ -40,7 +40,6 @@ include_once 'include/sidebar.php';
                                         <th>Account Type</th>
                                         <th>Balance</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -79,106 +78,6 @@ include_once 'include/sidebar.php';
                                                         echo "<div class='badge badge-danger'>".$status.'</div>';
                                                         }
                                                     ?>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
-                                                            <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="delete_customer_account.php?id=<?php echo $row['c_id']; ?>" onclick="return confirm('Are you sure Delete Account.');" class="dropdown-item"><i class="menu-icon icon-trash"></i>Delete</a></li>
-                                                            <li><a href="update_customers_account.php?id=<?php echo $row['c_id']; ?>" class="dropdown-item"><i class="menu-icon icon-edit"></i>Update</a></li>
-                                                            <li><a class="dropdown-item" data-toggle="modal"  data-target="#ExampleModal<?php echo $row['c_id']; ?>"><i class="menu-icon icon-edit"></i>View</a></li>
-                                                            <li>
-                                                                <?php if ($status == "active") {
-                                                                    ?>
-                                                                    <a href="change_customer_status.php?id=<?php echo $row['c_id']; ?>"  class="dropdown-item">Deactive</a>
-                                                                    <?php
-                                                                }
-                                                                else{
-                                                                    ?>
-                                                                    <a href="change_customer_status.php?id=<?php echo $row['c_id']; ?>"  class="dropdown-item">Active</a>
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-                                                    <div class="modal fade" id="ExampleModal<?php echo $row['c_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">View Customers</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div  class="modal-body">
-                                                                    <table class="table table-bordered table-striped">
-                                                                        <tr>
-                                                                            <th>ID</th>
-                                                                            <td><?php echo $row['c_id']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Branch</th>
-                                                                            <td><?php echo $row['ifsccode']; ?> (<?php echo $row['city']; ?>)</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>First Name</th>
-                                                                            <td><?php echo $row['f_name']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Last Name</th>
-                                                                            <td><?php echo $row['l_name']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Email</th>
-                                                                            <td><?php echo $row['email']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Mobile No</th>
-                                                                            <td><?php echo $row['phone']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Account Type</th>
-                                                                            <td><?php echo  $row['account_type']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Account Number</th>
-                                                                            <td><?php echo  $row['account_no']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Pincode</th>
-                                                                            <td><?php echo  $row['pincode']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>City</th>
-                                                                            <td><?php echo  $row['city']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Adhar Number</th>
-                                                                            <td><?php echo  $row['adharnumber']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Gender</th>
-                                                                            <td><?php echo  $row['gender']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Occupation</th>
-                                                                            <td><?php echo  $row['occuption']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Status</th>
-                                                                            <td><?php echo  $row['accountstatus']; ?></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                             <?php

@@ -72,7 +72,7 @@ if (isset($_POST["add_fd_account"])) {
         $st->bindValue(':comission','0');
         $st->bindValue(':particulars','To The Invesment Fixed Deposite Account');
         $st->bindValue(':transaction_type','Debit');
-        $stmt->bindValue(':trans_date_time', $trans_date_time);
+        $st->bindValue(':trans_date_time', $trans_date_time);
         $st->bindValue(':approve_date_time', $fd_date);
         $st->bindValue(':payment_status','Active');
         $result = $st->execute();

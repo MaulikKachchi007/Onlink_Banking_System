@@ -166,6 +166,14 @@ while ($row = $stmt->fetch()) {
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="view_customers_feedback.php" class="nav-link">
+                        <i class="fas fa-comments"></i>
+                        <p>
+                            Manage Feedback
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="view_employee.php" class="nav-link">
                         <i class="fas fa-user-plus nav-icon"></i>
                         <p>

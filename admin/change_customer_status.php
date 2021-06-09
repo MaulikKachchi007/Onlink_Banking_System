@@ -1,7 +1,7 @@
 <?php
-include('include/DB.php');
-//include('include/session.php');
-include('include/function.php');
+require_once('include/DB.php');
+require_once('include/session.php');
+require_once('include/function.php');
 
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
@@ -14,10 +14,12 @@ if (isset($_POST['verify_account'])) {
     while ($row = $stmt->fetch()) {
         $change_status = $row['accountstatus'];
     }
+//    echo $change_status;
+//    die();
     if ($change_status == 'Inactive') {
         $sql = "Update customers_master SET accountstatus='active' WHERE c_id='$get_id'";
         $stmt = $con->query($sql);
-        $result = $stmt->execute();
+        $result= $stmt->execute();
         if ($result) {
             $_SESSION['success_message'] = "Account Verify.!";
             redirect('customers_detail.php');
@@ -43,11 +45,10 @@ if (isset($_POST['verify_account'])) {
 ?>
 <?php
 global $con;
-
-$q = "SELECT * FROM customers_master, accounts WHERE  customers_master.c_id= accounts.c_id  AND  customers_master.c_id='$get_id'";
-$stmt = $con->prepare($q);
-$result = $stmt->execute();
+$q = "SELECT * FROM customers_master WHERE c_id='$get_id'";
+$stmt = $con->query($q);
 while ($row = $stmt->fetch()) {
+
     $custid = $row['c_id'];
     $f_name = $row['f_name'];
     $l_name = $row['l_name'];
@@ -61,14 +62,15 @@ while ($row = $stmt->fetch()) {
     $birthdate = $row['birthdate'];
     $occuption = $row['occuption'];
     $account_type = $row['account_type'];
-    $account_no = $row['account_no'];
     $accounts_status = $row['accountstatus'];
+
 }
+
 ?>
 <?php
-include('include/header.php');
-include('include/topbar.php');
-include('include/sidebar.php');
+require_once('include/header.php');
+require_once('include/topbar.php');
+require_once('include/sidebar.php');
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -90,7 +92,7 @@ include('include/sidebar.php');
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_customers_accounts.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="customers_detail.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php
@@ -126,10 +128,6 @@ include('include/sidebar.php');
                                     <td><?php echo $account_type; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Account Number</th>
-                                    <td><?php echo $account_no; ?></td>
-                                </tr>
-                                <tr>
                                     <th>Area</th>
                                     <td><?php echo $area; ?></td>
                                 </tr>
@@ -156,29 +154,30 @@ include('include/sidebar.php');
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <form method="post" action="change_customer_status.php?id=<?php echo $get_id; ?>">
-                                        <?php if ($accounts_status == "active") {
+                                        <form method="post" action="change_customer_status.php?id=<?php echo $custid; ?>">
+                                            <?php if ($accounts_status == "active") {
+                                                ?>
+                                                <button type="submit" name="verify_account" onclick="confirm('Connfirm Verify Account');" class="btn btn-danger">Un-Verify Account</button>
+                                                <?php
+                                            }
+                                            else if ($accounts_status == "Inactive") {
+                                                ?>
+                                                <button type="submit" name="verify_account" onclick="confirm('Connfirm Verify Account');" class="btn btn-success">Verify Account</button>
+                                                <?php
+                                            }
                                             ?>
-                                            <button type="submit" name="verify_account" onclick="confirm('Connfirm Verify Account');" class="btn btn-danger">Un-Verify Account</button>
-                                            <?php
-                                        }
-                                        else{
-                                            ?>
-                                            <button type="submit" name="verify_account" onclick="confirm('Connfirm Verify Account');" class="btn btn-success">Verify Account</button>
-                                            <?php
-                                        }
-                                        ?>
                                         </form>
                                         <!-- /.card -->
-                        </div></td>
+                                        </td>
                                 </tr>
                             </table>
                         </div>
                 </div>
             </div>
+
         </section>
     </div>
 
 <?php
-include('include/footer.php');
+require_once('include/footer.php');
 ?>

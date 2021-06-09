@@ -1,9 +1,8 @@
 body{
-	background-color:  #e9ecef;
+	background-color:  #fff;
 }
 .box{
 	padding: 35px;
-	background-color: black;
 	color: white;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -13,6 +12,7 @@ body{
 }
 .my_form{
 	padding: 15px;
+	background-color: #e9ecef;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 .holder{

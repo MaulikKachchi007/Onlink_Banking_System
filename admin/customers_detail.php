@@ -1,4 +1,4 @@
-<?php
+    <?php
 include('include/DB.php');
 include('include/session.php');
 include('include/function.php');
@@ -94,7 +94,7 @@ include('include/sidebar.php');
                                                             <li><a href="change_customer_status.php?id=<?php echo $id;?>" class="dropdown-item">Un-verify Account</a></li>
                                                                 <?php
                                                                 }
-                                                                else{
+                                                                elseif ($accounts_status == "Inactive"){
                                                                 ?>
                                                                     <li><a href="change_customer_status.php?id=<?php echo $id;?>" class="dropdown-item">Verify Account</a></li>
                                                                     <?php

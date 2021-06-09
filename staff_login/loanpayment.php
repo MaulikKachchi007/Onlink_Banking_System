@@ -1,7 +1,6 @@
 <?php
 include 'include/DB.php';
 include 'include/function.php';
-include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -11,17 +10,14 @@ while($row = $stmt->fetch()){
     $c_id = $row['c_id'];
 }
 if (isset($_POST["make_payment"])) {
-    $acc_no = $_POST["acc_no"];
-    $payment_type = $_POST["payment_type"];
+    $acc_no = $_POST["account_no"];
     $paidamt = $_POST["paidamt"];
     $c_id = $_POST["custid"];
     $interest = $_POST["interest"];
-    $balance = $_POST['balanceamt'];
-    $loan_amount = $_POST['loan_amount'];
     $particulars = $_POST["particulars"];
-    $balanceamt = $_POST['balanceamt'];
-    $paid_date = date("Y-m-d");
-    if (empty($paidamt)  || empty($payment_type)) {
+    $approve_date_time = date("Y-m-d");
+    $trans_date_time = date("Y-m-d");
+    if (empty($paidamt) || empty($particulars)) {
         $_SESSION["error_message"] = "All must fill required.";
         redirect('loanpayment.php');
     } elseif($paidamt <= 0){
@@ -29,33 +25,33 @@ if (isset($_POST["make_payment"])) {
         redirect('loanpayment.php');
     } else{
         global $con;
-        $sql = "insert into loan_payment(c_id,loan_account_number,loan_amt,interest,total_amt,paid,payment_type,balance,paid_date) 
-            VALUES(:c_id,:loan_account_number,:loan_amt,:interest,:total_amt,:paid,:payment_type,:balance,:paid_date)";
+        $sql = "INSERT INTO transaction(to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
+                VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
 
-        $stmt = $con->prepare($sql);
-        $stmt->bindValue(':c_id', $c_id);
-        $stmt->bindValue(':loan_account_number', $acc_no);
-        $stmt->bindValue(':loan_amt', $loan_amount);
-        $stmt->bindValue(':interest', $interest);
-        $stmt->bindValue(':total_amt', $_POST['totamt']);
-        $stmt->bindValue(':paid', $_POST['paidamt']);
-        $stmt->bindValue(':payment_type', 'Account');
-        $stmt->bindValue(':balance', $balanceamt);
-        $stmt->bindValue(':paid_date', $paid_date);
+        $stmt->bindValue(':to_acc_no',$acc_no);
+        $stmt->bindValue(':amount',$paidamt);
+        $stmt->bindValue(':comission','0');
+        $stmt->bindValue(':particulars',$particulars);
+        $stmt->bindValue(':transaction_type','Credit');
+        $stmt->bindValue(':trans_date_time', $trans_date_time);
+        $stmt->bindValue(':approve_date_time',$approve_date_time);
+        $stmt->bindValue(':payment_status','Active');
         $result = $stmt->execute();
-
-        if ($result) {
-            $_SESSION['success_message'] = "Make Loan Payment Successfully";
-        } else {
-            $_SESSION['error_message'] = "Something went wrong. Try again!";
-        }
+        $q = "UPDATE accounts SET account_balance= account_balance +  $paidamt  WHERE account_no='$acc_no'";
+        $st = $con->query($q);
+        $result = $stmt->execute();
+//        if ($result) {
+//            $_SESSION['success_message'] = "Make Loan Payment Successfully";
+//        } else {
+//            $_SESSION['error_message'] = "Something went wrong. Try again!";
+//        }
     }
 }
 ?>
 <?php
-include 'include/header.php';
-include 'include/sidebar.php';
-include 'include/topbar.php';
+//include 'include/header.php';
+//include 'include/sidebar.php';
+//include 'include/topbar.php';
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -105,9 +101,7 @@ include 'include/topbar.php';
             </div>
         </section>
     </div>
-<?php
-include 'include/footer.php';
-?>
+
 <script type="text/javascript">
         function calculatebal(totamt,paidamt)
         {
@@ -139,3 +133,6 @@ include 'include/footer.php';
             xmlhttp.send();
         }
     </script>
+<?php
+include 'include/footer.php';
+?>

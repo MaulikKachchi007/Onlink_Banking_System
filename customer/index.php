@@ -187,60 +187,63 @@ include('include/sidebar.php');
                 <!-- /.card -->
 
                 <!-- /.card -->
-                <div class="card card-primary ml-3">
-                    <div class="card-header border-0">
-                        <h3 class="card-title">Mini Statement</h3>
-                        <div class="card-tools">
-                            <a href="mini_statement.php?birthdate=<?php echo substr($birthdate,0,4);?>" class="btn btn-tool btn-sm">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card card-body">
-                        <table id="example1" class="table table-striped table-bordered table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Account No</th>
-                                <th>Amount</th>
-                                <th>Particulars</th>
-                                <th>Transaction Types</th>
-                                <th>Transaction Date Time</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            global $con;
-                            //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
-                            $sql = "SELECT * FROM transaction 
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card card-primary ml-3">
+                            <div class="card-header border-0">
+                                <h3 class="card-title">Mini Statement</h3>
+                                <div class="card-tools">
+                                    <a href="mini_statement.php?birthdate=<?php echo substr($birthdate,0,4);?>" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card card-body">
+                                <table id="example1" class="table table-striped table-bordered table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Account No</th>
+                                        <th>Amount</th>
+                                        <th>Particulars</th>
+                                        <th>Transaction Types</th>
+                                        <th>Transaction Date Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    global $con;
+                                    //                            $sql ="SELECT * FROM transaction INNER JOIN  accounts ON transaction.to_acc_no=accounts.acc_no WHERE accounts.customer_id='$_SESSION[customer_id]' AND (transaction.payment_status='Active' OR transaction.payment_status='Approved')  LIMIT 0,10 ";
+                                    $sql = "SELECT * FROM transaction 
                                     INNER JOIN accounts ON transaction.to_account_no= accounts.account_no WHERE
-                                    accounts.c_id='$get_id' and (accounts.account_type='Saving Account' or accounts.account_type='Current Account') AND (transaction.payment_status='Active' or transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC LIMIT 1,10";
-                            $stmt = $con->query($sql);
-                            while ($row = $stmt->fetch()) {
-                                $trans_id = $row['trans_id'];
-                                $account_no = $row['account_no'];
-                                $account_balance = $row['amount'];
-                                $particular = $row['particulars'];
-                                $transaction_type = $row['transaction_type'];
-                                $t_datetime = $row['trans_date_time'];
-                                ?>
-                                <tr>
-                                    <td><?php echo $account_no;?></td>
-                                    <td>&#8377;  <?php echo $account_balance;?></td>
-                                    <td><?php echo $particular;?></td>
-                                    <td><?php echo $transaction_type;?></td>
-                                    <td><?php echo $t_datetime;?></td>
-                                    <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
-                                </tr>
-                                <?php
-                            }
-                            ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                    accounts.c_id='$get_id' and (accounts.account_type='Saving Account' or accounts.account_type='Current Account') AND (transaction.payment_status='Active' or transaction.payment_status='Approved')  ORDER BY transaction.trans_id DESC LIMIT 0,10";
+                                    $stmt = $con->query($sql);
+                                    while ($row = $stmt->fetch()) {
+                                        $trans_id = $row['trans_id'];
+                                        $account_no = $row['account_no'];
+                                        $account_balance = $row['amount'];
+                                        $particular = $row['particulars'];
+                                        $transaction_type = $row['transaction_type'];
+                                        $t_datetime = $row['trans_date_time'];
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $account_no;?></td>
+                                            <td>&#8377;  <?php echo $account_balance;?></td>
+                                            <td><?php echo $particular;?></td>
+                                            <td><?php echo $transaction_type;?></td>
+                                            <td><?php echo $t_datetime;?></td>
+                                            <td><a href="depoitemoneyreceipt.php?id=<?php echo $trans_id;?>" target="_blank" class="btn btn-primary">Receipt</a></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 </div>
                 <!-- /.card -->
-                               </div>
+            </div>
         </div>
             <!-- /.row -->
 

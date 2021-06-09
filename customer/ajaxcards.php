@@ -1,4 +1,4 @@
-<?php
+    <?php
 include 'include/DB.php';
 include 'include/function.php';
 //include 'include/session.php';
@@ -15,6 +15,12 @@ confirm_login();
         $balance = $row['account_balance'];
         $account_type = $row['account_type'];
     }
+    $rowcount = $stmt->rowCount();
+    if ($rowcount==0) {
+        ?>
+        <img src='image/LoadingSmall.gif' width='172' height='172'/>
+        <?php
+    } else{
 ?>
 <table class="table table-striped table-bordered">
     <tr>
@@ -64,3 +70,6 @@ confirm_login();
 <div class="form-group">
     <input type="submit" class="btn btn-primary"name='apply_card' value="Apply Card">
 </div>
+ <?php
+    }
+    ?>

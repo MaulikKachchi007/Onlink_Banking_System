@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 global $con;
 
 $get_id = $_GET['id'];

@@ -93,7 +93,7 @@ if (isset($_POST['login'])){
                     <a href="forgot_password.php">I forgot my password</a>
                 </p>
                 <p class="mb-0">
-                    <a href="register.php" class="text-center">Register a new membership</a>
+                    <a href="reg.php" class="text-center">Register a new membership</a>
                 </p>
             </div>
         </div>

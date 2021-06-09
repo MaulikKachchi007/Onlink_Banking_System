@@ -75,7 +75,8 @@ include 'include/topbar.php';
                                     <div class="form-group">
                                         <label for="account_number">Account Number</label>
                                         <?php
-                                        $sql = "SELECT * FROM accounts  INNER JOIN  customers_master ON accounts.c_id = customers_master.c_id";
+                                        $get_id = $_GET['id'];
+                                        $sql = "SELECT * FROM accounts  INNER JOIN  customers_master ON accounts.c_id = customers_master.c_id WHERE customers_master.c_id ='$get_id'and accounts.account_type = 'Saving Account' or accounts.account_type = 'Current Account'";
                                         $stmt = $con->query($sql);
                                         while ($row = $stmt->fetch())
                                         {
@@ -84,7 +85,7 @@ include 'include/topbar.php';
                                             $account_no = $row['account_no'];
                                         }
                                         ?>
-                                        <input class="form-control" name="account_number" value="<?php echo $account_no; ?> (<?php  echo $f_name; ?> <?php echo  $l_name;?>)" type="text" readonly placeholder="Account Number">
+                                        <input class="form-control" name="account_number" value="<?php echo $account_no; ?>" type="text" readonly placeholder="Account Number">
                                     </div>
                                     <div class="form-group">
                                         <label for="Subject">Subject</label>

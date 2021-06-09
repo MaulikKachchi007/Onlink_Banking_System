@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id = $_SESSION['id'];

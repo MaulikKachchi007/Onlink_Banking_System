@@ -1,7 +1,7 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
-include 'include/footer.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id = $_GET['id'];
@@ -68,7 +68,7 @@ include 'include/topbar.php';
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_branch.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_employee.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php

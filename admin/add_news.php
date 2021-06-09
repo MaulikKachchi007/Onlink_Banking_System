@@ -1,7 +1,7 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
-include 'include/footer.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 if (isset($_POST["add_record"])) {

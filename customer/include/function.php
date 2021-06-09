@@ -23,10 +23,11 @@ function checkUserExists($email){
 #login attempt
 function login_attempt($email,$password){
     global $con;
+    $get_Password = base64_encode($password);
     $sql = "SELECT * from customers_master WHERE email=:eMail AND password=:passWord LIMIT 1";
     $stmt = $con->prepare($sql);
     $stmt->bindValue(':eMail',$email);
-    $stmt->bindValue(':passWord',$password);
+    $stmt->bindValue(':passWord',$get_Password);
     $stmt->execute();
     $result = $stmt->rowcount();
     if ($result==1){

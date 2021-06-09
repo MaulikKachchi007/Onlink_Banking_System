@@ -1,7 +1,6 @@
 <?php
 include 'include/DB.php';
 include 'include/function.php';
-include 'include/footer.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id  = $_GET['id'];
@@ -36,7 +35,7 @@ include 'include/topbar.php';
                             <?php
                             global $con;
                             //Query When Pagination is Active i.g.Blog.php?page=1
-
+                            $get_id  = $_GET['id'];
                                 $sql = "SELECT * FROM news where id='$get_id'";
                                 $stmt = $con->query($sql);
                             while ($row = $stmt->fetch()) {

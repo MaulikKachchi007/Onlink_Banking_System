@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $get_id = $_SESSION['id'];
 $loan_account_number = $_GET['id'];
 global $con;

@@ -1,7 +1,7 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
-include 'include/footer.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -18,21 +18,18 @@ if (isset($_POST["add_registred"])) {
         redirect('registeredpayee.php');
     }else{
         global $con;
-        $sql = "insert into registered_payee(c_id,registered_payee_type,payee_name,acccount_no,account_type,bank_name,ifsccode,status) 
-            VALUES(:c_id,:registered_payee_type,:payee_name,:acccount_no,:account_type,:bank_name,:ifsccode,:status)";
-//        $sql = "insert into loan_payment(c_id,registered_payee_type,payee_name,acccount_no,account_type,bank_name,ifsccode,status)
-//            VALUES('$c_id','$fund_transfer_type','$payeename','$bank_account_number',:account_type,:bank_name,:ifsccode,:status)";
+        $sql = "insert into registered_payee(c_id,registered_payee_type,payee_name,account_no,account_type,bank_name,ifsccode,status)
+            VALUES(:c_id,:registered_payee_type,:payee_name,:acccount_no,:account_no,:bank_name,:ifsccode,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':c_id', $c_id);
         $stmt->bindValue(':registered_payee_type', $fund_transfer_type);
         $stmt->bindValue(':payee_name', $payeename);
-        $stmt->bindValue(':acccount_no', $bank_account_number);
+        $stmt->bindValue(':account_no', $bank_account_number);
         $stmt->bindValue(':account_type', $accounttype);
         $stmt->bindValue(':bank_name', $bankname);
         $stmt->bindValue(':ifsccode', $ifsccode);
         $stmt->bindValue(':status', 'Active');
         $result = $stmt->execute();
-        print_r($stmt->errorInfo());
         if ($result) {
             $_SESSION['success_message'] = "Registered payee Added Successfully";
         } else {
@@ -99,7 +96,7 @@ include 'include/topbar.php';
     </section>
 </div>
 <?php
-include 'include/footer.php';
+require_once 'include/footer.php';
 ?>
 <script type="text/javascript">
     function showcustomer(customeracid,fund_transfer_type)

@@ -44,22 +44,23 @@ if (isset($_POST["add_account"])) {
         $stmt->bindValue(':account_status',$status);
         $result = $stmt->execute();
 //        Add Clear Balance
+        $ac_no = $_POST["account_no"];
         date_default_timezone_set('asia/Calcutta');
         $approve_date_time = date('Y-m-d');
         $trans_date_time = date('Y-m-d');
-        $iq = "INSERT INTO transaction(to_account_no,amount,comission, particulars,transaction_type, approve_date_time, payment_status) 
-        VALUES(:to_account_no,:amount,:comission, :particulars,:transaction_type, :approve_date_time, :payment_status)";
-        $stmt = $con->prepare($iq);
-        $stmt->bindValue(':to_account_no',$ac_no);
-        $stmt->bindValue(':amount',$balance);
-        $stmt->bindValue(':comission',0);
-        $stmt->bindValue(':particulars','Account opening balance');
-        $stmt->bindValue(':transaction_type','Credit');
-        $stmt->bindValue(':trans_date_time', $trans_date_time);
-        $stmt->bindValue(':approve_date_time',$approve_date_time);
-        $stmt->bindValue(':payment_status','Approved');
-        $result = $stmt->execute();
-        if ($result) {
+        $iq = "INSERT INTO transaction(to_account_no,amount,comission, particulars,transaction_type,trans_date_time, approve_date_time, payment_status)
+               VALUES(:to_account_no,:amount,:comission, :particulars,:transaction_type,:trans_date_time, :approve_date_time, :payment_status)";
+        $st = $con->prepare($iq);
+        $st->bindValue(':to_account_no',$ac_no);
+        $st->bindValue(':amount',$balance);
+        $st->bindValue(':comission',0);
+        $st->bindValue(':particulars','Account opening balance');
+        $st->bindValue(':transaction_type','Credit');
+        $st->bindValue(':trans_date_time', $trans_date_time);
+        $st->bindValue(':approve_date_time',$approve_date_time);
+        $st->bindValue(':payment_status','Approved');
+        $res = $st->execute();
+        if ($result and $res) {
             $_SESSION['success_message'] = "Account Added Successfully";
             redirect('view_customers.php');
         }else{
@@ -97,6 +98,7 @@ include 'include/topbar.php';
                                 <a href="view_customers.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <!-- /.card-header -->
+                            <?php  $get_id= $_GET["id"];?>
                             <!-- form start -->
                             <div class="card-body">
                             <form role="form" action="add_acc.php?id=<?php echo $get_id; ?>" method="post">
@@ -107,6 +109,8 @@ include 'include/topbar.php';
                                     <div class="form-group">
                                         <label for="account_type">Account Type</label>
                                         <?php
+                                            global $con;
+                                            $get_id= $_GET["id"];
                                             $qr = "SELECT * FROM customers_master WHERE c_id='$get_id'";
                                             $stmt = $con->query($qr);
                                             while ($row = $stmt->fetch()){

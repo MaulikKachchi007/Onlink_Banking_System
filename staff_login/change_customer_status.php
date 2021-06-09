@@ -44,7 +44,7 @@ if (isset($_POST['verify_account'])) {
 <?php
 global $con;
 
-$q = "SELECT * FROM customers_master, accounts WHERE  customers_master.c_id= accounts.c_id  AND  customers_master.c_id='$get_id'";
+$q = "SELECT * FROM customers_master WHERE c_id='$get_id'";
 $stmt = $con->prepare($q);
 $result = $stmt->execute();
 while ($row = $stmt->fetch()) {
@@ -61,7 +61,6 @@ while ($row = $stmt->fetch()) {
     $birthdate = $row['birthdate'];
     $occuption = $row['occuption'];
     $account_type = $row['account_type'];
-    $account_no = $row['account_no'];
     $accounts_status = $row['accountstatus'];
 }
 ?>
@@ -126,10 +125,6 @@ include('include/sidebar.php');
                                     <td><?php echo $account_type; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Account Number</th>
-                                    <td><?php echo $account_no; ?></td>
-                                </tr>
-                                <tr>
                                     <th>Branch</th>
                                     <td><?php echo $branch; ?></td>
                                 </tr>
@@ -156,7 +151,7 @@ include('include/sidebar.php');
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <form method="post" action="change_customer_status.php?id=<?php echo $get_id; ?>">
+                                        <form method="post" action="change_customer_status.php?id=<?php echo $custid; ?>">
                                         <?php if ($accounts_status == "active") {
                                             ?>
                                             <button type="submit" name="verify_account" onclick="confirm('Connfirm Verify Account');" class="btn btn-danger">Un-Verify Account</button>
