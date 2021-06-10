@@ -24,7 +24,6 @@ if (isset($_POST["send_Message"])) {
         $stmt->bindValue(':sender_id',$get_id);
         $stmt->bindValue(':receiver_id',$g_id);
         $result = $stmt->execute();
-        var_dump($result);
         if ($result) {
             $_SESSION['success_message'] = "Mail Send Successfully";
             redirect('view_message.php');

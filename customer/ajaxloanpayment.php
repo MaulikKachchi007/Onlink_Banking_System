@@ -1,7 +1,9 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 global $con;
+
 $account_number = $_GET['account_number'];
 $sql = "SELECT * FROM accounts INNER JOIN customers_master ON customers_master.c_id = accounts.c_id
         WHERE accounts.account_no ='$account_number' and accounts.account_status ='Active' and accounts.account_type ='Saving Account' OR accounts.account_type ='Current Account'";
@@ -48,11 +50,11 @@ while ($row = $stmt->fetch()) {
     </div>
     <div class="form-group">
         <label for="paid_amt">Paid Amounnt</label>
-        <input type="text" class="form-control" onKeyUp="calculatebal(totamt.value,this.value)" autocomplete="off" name="paid_amt"  placeholder="Paid Amount" />
+        <input type="text" class="form-control"  autocomplete="off" readonly name="paid_amt" id="paid_amt" value="<?php echo $_SESSION['paid_amt'];?>"  placeholder="Paid Amount" />
     </div>
     <div class="form-group">
         <label for="bal_amt">Balance Amounnt</label>
-            <input type="text" class="form-control" name="bal_amt" id="balanceamt"  readonly placeholder="Balance Amount"/>
+            <input type="text" class="form-control" value="" name="bal_amt" id="balanceamt"  placeholder="Balance Amount"/>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="submit"  value="Make Payment"/>

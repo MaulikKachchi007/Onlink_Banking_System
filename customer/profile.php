@@ -15,7 +15,7 @@ if (isset($_POST["update_record"])) {
     $imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
     if (empty($photo)) {
         $_SESSION["error_message"] = "All must fill required.";
-    }elseif($_FILES['photo']['size'] > 300000 ){
+    }elseif($_FILES['photo']['size'] > 3000000 ){
         $_SESSION["error_message"] = "image size must be 3MB or less than.";
     }
     elseif($imageFileType != "jpg" && $imageFileType != "jpeg" ) {

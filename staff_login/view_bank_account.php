@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -14,9 +14,9 @@ if ($row = $stmt->fetch()){
 }
 ?>
 <?php
-include_once 'include/header.php';
-include_once 'include/topbar.php';
-include_once 'include/sidebar.php';
+require_once 'include/header.php';
+require_once 'include/topbar.php';
+require_once 'include/sidebar.php';
 ?>
 <div class="content-wrapper">
     <section class="content">

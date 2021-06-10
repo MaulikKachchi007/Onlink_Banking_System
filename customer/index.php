@@ -1,7 +1,7 @@
 <?php
-    include('include/DB.php');
-    include('include/session.php');
-    include('include/function.php');
+    require_once('include/DB.php');
+    require_once('include/session.php');
+    require_once('include/function.php');
    $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
    confirm_login();
     $get_id = $_SESSION['c_id'];
@@ -19,9 +19,9 @@
     }
 ?>
 <?php
-include('include/header.php');
-include('include/topbar.php');
-include('include/sidebar.php');
+require_once('include/header.php');
+require_once('include/topbar.php');
+require_once('include/sidebar.php');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -59,14 +59,14 @@ include('include/sidebar.php');
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?php  if(empty(CreditTransaction())) {  echo 0;} else { echo CreditTransaction();}  ?><span>&#8377;</span></h3>
 
-                            <p>New Orders</p>
+                            <p>Credit Transaction</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                        <i class="fas fa-rupee-sign"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="view_transaction.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -74,14 +74,13 @@ include('include/sidebar.php');
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>Bounce Rate</p>
+                            <h3><?php if(empty(DebitTransaction())) {  echo 0;} else { echo DebitTransaction();} ?><span>&#8377;</span></h3>
+                            <p>Debit Transaction</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-rupee-sign"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="view_transaction.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -89,14 +88,13 @@ include('include/sidebar.php');
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
-
-                            <p>User Registrations</p>
+                        <h3><?php if(empty(total_loan_account())) {  echo 0;} else { echo total_loan_account();} ?><span>&#8377;</span></h3>
+                            <p>Loan Account</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                        <i class="fas fa-rupee-sign"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="view_loan_accounts.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -104,14 +102,14 @@ include('include/sidebar.php');
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3><?php if(empty(total_fixed_deposits())) {  echo 0;} else { echo total_fixed_deposits();} ?><span>&#8377;</span></h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Fixed Deposite</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                        <i class="fas fa-rupee-sign"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="view_fd_account.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

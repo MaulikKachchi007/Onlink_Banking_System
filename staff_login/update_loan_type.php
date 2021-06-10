@@ -65,7 +65,7 @@ include 'include/topbar.php';
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_account.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="view_loan_type.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php

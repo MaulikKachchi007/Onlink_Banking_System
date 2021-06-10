@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $get_id = $_SESSION['id'];
 global $con;
 $q = "SELECT * FROM employees_master WHERE id='$get_id'";
@@ -19,17 +19,17 @@ if (isset($_POST['verify_loan'])) {
     $result = $stmt->execute();
     if ($result) {
         $_SESSION['success_message'] = "Pending Load Request Verify.";
-        redirect('view_loan_pending.php');
+        redirect('pending_loan_request.php');
     } else {
         $_SESSION['error_message'] = "Something went wrong. Try again!";
-        redirect('view_loan_pending.php');
+        redirect('pending_loan_request.php');
     }
 }
 ?>
 <?php
-include_once 'include/header.php';
-include_once 'include/topbar.php';
-include_once 'include/sidebar.php';
+require_once 'include/header.php';
+require_once 'include/topbar.php';
+require_once 'include/sidebar.php';
 ?>
 <div class="content-wrapper">
     <section class="content">
@@ -161,7 +161,7 @@ include_once 'include/sidebar.php';
                                                                         <tr>
                                                                             <th>Status</th>
                                                                             <td>
-                                                                                <form method="post" action="view_loan_pending.php?id=<?php echo $row['loan_id']; ?>">
+                                                                                <form method="post" action="pending_loan_request.php?id=<?php echo $row['loan_id']; ?>">
                                                                                     <select name="loanstatus" class="form-control">
                                                                                         <option value="Select" selected>Select</option>
                                                                                         <option value="Approved">Approved</option>
@@ -201,9 +201,6 @@ include_once 'include/sidebar.php';
 </div>
 </section>
 </div>
-<?php
-include 'include/footer.php';
-?>
 <script>
     $(function () {
         $('#example1').DataTable({
@@ -223,3 +220,6 @@ include 'include/footer.php';
 <script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<?php
+include 'include/footer.php';
+?>

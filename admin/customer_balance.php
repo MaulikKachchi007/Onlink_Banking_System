@@ -1,7 +1,7 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
-//include 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 $get_id = $_GET['id'];
@@ -17,22 +17,20 @@ if (isset($_POST["update_account"])) {
         $sql  = "";
         $stmt = $con->prepare($sql);
         $result = $stmt->execute();
-        var_dump($result);
         if ($result) {
             $_SESSION['success_message'] = "Account Fund Tranfer Successfully.";
             redirect('customers_detail.php');
         }else{
             $_SESSION['error_message'] = "Something went wrong. Try again!";
-            print_r($con->errorInfo());
-//                redirect('customers_detail.php');
+                redirect('customers_detail.php');
         }
     }
 }
 ?>
 <?php
-include 'include/header.php';
-include 'include/sidebar.php';
-include 'include/topbar.php';
+require_once 'include/header.php';
+require_once 'include/sidebar.php';
+require_once 'include/topbar.php';
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -54,7 +52,7 @@ include 'include/topbar.php';
                                         </div><!-- /.col -->
                                     </div><!-- /.row -->
                                 </div>
-                                <a href="view_account.php" class="btn btn-info float-right text-white">View Record</a>
+                                <a href="customer_balance.php" class="btn btn-info float-right text-white">View Record</a>
                             </div>
                             <div class="container p-1">
                                 <?php

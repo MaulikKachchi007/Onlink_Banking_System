@@ -1,6 +1,6 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -27,7 +27,7 @@ if (isset($_POST["make_payment"])) {
         global $con;
         $sql = "INSERT INTO transaction(to_account_no,amount,comission,particulars,transaction_type,trans_date_time,approve_date_time,payment_status) 
                 VALUES(:to_acc_no,:amount,:comission,:particulars,:transaction_type,:trans_date_time,:approve_date_time,:payment_status)";
-
+        $stmt = $con->prepare($sql);
         $stmt->bindValue(':to_acc_no',$acc_no);
         $stmt->bindValue(':amount',$paidamt);
         $stmt->bindValue(':comission','0');
@@ -39,19 +39,19 @@ if (isset($_POST["make_payment"])) {
         $result = $stmt->execute();
         $q = "UPDATE accounts SET account_balance= account_balance +  $paidamt  WHERE account_no='$acc_no'";
         $st = $con->query($q);
-        $result = $stmt->execute();
-//        if ($result) {
-//            $_SESSION['success_message'] = "Make Loan Payment Successfully";
-//        } else {
-//            $_SESSION['error_message'] = "Something went wrong. Try again!";
-//        }
+        $result = $st->execute();
+       if ($result) {
+           $_SESSION['success_message'] = "Make Loan Payment Successfully";
+       } else {
+           $_SESSION['error_message'] = "Something went wrong. Try again!";
+       }
     }
 }
 ?>
 <?php
-//include 'include/header.php';
-//include 'include/sidebar.php';
-//include 'include/topbar.php';
+require_once 'include/header.php';
+require_once 'include/sidebar.php';
+require_once 'include/topbar.php';
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -134,5 +134,5 @@ if (isset($_POST["make_payment"])) {
         }
     </script>
 <?php
-include 'include/footer.php';
+require_once 'include/footer.php';
 ?>

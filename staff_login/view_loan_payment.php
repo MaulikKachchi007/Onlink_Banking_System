@@ -85,7 +85,7 @@ include_once 'include/sidebar.php';
                                             $loan_amount = $row['loan_amt'];
                                             $paid = $row['paid'];
                                             $ifsccode = $row['ifsccode'];
-                                            $balance = $row['balance'];
+                                                $balance = $row['balance'];
                                             $payment_type = $row['payment_type'];
                                             $total_amt = $row['total_amt'];
                                             $paid_date = $row['paid_date'];

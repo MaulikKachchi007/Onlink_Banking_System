@@ -1,7 +1,7 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -13,9 +13,9 @@ while ($row = $stmt->fetch()) {
 }
 ?>
 <?php
-include_once 'include/header.php';
-include_once 'include/topbar.php';
-include_once 'include/sidebar.php';
+require_once 'include/header.php';
+require_once 'include/topbar.php';
+require_once 'include/sidebar.php';
 ?>
 <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -212,9 +212,7 @@ include_once 'include/sidebar.php';
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-<?php
-include 'include/footer.php';
-?>
+
 <script type="text/javascript">
 
     $(function () {
@@ -234,3 +232,6 @@ include 'include/footer.php';
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<?php
+include 'include/footer.php';
+?>

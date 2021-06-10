@@ -5,7 +5,7 @@ include_once 'include/session.php';
 $get_id = $_SESSION['id'];
 global $con;
 $sql = "SELECT * from customers_master 
-        INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id";
+        INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id WHERE loan_payment.c_id='$get_id'";
 $stmt = $con->query($sql);
 while ($row = $stmt->fetch()){
     $f_name = $row['f_name'];
@@ -47,8 +47,7 @@ include_once 'include/sidebar.php';
                                 </div>
                                 <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
-                                    <th>
-                                        tr>
+                                        <tr>
                                         <th>Customer Name</th>
                                         <th>Loan Account Number</th>
                                         <th>Loan Type</th>
@@ -58,7 +57,8 @@ include_once 'include/sidebar.php';
                                         <th>Interest Amount</th>
                                         <th>Total Payble</th>
                                         <th>Total Paid</th>
-                                        <th>Balance</   <th>Action</th>
+                                        <th>Balance</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -77,7 +77,7 @@ include_once 'include/sidebar.php';
                                             $loan_amount  = $row['loan_amount'];
                                             $interest = $row['intrest'];
                                             $loan_interest = $row['interest'];
-                                            $term=  "$row[terms] years";
+                                            $term =  "$row[terms] years";
                                             $created_date = $row['created_date'];
                                             $total_payable = $loan_amount + $interest;
                                             $status = $row['status'];

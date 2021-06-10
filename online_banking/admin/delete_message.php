@@ -1,0 +1,22 @@
+<?php
+include 'include/DB.php';
+include 'include/function.php';
+//    include 'include/session.php';
+$_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
+confirm_login();
+
+//Delete Record in Database
+global $con;
+$get_id = $_GET['id'];
+$sql = "DELETE FROM mail WHERE m_id = '$get_id'";
+echo $sql;
+$stmt = $con->query($sql);
+$result = $stmt->execute();
+if ($result) {
+    $_SESSION['success_message'] = "Delete Mail Successfully.";
+    redirect('view_message.php');
+} else {
+    $_SESSION['error_message'] = "Something went wrong. Try again.";
+    redirect('view_message.php');
+}
+$con = null;

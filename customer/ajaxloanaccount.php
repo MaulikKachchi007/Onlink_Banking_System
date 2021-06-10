@@ -3,7 +3,7 @@ include 'include/DB.php';
 include 'include/function.php';
 global $con;
 $loan_account_number = $_GET['loan_account_number'];
-$sql = "SELECT loan.loan_id,loan_type_master.prefix,customers_master.ifsccode,customers_master.l_name,customers_master.f_name,loan.loan_account_number,loan_type_master.loan_type,loan.c_id,loan.created_date,loan_amount,loan_type_master.interest,loan.status from ((loan_type_master 
+$sql = "SELECT loan.loan_id,loan_type_master.prefix,customers_master.ifsccode,customers_master.l_name,customers_master.f_name,loan.loan_account_number,loan_type_master.terms,loan_type_master.loan_type,loan.intrest,loan.c_id,loan.created_date,loan_amount,loan_type_master.interest,loan.status from ((loan_type_master 
         INNER JOIN loan ON loan_type_master.id=loan.id)
         INNER JOIN customers_master ON customers_master.c_id=loan.c_id) where loan.loan_account_number='$loan_account_number' and loan.status='Approved'";
 $stmt = $con->query($sql);
@@ -18,9 +18,13 @@ while ($row = $stmt->fetch()) {
     $ifsccode = $row['ifsccode'];
     $loan_amount  = $row['loan_amount'];
     $interest = $row['interest'];
+    $intrest = $row['intrest'];
     $created_date = $row['created_date'];
-    $total_payable = $loan_amount + $interest;
+    $total_payable = $loan_amount + $intrest;
+    $term = $row['terms'];
     $status = $row['status'];
+    $interest_paid_amt = $total_payable / ($term * 12);
+    $_SESSION['paid_amt'] =$interest_paid_amt;
 ?>
 <table class="table table-bordered table-striped">
     <tr>
@@ -56,7 +60,7 @@ while ($row = $stmt->fetch()) {
     <tr>
         <th>Total Payble Amount</th>
         <td><?php echo $total_payable = $loan_amount + ($loan_amount * $interest/100); ?></td>
-        <input type="hidden" name="totamt" id="totamt" value="<?php echo $total_payable;?>">
+        <input type="hidden" name="totamt" id="totamt" value="<?php echo $total_payable-$_SESSION['paid_amt'];?>">
     </tr>
     <tr>
         <th>Toatal Paid Amount</th>

@@ -1,7 +1,7 @@
 <?php
-include 'include/DB.php';
-include 'include/function.php';
-//include 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $_SESSION['TrackingURL'] = $_SERVER['PHP_SELF'];
 confirm_login();
 global $con;
@@ -56,9 +56,9 @@ if (isset($_POST["submit"])) {
 }
 ?>
 <?php
-include 'include/header.php';
-include 'include/sidebar.php';
-include 'include/topbar.php';
+require_once 'include/header.php';
+require_once 'include/sidebar.php';
+require_once 'include/topbar.php';
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -124,7 +124,7 @@ include 'include/topbar.php';
         </section>
     </div>
 <?php
-include 'include/footer.php';
+require_once 'include/footer.php';
 ?>
 <script type="text/javascript">
     function calculatebal(totamt,paidamt)
@@ -185,3 +185,4 @@ include 'include/footer.php';
         xmlhttp.send();
     }
 </script>
+

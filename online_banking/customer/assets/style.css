@@ -1,0 +1,21 @@
+body{
+	background-color:  #fff;
+}
+.box{
+	padding: 35px;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.height{
+	height: 300px;
+}
+.my_form{
+	padding: 15px;
+	background-color: #e9ecef;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+.holder{
+	height: 300px;
+	overflow: auto;
+}
