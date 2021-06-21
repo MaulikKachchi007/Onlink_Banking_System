@@ -69,6 +69,7 @@ include 'include/topbar.php';
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
+                            <?php $get_id = $_GET['id']; ?>
                             <form role="form" action="reply_mail.php?id=<?php echo $get_id; ?>" method="post">
                                 <div class="card-body">
                                     <div class="form-group">

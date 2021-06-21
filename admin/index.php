@@ -227,7 +227,7 @@ foreach ($incomes as $income) {
             labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
             datasets: [
                 {
-                    label               : 'Credit',
+                    label               : 'Debit',
                     backgroundColor     : 'rgba(60,141,188,0.9)',
                     borderColor         : 'rgba(60,141,188,0.8)',
                     pointRadius          : false,
@@ -238,7 +238,7 @@ foreach ($incomes as $income) {
                     data                : <?php echo json_encode($exp);?>
                 },
                 {
-                    label               : 'Debit',
+                    label               : 'Credit',
                     backgroundColor     : 'rgba(210, 214, 222, 1)',
                     borderColor         : 'rgba(210, 214, 222, 1)',
                     pointRadius         : false,
