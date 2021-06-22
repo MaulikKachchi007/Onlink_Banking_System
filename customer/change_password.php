@@ -6,30 +6,40 @@ require_once ('include/function.php');
 <?php
 $get_id = $_SESSION['c_id'];
 if (isset($_POST['change_pwd'])){
-    $old_password = $_POST['old_password'];
-    $new_password = $_POST['new_password'];
-    $confirm_Password = $_POST['confirm_password'];
-    if(!empty($old_password)||!empty($new_password) || !empty($confirm_Password)) {
-
-        if (strlen($new_password)  > 11) {
-        $_SESSION['error_message'] = "Your Password  Less than 10 characters!";
-        redirect('change_password.php');
-        }elseif(!preg_match("#[0-9]+#",$new_password)) {
+    $old_password = base64_encode($_POST['old_password']);
+    $new_password = base64_encode($_POST['new_password']);
+    $confirm_Password = base64_encode($_POST['confirm_password']);
+    $flag = true;
+    if(empty($old_password)||empty($new_password) || empty($confirm_Password)) {
+            $_SESSION['error_message'] = "All Fill Must Required.";
+            redirect('change_password.php');
+        $flag = false;
+    } elseif (strlen(base64_decode($new_password))  < 8) {
+            $_SESSION['error_message'] = "Your Password  Less than 8 characters!";
+            redirect('change_password.php');
+            $flag = false;
+        }elseif(!preg_match("#[0-9]+#",base64_decode($new_password))) {
             $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
             redirect('change_password.php');
-        }elseif(!preg_match("#[A-Z]+#",$new_password)) {
+                   $flag = false;
+        }elseif(!preg_match("#[A-Z]+#",base64_decode($new_password))) {
             $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Capital Letter!";
             redirect('change_password.php');
-        }elseif(!preg_match("#[a-z]+#",$new_password)) {
+                   $flag = false;
+        }elseif(!preg_match("#[a-z]+#",base64_decode($new_password))) {
             $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
             redirect('change_password.php');
-        }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $new_password)) {
+                   $flag = false;
+        }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', base64_decode($new_password))) {
             $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Special Character !";
             redirect('change_password.php');
-        }else if ($new_password != $confirm_Password) {
+                   $flag = false;
+        }else if (base64_decode($new_password) != base64_decode($new_password)) {
             $_SESSION['error_message']= "Password and Confirm Password Not match.";
             redirect('change_password.php');
-        }else {
+                   $flag = false;
+        }
+        if ($flag==true) {
         #Request for Email code and check email
         global $con;
         $q = "SELECT * from customers_master where c_id='$get_id' AND password='$old_password'";
@@ -52,11 +62,9 @@ if (isset($_POST['change_pwd'])){
             $_SESSION["error_message"] = "Incorrect Old Password!";
             redirect('change_password.php');
         }
-    }
-    }else{
-            $_SESSION['error_message'] = "All Fill Must Required.";
-            redirect('change_password.php');
-    }
+    } else{
+            echo '';
+        }
 }
 
 ?>

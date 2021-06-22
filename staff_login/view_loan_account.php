@@ -1,19 +1,23 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $get_id = $_SESSION['id'];
 global $con;
-$sql = "SELECT * from customers_master 
-        INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id WHERE loan_payment.c_id='$get_id'";
+$sql = "SELECT * from loan_type_master 
+        INNER JOIN loan ON loan_type_master.id=loan.id";
 $stmt = $con->query($sql);
-while ($row = $stmt->fetch()){
-    $f_name = $row['f_name'];
-    $l_name = $row['l_name'];
-    $paid = $row['paid'];
-    $balance = $row['balance'];
-    $total_amt = $row['total_amt'];
-    $paid_date = $row['paid_date'];
+while ($row = $stmt->fetch()) {
+    $loan_id = $row['loan_id'];
+    $loan_account_number = $row['loan_account_number'];
+    $l_type = $row['loan_type'];
+    $loan_amount = $row['loan_amount'];
+    $interest = $row['intrest'];
+    $loan_interest = $row['interest'];
+    $term = "$row[terms] years";
+    $created_date = $row['created_date'];
+    $total_payable = $loan_amount + $interest;
+    $status = $row['status'];
 }
 ?>
 <?php
@@ -56,31 +60,30 @@ include_once 'include/sidebar.php';
                                         <th>Loan Amount</th>
                                         <th>Interest Amount</th>
                                         <th>Total Payble</th>
-                                        <th>Total Paid</th>
-                                        <th>Balance</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     global $con;
-                                    $sql = "SELECT * from loan_type_master 
-                                    INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.status='Approved'";
+                                    $sql = "SELECT * from customers_master 
+                                         INNER JOIN loan ON customers_master.c_id=loan.c_id";
+                                    $stmt = $con->query($sql);
                                     $stmt = $con->query($sql);
                                     $result = $stmt->rowcount();
                                     if ($result > 0)
                                     {
-                                        while ($row = $stmt->fetch()) {
+                                        while ($row = $stmt->fetch()){
+                                            $f_name = $row['f_name'];
+                                            $l_name = $row['l_name'];
                                             $loan_id = $row['loan_id'];
                                             $loan_account_number = $row['loan_account_number'];
-                                            $l_type = $row['loan_type'];
-                                            $loan_amount  = $row['loan_amount'];
+                                            $loan_amount = $row['loan_amount'];
                                             $interest = $row['intrest'];
-                                            $loan_interest = $row['interest'];
-                                            $term =  "$row[terms] years";
                                             $created_date = $row['created_date'];
                                             $total_payable = $loan_amount + $interest;
                                             $status = $row['status'];
+                                            $loan_account_number = $row['loan_account_number'];
                                             ?>
                                             <tr>
                                                 <td><?php echo $f_name; ?></td>
@@ -91,8 +94,6 @@ include_once 'include/sidebar.php';
                                                 <td>&#8377; <?php echo $loan_amount;?></td>
                                                 <td>&#8377; <?php echo $interest;?> (<?php echo $loan_interest; ?>)</td>
                                                 <td>&#8377; <?php echo $total_payable;?></td>
-                                                <td>&#8377; <?php echo $paid;?></td>
-                                                <td>&#8377;<?php echo $balance;?></td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Action
@@ -101,63 +102,7 @@ include_once 'include/sidebar.php';
                                                             <li><a href="view_loan_accounts_detail.php?id=<?php echo $loan_account_number; ?>" class="dropdown-item"> View</a></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="modal fade" id="ExampleModal<?php echo $row['loan_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">View Paid Loan Receipt</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div  class="modal-body">
-                                                                    <table class="table table-bordered table-striped">
-                                                                        <tr>
-                                                                            <th>Customer Name</th>
-                                                                            <td><?php echo $f_name; ?> <?php echo $l_name; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Account Number</th>
-                                                                            <td><?php echo $row['loan_account_number']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Type</th>
-                                                                            <td><?php echo $row['loan_type']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Loan Amount</th>
-                                                                            <td><?php echo $row['loan_amount']; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Interest Amount</th>
-                                                                            <td><?php echo $row['intrest']; ?> (<?php echo $loan_interest; ?> %)</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Amount</th>
-                                                                            <td><?php echo $total_amt; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Paid</th>
-                                                                            <td><?php echo $paid; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Total Balance</th>
-                                                                            <td><?php echo $balance; ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Paid Date</th>
-                                                                            <td><?php echo $paid_date; ?></td>
-                                                                        </tr>
 
-
-                                                                    </table>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                             <?php

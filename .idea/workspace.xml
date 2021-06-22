@@ -9,15 +9,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f8a713c-6278-4825-b90d-eb20a8245fcb" name="Default Changelist" comment="3-25-2021">
-      <change afterPath="$PROJECT_DIR$/admin/image/a15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/a20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/a27.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/image/dsf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/add_acc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/image/user8-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/reply_mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/reply_mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_login/reply_mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/reply_mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customers_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/view_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/view_loan_payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_loan_payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/ajaxloanaccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/ajaxloanaccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/ajaxloanpayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/ajaxloanpayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/change_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/change_pin_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/change_pin_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/recover_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/recover_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_login/add_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/add_employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_login/view_loan_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_loan_account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_login/view_loan_accounts_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_loan_accounts_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_login/view_transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff_login/view_transaction.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,6 +261,8 @@
       <workItem from="1623332806612" duration="641000" />
       <workItem from="1623397231028" duration="605000" />
       <workItem from="1624293257557" duration="1518000" />
+      <workItem from="1624327564011" duration="17000" />
+      <workItem from="1624328507575" duration="7361000" />
     </task>
     <servers />
   </component>
@@ -327,22 +334,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1622996365719" />
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615218609762">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1615218609762" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1615523443974">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1615523443974" />
     <state x="470" y="118" key="FileChooserDialogImpl" timestamp="1622386933773">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1622386933773" />
-    <state x="500" y="229" key="NewPhpFileDialog" timestamp="1622600467621">
+    <state x="500" y="229" key="NewPhpFileDialog" timestamp="1624335046318">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="229" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1622600467621" />
+    <state x="500" y="229" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1624335046318" />
     <state x="212" y="0" key="SettingsEditor" timestamp="1620401758907">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -379,10 +378,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1623172374147" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1622598917898">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1624337328472">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1622598917898" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1624337328472" />
     <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1617597861010">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

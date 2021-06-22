@@ -50,6 +50,7 @@ include_once 'include/sidebar.php';
                                         <tr>
                                             <th>Employee Id</th>
                                             <th>Employee name</th>
+                                            <th>Branch Code</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -65,11 +66,13 @@ include_once 'include/sidebar.php';
                                             while ($row = $stmt->fetch()) {
                                                 $id = $row['id'];
                                                 $ename = $row['ename'];
+                                                $ifsccode = $row['ifsccode'];
                                                 $status = $row['status'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $id; ?></td>
                                                     <td><?php echo $ename; ?></td>
+                                                        <td><?php echo $ifsccode; ?></td>
                                                     <td>
                                                        <?php
                                                             if($status == "Active") {
@@ -175,7 +178,7 @@ include_once 'include/sidebar.php';
     </section>
     </div>
 <?php
-include 'include/footer.php';
+require_once 'include/footer.php';
 ?>
 <script>
     $(function () {

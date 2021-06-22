@@ -1,12 +1,12 @@
 <?php
-include_once 'include/DB.php';
-include_once 'include/function.php';
-include_once 'include/session.php';
+require_once 'include/DB.php';
+require_once 'include/function.php';
+require_once 'include/session.php';
 $get_id = $_SESSION['id'];
 $loan_account_number = $_GET['id'];
 global $con;
 $sql = "SELECT * from loan_type_master 
-        INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.status='Approved'";
+        INNER JOIN loan ON loan_type_master.id=loan.id WHERE loan.loan_account_number='$loan_account_number' and loan.status='Approved'";
 $stmt = $con->query($sql);
 while ($row = $stmt->fetch()) {
     $loan_id = $row['loan_id'];
@@ -22,9 +22,9 @@ while ($row = $stmt->fetch()) {
 }
 ?>
 <?php
-include_once 'include/header.php';
-include_once 'include/topbar.php';
-include_once 'include/sidebar.php';
+require_once 'include/header.php';
+require_once 'include/topbar.php';
+require_once 'include/sidebar.php';
 ?>
 <div class="content-wrapper">
     <section class="content">
@@ -72,7 +72,7 @@ include_once 'include/sidebar.php';
                                 <?php
                                 global $con;
                                 $sql = "SELECT * from customers_master 
-                                         INNER JOIN loan_payment ON customers_master.c_id=loan_payment.c_id";
+                                         INNER JOIN loan_payment ON loan_payment.loan_account_number='$loan_account_number' and customers_master.c_id=loan_payment.c_id";
                                 $stmt = $con->query($sql);
                                 $stmt = $con->query($sql);
                                 $result = $stmt->rowcount();

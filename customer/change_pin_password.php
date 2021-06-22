@@ -6,15 +6,15 @@ require_once ('include/function.php');
 <?php
 $get_id = $_SESSION['c_id'];
 if (isset($_POST['change_pin'])){
-    $old_pin = $_POST['old_pin'];
-    $new_pin = $_POST['new_pin'];
-    $confirm_pin = $_POST['confirm_pin'];
+    $old_pin = base64_encode($_POST['old_pin']);
+    $new_pin = base64_encode($_POST['new_pin']);
+    $confirm_pin = base64_encode($_POST['confirm_pin']);
     if(!empty($old_pin)||!empty($new_pin) || !empty($confirm_pin)) {
 
-        if (strlen($new_pin)  > 6) {
+        if (strlen(base64_decode($new_pin))  > 6) {
             $_SESSION['error_message'] = "Your Pin Less than 6 characters!";
             redirect('change_pin_password.php');
-        }elseif(!preg_match("#[0-9]+#",$new_pin)) {
+        }elseif(!preg_match("#[0-9]+#",base64_decode($new_pin))) {
             $_SESSION['error_message'] = "Your Pin Must Contain At Least 6 Number!";
             redirect('change_pin_password.php');
         }else {

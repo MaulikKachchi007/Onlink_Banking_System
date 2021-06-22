@@ -13,25 +13,25 @@ while ($row = $stmt->fetch()) {
     $email = $row['email'];
 }
 if (isset($_POST['recover_password'])){
-    $old_password = $_POST['old_password'];
-    $new_password = $_POST['new_password'];
-    $confirm_Password = $_POST['confirm_password'];
+    $old_password = base64_encode($_POST['old_password']);
+    $new_password = base64_encode($_POST['new_password']);
+    $confirm_Password = base64_encode($_POST['confirm_password']);
     if ($new_password != $confirm_Password) {
         $_SESSION['error_message'] = "Password and Confirm Password Not match.";
         redirect('recover_password.php');
-    }elseif (strlen($new_password)  > 10) {
+    }elseif (strlen(base64_decode($new_password))  > 10) {
         $_SESSION['error_message'] = "Your Password  Less than 10 characters!";
         redirect('recover_password.php');
-    }elseif(!preg_match("#[0-9]+#",$new_password)) {
+    }elseif(!preg_match("#[0-9]+#",base64_decode($new_password))) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Number!";
         redirect('recover_password.php');
-    }elseif(!preg_match("#[A-Z]+#",$new_password)) {
+    }elseif(!preg_match("#[A-Z]+#",base64_decode($new_password))) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Capital Letter!";
         redirect('recover_password.php');
-    }elseif(!preg_match("#[a-z]+#",$new_password)) {
+    }elseif(!preg_match("#[a-z]+#",base64_decode($new_password))) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
         redirect('recover_password.php');
-    }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $new_password)) {
+    }elseif(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', base64_decode($new_password))) {
         $_SESSION['error_message'] = "Your Password Must Contain At Least 1 Special Character !";
         redirect('recover_password.php');
     }

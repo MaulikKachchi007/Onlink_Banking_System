@@ -31,7 +31,7 @@ if (isset($_POST["add_employee"])) {
     }else {
         global $con;
         $sql = "INSERT INTO employees_master(ifsccode,ename,loginid,email,contact,pwd,token,employee_type,status)
-        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,$token,:employee_type,:status)";
+        VALUES(:ifsccode,:ename,:loginid,:email,:contact,:pwd,:token,:employee_type,:status)";
         $stmt = $con->prepare($sql);
         $stmt->bindValue(':ifsccode',$ifsc_code);
         $stmt->bindValue(':ename',$emp_name);

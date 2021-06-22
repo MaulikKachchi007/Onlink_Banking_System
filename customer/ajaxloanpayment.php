@@ -54,7 +54,7 @@ while ($row = $stmt->fetch()) {
     </div>
     <div class="form-group">
         <label for="bal_amt">Balance Amounnt</label>
-            <input type="text" class="form-control" value="" name="bal_amt" id="balanceamt"  placeholder="Balance Amount"/>
+            <input type="text" class="form-control" value="<?php echo $_SESSION['tot_pay']-$_SESSION['paid_amt']; ?>" name="bal_amt" id="balanceamt"  placeholder="Balance Amount"/>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="submit"  value="Make Payment"/>

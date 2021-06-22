@@ -43,8 +43,7 @@ require_once 'include/sidebar.php';
                                 <thead>
                                 <tr>
                                     <th>Accounts Number</th>
-                                    <th>Account</th>
-                                    <th>Commission</th>
+                                    <th>Amount (RS.)</th>
                                     <th>Particulars</th>
                                     <th>Transaction Type</th>
                                     <th>Transaction Date</th>
@@ -75,7 +74,6 @@ require_once 'include/sidebar.php';
                                         <tr>
                                             <td><?php echo $to_account_no; ?></td>
                                             <td><?php echo $amount; ?></td>
-                                            <td><?php echo $commision; ?></td>
                                             <td><?php echo $particulars; ?></td>
                                             <td><?php echo $transaction_type; ?></td>
                                             <td><?php echo $trans_date_time; ?></td>
@@ -95,7 +93,7 @@ require_once 'include/sidebar.php';
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">View Paid Loan Receipt</h5>
+                                                                <h5 class="modal-title">View Transaction Receipt</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -107,36 +105,32 @@ require_once 'include/sidebar.php';
                                                                         <td><?php echo $to_account_no; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Loan Account Number</th>
-                                                                        <td><?php echo $row['loan_account_number']; ?></td>
+                                                                        <th>Amount</th>
+                                                                        <td><?php echo $amount; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Loan Type</th>
-                                                                        <td><?php echo $row['loan_type']; ?></td>
+                                                                        <th>Commision</th>
+                                                                        <td><?php echo $commision; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Loan Amount</th>
-                                                                        <td><?php echo $row['loan_amount']; ?></td>
+                                                                        <th>Particulars</th>
+                                                                        <td><?php echo $particulars; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Interest Amount</th>
-                                                                        <td><?php echo $row['intrest']; ?> (<?php echo $loan_interest; ?> %)</td>
+                                                                        <th>Transaction Type</th>
+                                                                        <td><?php echo $transaction_type; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Total Amount</th>
-                                                                        <td><?php echo $total_amt; ?></td>
+                                                                        <th>Transaction Date</th>
+                                                                        <td><?php echo $trans_date_time; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Total Paid</th>
-                                                                        <td><?php echo $paid; ?></td>
+                                                                        <th>Approve Date</th>
+                                                                        <td><?php echo $approve_date_time; ?></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>Total Balance</th>
-                                                                        <td><?php echo $balance; ?></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Paid Date</th>
-                                                                        <td><?php echo $paid_date; ?></td>
+                                                                        <th>Payment Status</th>
+                                                                        <td><?php echo $status; ?></td>
                                                                     </tr>
 
                                                                 </table>
@@ -167,6 +161,9 @@ require_once 'include/sidebar.php';
 </div>
 </section>
 </div>
+<?php
+require_once 'include/footer.php';
+?>
 <script>
     $(function () {
         $('#example1').DataTable({
@@ -180,9 +177,7 @@ require_once 'include/sidebar.php';
         });
     });
 </script>
-<?php
-require_once 'include/footer.php';
-?>
+
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>

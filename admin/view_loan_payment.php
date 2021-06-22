@@ -20,9 +20,9 @@ while ($row = $stmt->fetch()){
 }
 ?>
 <?php
-include_once 'include/header.php';
-include_once 'include/topbar.php';
-include_once 'include/sidebar.php';
+require_once 'include/header.php';
+require_once 'include/topbar.php';
+require_once 'include/sidebar.php';
 ?>
 <div class="content-wrapper">
     <section class="content">
@@ -141,7 +141,7 @@ include_once 'include/sidebar.php';
                                                                     <tr>
                                                                         <th>Total Paid</th>
                                                                         <td><?php echo $paid; ?></td>
-                                                                    </tr>s
+                                                                    </tr>
                                                                     <tr>
                                                                         <th>Paid Date</th>
                                                                         <td><?php echo $paid_date; ?></td>
@@ -158,8 +158,10 @@ include_once 'include/sidebar.php';
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </td>
                                         </tr>
+
                                         <?php
                                     }
                                 }else {
@@ -180,7 +182,7 @@ include_once 'include/sidebar.php';
 </section>
 </div>
 <?php
-include 'include/footer.php';
+require_once 'include/footer.php';
 ?>
 <script>
     $(function () {

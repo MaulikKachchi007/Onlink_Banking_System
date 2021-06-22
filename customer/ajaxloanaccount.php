@@ -3,6 +3,11 @@ include 'include/DB.php';
 include 'include/function.php';
 global $con;
 $loan_account_number = $_GET['loan_account_number'];
+$sq = "SELECT * FROM loan_payment WHERE loan_account_number='$loan_account_number' ORDER BY payment_id desc LIMIT 1";
+$st = $con->query($sq);
+while ($row = $st->fetch()) {
+    $_SESSION['tot_pay'] = $row['balance'];
+}
 $sql = "SELECT loan.loan_id,loan_type_master.prefix,customers_master.ifsccode,customers_master.l_name,customers_master.f_name,loan.loan_account_number,loan_type_master.terms,loan_type_master.loan_type,loan.intrest,loan.c_id,loan.created_date,loan_amount,loan_type_master.interest,loan.status from ((loan_type_master 
         INNER JOIN loan ON loan_type_master.id=loan.id)
         INNER JOIN customers_master ON customers_master.c_id=loan.c_id) where loan.loan_account_number='$loan_account_number' and loan.status='Approved'";
@@ -21,6 +26,7 @@ while ($row = $stmt->fetch()) {
     $intrest = $row['intrest'];
     $created_date = $row['created_date'];
     $total_payable = $loan_amount + $intrest;
+
     $term = $row['terms'];
     $status = $row['status'];
     $interest_paid_amt = $total_payable / ($term * 12);
@@ -68,7 +74,10 @@ while ($row = $stmt->fetch()) {
     </tr>
     <tr>
         <th>Balance</th>
-        <td><?php echo $balamt = $total_payable - $loan_amount; ?></td>
+        <td><?php echo $_SESSION['tot_pay']; ?>
+
+
+        </td>
     </tr>
 </table>
 <?php
